@@ -34,7 +34,7 @@ RUN apt-get install -y supervisor
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-# RUN composer self-update --1
+# RUN composer self-update
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -60,7 +60,7 @@ RUN mkdir /var/log/php
 RUN touch /var/log/php/errors.log && chmod 777 /var/log/php/errors.log
 
 # Deployment steps
-# RUN COMPOSER_MEMORY_LIMIT=-1 composer install --ignore-platform-reqs
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install --ignore-platform-reqs
 RUN chmod +x /var/www/docker/run.sh
 
 EXPOSE 80
