@@ -1,0 +1,303 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "marketplace"
+  namespace: "default"
+  labels:
+    app: "marketplace"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "marketplace"
+  template:
+    metadata:
+      labels:
+        app: "marketplace"
+    spec:
+      containers:
+        - name: "marketplace"
+          image: "gcr.io/sincere-office-348200/github.com/biazwa/marketplace"
+          ports:
+            - containerPort: 80
+              protocol: TCP
+              name: http
+          env:
+            - name: APP_NAME
+              value: "Marketplace"
+            - name: APP_ENV
+              value: "local"
+            - name: APP_KEY
+              value: "base64:1vaU3dfc+sWjx8TuDXzginRsEa2dp2SBL+Ujs6QCb5c="
+            - name: APP_DEBUG
+              value: "true"
+            - name: APP_URL
+              value: "https://members.biazua.com"
+            - name: LOG_CHANNEL
+              value: "stack"
+            - name: PAYMENT_FLUTTERWAVE_SK
+              value: "FLWSECK_TEST-b5397c7faaaa0f05a6f89a0f3b1fe610-X"
+            - name: TOOKAN_WEBHOOK_URL
+              value: "https://api.tookanapp.com/paystack_payment_callback"
+            - name: DB_CONNECTION
+              value: "mysql"
+            - name: DB_HOST
+              value: "34.145.89.141"
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_DATABASE
+              value: "x2095"
+            - name: DB_USERNAME
+              value: "root"
+            - name: DB_PASSWORD
+              value: "pfurt73kr>rQ"
+            - name: DB_TRACKER_INFO_CONNECTION
+              value: "mysql"
+            - name: DB_TRACKER_INFO_HOST
+              value: "127.0.0.1"
+            - name: DB_TRACKER_INFO_PORT
+              value: "3307"
+            - name: DB_TRACKER_INFO_DATABASE
+              value: "fnsv5"
+            - name: DB_TRACKER_INFO_USERNAME
+              value: "report"
+            - name: DB_TRACKER_INFO_PASSWORD
+              value: "Test@123*!@"
+            - name: DB_TRACKER_EVENTS_CONNECTION
+              value: "mongodb"
+            - name: DB_TRACKER_EVENTS_HOST
+              value: "176.9.73.59"
+            - name: DB_TRACKER_EVENTS_PORT
+              value: "27017"
+            - name: DB_TRACKER_EVENTS_DATABASE
+              value: "fnsv5"
+            - name: DB_TRACKER_EVENTS_USERNAME
+              value: "secure1"
+            - name: DB_TRACKER_EVENTS_PASSWORD
+              value: "Test@123*!@"
+            - name: BROADCAST_DRIVER
+              value: "log"
+            - name: QUEUE_CONNECTION
+              value: "sync"
+            - name: SESSION_DRIVER
+              value: "file"
+            - name: SESSION_LIFETIME
+              value: "120"
+            - name: AWS_ACCESS_KEY_ID
+              value: "AKIAXUVGB57YXURFP2NG"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "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"
+            - name: AWS_DEFAULT_REGION
+              value: "eu-west-1"
+            - name: AWS_BUCKET
+              value: "biazua-delivery-item-photos"
+            - name: AWS_BUCKET_URL
+              value: "https://biazua-delivery-item-photos.s3-eu-west-1.amazonaws.com/"
+            - name: AWS_BUCKET_2
+              value: "biazua-delivery-admin-driver-photos"
+            - name: AWS_BUCKET_2_URL
+              value: "https://biazua-delivery-admin-driver-photos.s3-eu-west-1.amazonaws.com/"
+            - name: AWS_BUCKET_URL_2
+              value: "https://biazua-delivery-admin-driver-photos.s3-eu-west-1.amazonaws.com/"
+            - name: AWS_BUCKET_GSHOP_MEDIA
+              value: "gshop-dev-merchant-media"
+            - name: AWS_BUCKET_URL_GSHOP_MEDIA
+              value: "https://gshop-dev-merchant-media.s3-eu-west-1.amazonaws.com/"
+            - name: PUSHER_APP_KEY
+              value: ""
+            - name: PUSHER_APP_SECRET
+              value: ""
+            - name: PUSHER_APP_CLUSTER
+              value: "mt1"
+            - name: MIX_PUSHER_APP_KEY
+              value: ""
+            - name: MIX_PUSHER_APP_CLUSTER
+              value: "mt1"
+            - name: PAYSTACK_SECRET_KEY
+              value: ""
+            - name: PAYSTACK_PUBLIC_KEY
+              value: ""
+            - name: AT_USERNAME_2
+              value: "biazua"
+            - name: AT_API_KEY_2
+              value: "77d16c49343fb0675399c89ff30012bf9dccb38424fc7995b7c4e1457e165b1f"
+            - name: AT_REGISTERED_NUMBER
+              value: "+23417006222"
+            - name: GOOGLE_MAPS_API_KEY
+              value: "AIzaSyABCJ2-8gwm0LwWySFP3qToVHyAi78g0xU"
+            - name: MAPBOX_TOKEN
+              value: "pk.eyJ1IjoiZ29rYWRhIiwiYSI6ImNqdWpzaW53ZjFpZnE0M3BneWRjbGdiYTkifQ.xDUr4FsMXXUZIoGVV_xG5w"
+            - name: NOVA_GUARD
+              value: "loginnova"
+            - name: LOGZ_TOKEN
+              value: "kmbusQRlyeIxruGQaHIcQxvmjGOjeleo"
+            - name: LOGZ_BASE_URI
+              value: "https://listener.logz.io:8071"
+            - name: PUSHER_APP_ID
+              value: "946159"
+            - name: PUSHER_KEY
+              value: "9e07ca368dd6c88991a6"
+            - name: PUSHER_SECRET
+              value: "95cec39255e1de1fee2e"
+            - name: PUSHER_CLUSTER
+              value: eu
+            - name: PUSHER_APP_ID_2
+              value: "12083dd38"
+            - name: PUSHER_KEY_2
+              value: "0b35289ed0d785cfc5a7"
+            - name: PUSHER_SECRET_2
+              value: "e5877a3546077730d140"
+            - name: PUSHER_CLUSTER_2
+              value: "eu"
+            - name: PAYSTACK_PK
+              value: "pk_test_13c6764234ac3499067d18546edb24312sdfsddc"
+            - name: PAYSTACK_SK
+              value: "sk_test_a74a397e16408c03ef0ca86c1804ecdec5c5b7c2"
+            - name: PROMO_1_USER_ID
+              value: "52"
+            - name: PROMO_1_LOCATION_ID
+              value: "208"
+            - name: PROMO_2_LOCATION_ID
+              value: "208"
+            - name: FCM_SERVER_KEY
+              value: "AAAAzes0XUw:ssdfas"
+            - name: FCM_SENDER_ID
+              value: "884414373196"
+            - name: PAYMENT_MS_API_URL
+              value: "http://payment-service-1697685477.eu-west-1.elb.amazonaws.com/d"
+            - name: PAYMENT_SECRET_KEY
+              value: "kWf+Ck5d.Tmk9s]9Kpd8"
+            - name: PAYMENT_PAYSTACK_SK
+              value: "sk_test_445d4d2c8bdbd6a6fd65365271a71b30d5c286a8"
+            - name: DELIVERY_MANAGEMENT_PROVIDER
+              value: "tookan"
+            - name: DELIVERY_MANAGEMENT_PROVIDER_API_KEY
+              value: "56666982f21940424c477a3c1110224614e5cdf22add793a5b1a"
+            - name: TWILIO_AUTH_TOKEN
+              value: "bb1ec6060d14f7d76a22035e72a143e3"
+            - name: TWILIO_SID
+              value: "ACdca330b41176675959bec33361cde564"
+            - name: TWILIO_VERIFY_SID
+              value: "VAdba3c98da643b2ba3352e3b6596021e3"
+            - name: TWILIO_SENDER
+              value: "+16195682422"
+            - name: GATEWAY_EMAIL
+              value: "sajjad@ad.capital"
+            - name: GATEWAY_PASS
+              value: "GA4ZiwKcLbi7966"
+            - name: GATEWAY_DEVICE_ID
+              value: "1881"
+            - name: GATEWAY_SIM
+              value: "0"
+            - name: BLOCK_TEAM_ID
+              value: "533826"
+            - name: UNBLOCK_TEAM_ID
+              value: "435076"
+            - name: EZOFFICE_URL
+              value: "https://biazua.ezofficeinventory.com"
+            - name: EZOFFICE_TOKEN
+              value: "bcd4471689996db9d521edee5c9111bf"
+            - name: EZOFFICE_USERNAME
+              value: "sajjad@ad.capital"
+            - name: EZOFFICE_PASSWORD
+              value: "BiazuaRocks2020"
+            - name: EZOFFICE_BIKE_GROUP_ID
+              value: "152614"
+            - name: BAD_SERVICE_DAY_INTERVAL
+              value: "14"
+            - name: TOTAL_INVENTORY_SERVICE_FOR_BAD_PERFORMANCE
+              value: "500"
+            - name: YELO_API_KEY
+              value: '5d23f5d8f6d2705f267d94401ae6603a'
+            - name: YELO_MARKETPLACE_USER_ID
+              value: "45972"
+            - name: SQS_KEY
+              value: "AKIAXUVGB57Y4JMFOC7W"
+            - name: SQS_SECRET
+              value: "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"
+            - name: SQS_QUEUE
+              value: "staging-biazua-api"
+            - name: SQS_REGION
+              value: "eu-west-1"
+            - name: SQS_PREFIX
+              value: "https://sqs.eu-west-1.amazonaws.com/525408006129"
+            - name: CACHE_DRIVER
+              value: "redis"
+            - name: "CACHE_EXPIRE_SECONDS"
+              value: "2419200"
+            - name: CACHE_PREFIX
+              value: "cache_"
+            - name: REDIS_HOST
+              value: "127.0.0.1"
+            - name: REDIS_PASSWORD
+              value: "null"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: GCP_FIREBASE_SERVER_KEY
+              value: "AAAAwfBtyhE:APA91bGddfds"
+            - name: MAIL_DRIVER
+              value: "smtp"
+            - name: MAIL_HOST
+              value: "smtp.sendgrid.net"
+            - name: MAIL_PORT
+              value: "587"
+            - name: MAIL_USERNAME
+              value: "apikey"
+            - name: MAIL_PASSWORD
+              value: "SG.4IDV1PvESoeCHlqn2tyV7Asadfs"
+            - name: MAIL_ENCRYPTION
+              value: "null"
+            - name: MAIL_FROM_ADDRESS
+              value: "info@biazua.ng"
+            - name: MAIL_FROM_NAME
+              value: "Marketplace"
+            - name: PAYSTACK_SK_2
+              value: "sk_test_a74a397e16408c03ef0ca86c1804ecdec5c5bddd7c2"
+            - name: G_SHOP_MERCHANT_UNAVAILABLE_CANCEL_REASON_ID
+              value: "18"
+            - name: LOGGLY_KEY
+              value: "ab32a954-b8d8-4139-a801-eec8a6c7e1fb"
+            - name: MERCHANT_DASHBOARD_URL
+              value: "https://gshop-staging.biazua.ng/dashboard"
+            - name: INFOBIP_URL_BASE_PATH
+              value: "https://39d9v.api.infobip.com"
+            - name: INFOBIP_API_KEY_PREFIX
+              value: "App"
+            - name: INFOBIP_API_KEY
+              value: "c646d6a9067b402e3e992b0cda8e0d26-d854a21f-44e6-4221-8868-1aaf6a4bee95"
+            - name: INFOBIP_CREATE_OTP_URL
+              value: "https://39d9v.api.infobip.com/2fa/2/applications"
+            - name: INFOBIP_NAME
+              value: "BiazuaNG"
+            - name: INFOBIP_ENABLE
+              value: "true"
+            - name: INFOBIP_PIN_ATTEMPT
+              value: "5"
+            - name: INFOBIP_ALLOW_MULTI_PIN_VERIFICATION
+              value: "true"
+            - name: INFOBIP_PIN_TIME_TO_LIVE
+              value: "10m"
+            - name: INFOBIP_VERIFY_PIN_LIMIT
+              value: "2/4s"
+            - name: INFOBIP_SEND_PIN_PER_APP_LIMIT
+              value: "50000/12h"
+            - name: INFOBIP_SEND_PIN_PER_PHONE_LIMIT
+              value: "10/1d"
+            - name: INFOBIP_TEMPLATE_PIN_TYPE
+              value: "NUMERIC"
+            - name: INFOBIP_TEMPLATE_PIN_LENGTH
+              value: "6"
+            - name: INFOBIP_TEMPLATE_LANGUAGE
+              value: "en"
+            - name: INFOBIP_TEMPLATE_REPEAT_DTMF
+              value: "1#"
+            - name: INFOBIP_TEMPLATE_SPEECH_RATE
+              value: "1"
+            - name: INFOBIP_OTP_MESSAGE_ID
+              value: "5E6DDB504ADFA5F7C3C55B7742AC78B5"
+            - name: INFOBIP_OTP_APPLICATION_ID
+              value: "71393BACAFEDF97080F1C7E34D33D218"
+            - name: INFO_SEND_OTP_URL
+              value: "https://39d9v.api.infobieep.com/2fa/2/pin?eencNeeded=true"
+            - name: APP_MODE
+              value: "live"
