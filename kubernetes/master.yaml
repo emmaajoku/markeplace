@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: "marketplace"
-          image: "gcr.io/sincere-office-348200/github.com/biazwa/marketplace"
+          image: "gcr.io/sincere-office-348200/github.com/biazwa/sellers-service"
           ports:
             - containerPort: 80
               protocol: TCP
