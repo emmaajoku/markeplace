@@ -88,26 +88,26 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/shared.php'));
     }
 
-    protected function mapTestRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/test.php'));
-    }
+    // protected function mapTestRoutes()
+    // {
+    //     Route::middleware('web')
+    //         ->namespace($this->namespace)
+    //         ->group(base_path('routes/test.php'));
+    // }
 
-    protected function mapInstallRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/install.php'));
-    }
+    // protected function mapInstallRoutes()
+    // {
+    //     Route::middleware('web')
+    //         ->namespace($this->namespace)
+    //         ->group(base_path('routes/install.php'));
+    // }
 
-    protected function mapUpdateRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/update.php'));
-    }
+    // protected function mapUpdateRoutes()
+    // {
+    //     Route::middleware('web')
+    //         ->namespace($this->namespace)
+    //         ->group(base_path('routes/update.php'));
+    // }
 
     /**
      * Define the "api" routes for the application.
