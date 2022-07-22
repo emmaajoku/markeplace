@@ -28,10 +28,10 @@ class UpdateController extends Controller
         Helpers::setEnvironmentValue('APP_NAME', '6valley' . time());
         Helpers::setEnvironmentValue('SESSION_LIFETIME', '60');
 
-        $data = Helpers::requestSender();
-        if (!$data['active']) {
-            return redirect(base64_decode('aHR0cHM6Ly82YW10ZWNoLmNvbS9zb2Z0d2FyZS1hY3RpdmF0aW9u'));
-        }
+        // $data = Helpers::requestSender();
+        // if (!$data['active']) {
+        //     return redirect(base64_decode('aHR0cHM6Ly82YW10ZWNoLmNvbS9zb2Z0d2FyZS1hY3RpdmF0aW9u'));
+        // }
 
         Artisan::call('migrate', ['--force' => true]);
         $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
