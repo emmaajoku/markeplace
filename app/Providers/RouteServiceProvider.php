@@ -40,11 +40,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function map()
-    {
-        $this->mapInstallRoutes();
-        //$this->mapUpdateRoutes();
-    }
+    // public function map()
+    // {
+    //     // $this->mapInstallRoutes();
+    //     //$this->mapUpdateRoutes();
+    // }
 
     /**
      * Define the "web" routes for the application.
