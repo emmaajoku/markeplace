@@ -25,12 +25,12 @@ class SslCommerzNotification extends AbstractSslCommerz
 
     public function orderValidate($trx_id = '', $amount = 0, $currency = "BDT", $post_data)
     {
-        // if ($post_data == '' && $trx_id == '' && !is_array($post_data)) {
-        //     $this->error = "Please provide valid transaction ID and post request data";
-        //     return $this->error;
-        // }
+        if ($post_data == '' && $trx_id == '' && !is_array($post_data)) {
+            $this->error = "Please provide valid transaction ID and post request data";
+            return $this->error;
+        }
 
-        $validation =  true; //$this->validate($trx_id, $amount, $currency, $post_data);
+        $validation = $this->validate($trx_id, $amount, $currency, $post_data);
 
         if ($validation) {
             return true;

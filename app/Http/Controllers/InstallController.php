@@ -12,35 +12,46 @@ class InstallController extends Controller
 {
     public function step0()
     {
-
+        return view('installation.step0');
     }
 
     public function step1()
     {
+        $permission['curl_enabled'] = function_exists('curl_version');
+        $permission['db_file_write_perm'] = is_writable(base_path('.env'));
+        $permission['routes_file_write_perm'] = is_writable(base_path('app/Providers/RouteServiceProvider.php'));
+        return view('installation.step1', compact('permission'));
     }
 
     public function step2()
     {
-
+        return view('installation.step2');
     }
 
     public function step3()
     {
-
+        return view('installation.step3');
     }
 
     public function step4()
     {
-
+        return view('installation.step4');
     }
 
     public function step5()
     {
-
+        Artisan::call('config:cache');
+        Artisan::call('config:clear');
+        return view('installation.step5');
     }
 
     public function purchase_code(Request $request)
     {
+        Helpers::setEnvironmentValue('SOFTWARE_ID', 'MzE0NDg1OTc=');
+        Helpers::setEnvironmentValue('BUYER_USERNAME', $request['username']);
+        Helpers::setEnvironmentValue('PURCHASE_CODE', $request['purchase_key']);
+
+        return redirect()->route('dmvf', ['purchase_key' => $request['purchase_key'], 'username' => $request['username']]);
     }
 
     public function system_settings(Request $request)
