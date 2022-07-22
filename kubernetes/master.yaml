@@ -26,7 +26,7 @@ spec:
             - name: APP_NAME
               value: "Marketplace"
             - name: APP_ENV
-              value: "production"
+              value: "local"
             - name: APP_KEY
               value: "base64:1vaU3dfc+sWjx8TuDXzginRsEa2dp2SBL+Ujs6QCb5c="
             - name: APP_DEBUG
