@@ -61,6 +61,7 @@ RUN touch /var/log/php/errors.log && chmod 777 /var/log/php/errors.log
 # Deployment steps
 RUN COMPOSER_MEMORY_LIMIT=-1 composer install --ignore-platform-reqs
 RUN chmod +x /var/www/docker/run.sh
-
+RUN chmod -R 777 storage/
+RUN chmod -R 777 .env
 EXPOSE 80
 ENTRYPOINT ["/var/www/docker/run.sh"]
