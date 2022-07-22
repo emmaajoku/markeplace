@@ -1,4 +1,5 @@
-FROM php:7.4-fpm
+
+FROM php:8.0-fpm
 
 # Set working directory
 WORKDIR /var/www
@@ -26,15 +27,11 @@ RUN apt-get update && apt-get install -y \
     libmemcached-dev \
     nginx
 
-# Install PHP Redis extension
-RUN printf "\n \n" | pecl install redis && docker-php-ext-enable redis
-
 # Install supervisor
 RUN apt-get install -y supervisor
 
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-# RUN composer self-update
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -53,7 +50,6 @@ RUN chmod -R ug+w /var/www/storage
 RUN cp docker/supervisor.conf /etc/supervisord.conf
 RUN cp docker/php.ini /usr/local/etc/php/conf.d/app.ini
 RUN cp docker/nginx.conf /etc/nginx/sites-enabled/default
-RUN cp docker/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # PHP Error Log Files
 RUN mkdir /var/log/php
