@@ -11,6 +11,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
     install-php-extensions mbstring pdo_mysql zip exif pcntl gd memcached
 
+RUN docker-php-ext-install mysqli
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -61,7 +62,7 @@ RUN touch /var/log/php/errors.log && chmod 777 /var/log/php/errors.log
 # Deployment steps
 RUN COMPOSER_MEMORY_LIMIT=-1 composer install --ignore-platform-reqs
 RUN chmod +x /var/www/docker/run.sh
-RUN chmod -R 777 storage/
-RUN chmod -R 777 .env
+RUN chmod -R 777 /var/www/storage/
+RUN chmod -R 777 /var/www/.env
 EXPOSE 80
 ENTRYPOINT ["/var/www/docker/run.sh"]
