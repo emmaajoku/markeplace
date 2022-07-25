@@ -49,31 +49,30 @@
                 <div class="card-body" style="padding: 0">
                     <div class="table-responsive">
                         <table id="datatable" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                               class="table table-hover table-borderless table-thead-bordered table-align-middle card-table"
-                               style="width:100%;">
+                               class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
+                               style="width: 100%">
                             <thead class="thead-light">
                             <tr>
-                                <th style="width: 5%">{{\App\CPU\translate('SL')}}#</th>
-                                <th style="width: 15%">{{\App\CPU\translate('Name')}}</th>
-                                <th style="width: 15%">{{\App\CPU\translate('mobile_no')}}</th>
-                                <th style="width: 15%">{{\App\CPU\translate('Email')}}</th>
-                                <th style="width: 40%">{{\App\CPU\translate('Subject')}}</th>
-                                <th style="width: 10%">{{\App\CPU\translate('action')}}</th>
+                                <th>{{\App\CPU\translate('SL')}}#</th>
+                                <th>{{\App\CPU\translate('Name')}}</th>
+                                <th>{{\App\CPU\translate('mobile_no')}}</th>
+                                <th>{{\App\CPU\translate('Email')}}</th>
+                                <th>{{\App\CPU\translate('Subject')}}</th>
+                                <th>{{\App\CPU\translate('action')}}</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($contacts as $k=>$contact)
                                 <tr>
-                                    <td style="width: 5%">{{$contacts->firstItem()+$k}}</td>
-                                    <td style="width: 15%">{{$contact['name']}}</td>
-                                    <td style="width: 15%">{{$contact['mobile_number']}}</td>
-                                    <td style="width: 15%">{{$contact['email']}}</td>
-                                    <td style="width: 40%;">{{$contact['subject']}}</td>
-                                    <td style="width: 10%">
+                                    <td>{{$contacts->firstItem()+$k}}</td>
+                                    <td>{{$contact['name']}}</td>
+                                    <td>{{$contact['mobile_number']}}</td>
+                                    <td>{{$contact['email']}}</td>
+                                    <td>{{$contact['subject']}}</td>
+                                    <td>
 
                                     
-                                        <div class="d-flex justify-content-between">
-                                            <a  title="{{\App\CPU\translate('View')}}"
+                                        <a  title="{{\App\CPU\translate('View')}}"
                                             class="btn btn-info btn-sm" style="cursor: pointer;"
                                             href="{{route('admin.contact.view',$contact->id)}}"> 
                                             <i class="tio-visible"></i>
@@ -83,7 +82,6 @@
                                             title="{{ \App\CPU\translate('Delete')}}"> 
                                             <i class="tio-delete"></i>
                                         </a>
-                                        </div>
                                     
                                     </td>
                                 </tr>

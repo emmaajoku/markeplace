@@ -14,12 +14,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 
-
-
-
 //for maintenance mode
 Route::get('maintenance-mode', 'Web\WebController@maintenance_mode')->name('maintenance-mode');
-
 
 Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode']], function () {
     Route::get('/', 'WebController@home')->name('home');
@@ -37,9 +33,6 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode']], function
         Route::get('shop-cart', 'WebController@shop_cart')->name('shop-cart');
         Route::post('order_note', 'WebController@order_note')->name('order_note');
     });
-
-    //wallet payment
-    Route::get('checkout-complete-wallet', 'WebController@checkout_complete_wallet')->name('checkout-complete-wallet');
 
     Route::post('subscription', 'WebController@subscription')->name('subscription');
     Route::get('search-shop', 'WebController@search_shop')->name('search-shop');
@@ -112,10 +105,6 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode']], function
     Route::get('account-wallet-history', 'UserProfileController@account_wallet_history')->name('account-wallet-history');
 
     Route::post('review', 'ReviewController@store')->name('review.store');
-
-    Route::get('wallet','UserWalletController@index')->name('wallet');
-    Route::get('loyalty','UserLoyaltyController@index')->name('loyalty');
-    Route::post('loyalty-exchange-currency','UserLoyaltyController@loyalty_exchange_currency')->name('loyalty-exchange-currency');
 
     Route::group(['prefix' => 'track-order', 'as' => 'track-order.'], function () {
         Route::get('', 'UserProfileController@track_order')->name('index');

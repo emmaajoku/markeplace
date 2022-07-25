@@ -9,20 +9,11 @@ use App\Model\Shop;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\CPU\Helpers;
-use function App\CPU\translate;
 
 class RegisterController extends Controller
 {
     public function create()
     {
-        $business_mode=Helpers::get_business_settings('business_mode');
-        $seller_registration=Helpers::get_business_settings('seller_registration');
-        if((isset($business_mode) && $business_mode=='single') || (isset($seller_registration) && $seller_registration==0))
-        {
-            Toastr::warning(translate('access_denied!!'));
-            return redirect('/');
-        }
         return view('seller-views.auth.register');
     }
 

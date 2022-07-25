@@ -50,20 +50,22 @@
                     <!-- End Header -->
 
                     <!-- Table -->
-                    <div class="col-12  card-body" style="padding: 0">
+                    <div class="card-body" style="padding: 0">
                         <div class="table-responsive datatable-custom">
-                            <table 
+                            <table id="columnSearchDatatable"
                                 style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                class="table table-borderless table-thead-bordered table-align-middle card-table"
-                                >
+                                class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
+                                data-hs-datatables-options='{
+                                    "order": [],
+                                    "orderCellsTop": true
+                                }'>
                                 <thead class="thead-light">
                                 <tr>
-                                    <th class="col-1">#{{ \App\CPU\translate('sl')}}</th>
-                                    <th class="col-3">{{ \App\CPU\translate('Product')}}</th>
-                                    <th class="col-2">{{ \App\CPU\translate('Customer')}}</th>
-                                    <th class="col-1">{{ \App\CPU\translate('Rating')}}</th>
-                                    <th class="col-5">{{ \App\CPU\translate('Review')}}</th>
-                                    
+                                    <th>#{{ \App\CPU\translate('sl')}}</th>
+                                    <th >{{ \App\CPU\translate('Product')}}</th>
+                                    <th >{{ \App\CPU\translate('Customer')}}</th>
+                                    <th >{{ \App\CPU\translate('Review')}}</th>
+                                    <th>{{ \App\CPU\translate('Rating')}}</th>
                                 </tr>
                                 </thead>
 
@@ -71,15 +73,15 @@
                                 @foreach($reviews as $key=>$review)
                                     @if($review->product)
                                         <tr>
-                                            <td class="col-1">{{$reviews->firstItem()+$key}}</td>
-                                            <td class="col-3">
+                                            <td>{{$reviews->firstItem()+$key}}</td>
+                                            <td>
                                             <span class="d-block font-size-sm text-body">
                                                 <a href="{{route('admin.product.view',[$review['product_id']])}}">
                                                     {{$review->product['name']}}
                                                 </a>
                                             </span>
                                             </td>
-                                            <td class="col-2">
+                                            <td>
                                                 @if($review->customer)
                                                     <a href="{{route('admin.customer.view',[$review->customer_id])}}">
                                                         {{$review->customer->f_name." ".$review->customer->l_name}}
@@ -88,24 +90,16 @@
                                                     <label class="badge badge-danger">{{\App\CPU\translate('customer_removed')}}</label>
                                                 @endif
                                             </td>
-                                            <td class="col-1">
-                                                <label class="badge badge-soft-info" >
-                                                    <span style="font-size: .9rem;">{{$review->rating}} <i class="tio-star"></i> </span>
+                                            <td >
+                                                <p>
+                                                    {{$review->comment?Str::limit($review->comment,130):"No Comment Found"}}
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-soft-info">
+                                                    {{$review->rating}} <i class="tio-star"></i>
                                                 </label>
                                             </td>
-                                            <td class="col-5">
-                                                <p style=" word-wrap: break-word;">
-                                                    {{$review->comment?$review->comment:"No Comment Found"}}
-                                                </p>
-                                                @foreach (json_decode($review->attachment) as $img)
-                                                
-                                                    <a class="float-left" href="{{asset('storage/app/public/review')}}/{{$img}}" data-lightbox="mygallery">
-                                                        <img style="width: 60px;height:60px;padding:10px; " src="{{asset('storage/app/public/review')}}/{{$img}}" alt="">
-                                                    </a>
-                                                
-                                                @endforeach
-                                            </td>
-                                            
                                         </tr>
                                     @endif
                                 @endforeach

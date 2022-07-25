@@ -17,6 +17,7 @@
                 <h2 class="h3 mb-4">{{\App\CPU\translate('Forgot your password')}}?</h2>
                 <p class="font-size-md">{{\App\CPU\translate('Change your password in three easy steps. This helps to keep your new password secure')}}
                     .</p>
+                @if($verification_by=='email')
                     <ol class="list-unstyled font-size-md">
                         <li><span
                                 class="text-primary mr-2">{{\App\CPU\translate('1')}}.</span>{{\App\CPU\translate('Fill in your email address below')}}
@@ -31,8 +32,6 @@
                             .
                         </li>
                     </ol>
-                @if($verification_by=='email')
-                    
                     <div class="card py-2 mt-4">
                         <form class="card-body needs-validation" action="{{route('customer.auth.forgot-password')}}"
                               method="post">

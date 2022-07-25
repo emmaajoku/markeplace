@@ -72,9 +72,9 @@
                                                     class="js-example-responsive form-control"
                                                     name="product_id">
                                                 @foreach(\App\Model\Product::active()->get() as $product)
-                                                    
+                                                    @if (\App\Model\Banner::where('resource_type','product')->where('resource_id',$product->id)->first()==null)
                                                         <option value="{{$product['id']}}">{{$product['name']}}</option>
-                                                    
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>

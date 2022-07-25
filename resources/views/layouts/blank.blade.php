@@ -64,6 +64,16 @@
 <script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
 {!! Toastr::message() !!}
 
+{{--@if ($errors->any())
+    <script>
+        @foreach($errors->all() as $error)
+        toastr.error('{{$error}}', Error, {
+            CloseButton: true,
+            ProgressBar: true
+        });
+        @endforeach
+    </script>
+@endif--}}
 
 <script>
     function currency_select(val)

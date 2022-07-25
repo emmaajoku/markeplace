@@ -438,7 +438,6 @@
         display: flex;
         justify-content: space-between;
         /* width: 100%; */
-        z-index: -999;
     }
      .feature-product .czi-arrow-right{
         color: {{$web_config['primary_color']}};
@@ -460,12 +459,6 @@
          display: flex;
          justify-content: space-between;
      }
-     .new_arrival_product .czi-arrow-left{
-         margin-left: -28px;
-     }
-     .new_arrival_product .owl-nav{
-         z-index: -999;
-     }
     </style>
 
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/owl.carousel.min.css"/>
@@ -473,8 +466,6 @@
 @endpush
 
 @section('content')
-
-@php($decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings'))
     <!-- Hero (Banners + Slider)-->
     <section class="bg-transparent mb-3">
         <div class="container">
@@ -548,7 +539,7 @@
                     <div class="owl-carousel owl-theme mt-2" id="flash-deal-slider">
                         @foreach($flash_deals->products as $key=>$deal)
                             @if( $deal->product)
-                                @include('web-views.partials._product-card-1',['product'=>$deal->product,'decimal_point_settings'=>$decimal_point_settings])
+                                @include('web-views.partials._product-card-1',['product'=>$deal->product])
                             @endif
                         @endforeach
                     </div>
@@ -609,7 +600,7 @@
                         <div class="owl-carousel owl-theme " id="featured_products_list">
                             @foreach($featured_products as $product)
                                 <div  style="margin:5px;margin-bottom: 30px;">
-                                    @include('web-views.partials._feature-product',['product'=>$product, 'decimal_point_settings'=>$decimal_point_settings])
+                                    @include('web-views.partials._feature-product',['product'=>$product])
                                     
                                 </div>
                             @endforeach
@@ -655,7 +646,7 @@
                 <div class="col-xl-9 col-md-8 d-flex align-items-center justify-content-center {{Session::get('direction') === "rtl" ? 'pl-4' : 'pr-4'}}">
                     <div class="owl-carousel owl-theme" id="web-feature-deal-slider">
                         @foreach($featured_deals->products as $key=>$product)
-                            @include('web-views.partials._feature-deal-product',['product'=>$product->product, 'decimal_point_settings'=>$decimal_point_settings])
+                            @include('web-views.partials._feature-deal-product',['product'=>$product->product])
                         @endforeach
                     </div>
                 </div>
@@ -668,7 +659,7 @@
             {{-- Deal of the day/Recommended Product --}}
             <div class="col-xl-3 col-md-4 pb-4 mt-3 pl-0 pr-0">
                 <div class="deal_of_the_day" style="background: {{$web_config['primary_color']}};height: 784px;">
-                    @if(isset($deal_of_the_day) && isset($deal_of_the_day->product))
+                    @if(isset($deal_of_the_day))
                         <div class="d-flex justify-content-center align-items-center" style="width: 70%;margin:auto;">
                             <h1 class="align-items-center" style="color: white"> {{ \App\CPU\translate('deal_of_the_day') }}</h1>
                         </div>
@@ -799,12 +790,12 @@
                             </a>
                         </div>
                     </div>
-                    
+    
                     <div class="row mt-2">
                         @foreach($latest_products as $product)
                             <div class="col-xl-3 col-sm-6 col-md-6 col-6 mb-4">
                                 <div style="margin:2px;">
-                                    @include('web-views.partials._single-product',['product'=>$product,'decimal_point_settings'=>$decimal_point_settings])
+                                    @include('web-views.partials._single-product',['product'=>$product])
                                 </div>
                             </div>
                         @endforeach
@@ -925,22 +916,19 @@
                                 </div>
                             </div>
                             <div class="row d-flex justify-content-between mt-3">
-                                @foreach($top_sellers as $key=>$seller)
-                                    @if ($key<10)
-                                    
-                                        @if($seller->shop)
-                                            <div style="margin: 5px;">
-                                                <center>
-                                                    <a href="{{route('shopView',['id'=>$seller['id']])}}">
-                                                        <img
-                                                            style="vertical-align: middle; padding: 2%;width:100px;height: 100px;border-radius: 50%"
-                                                            onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                            src="{{asset("storage/app/public/shop")}}/{{$seller->shop->image}}">
-                                                        <p class="text-center small ">{{Str::limit($seller->shop->name, 14)}}</p>
-                                                    </a>
-                                                </center>
-                                            </div>
-                                        @endif
+                                @foreach($top_sellers as $seller)
+                                    @if($seller->shop)
+                                        <div style="margin: 5px;">
+                                            <center>
+                                                <a href="{{route('shopView',['id'=>$seller['id']])}}">
+                                                    <img
+                                                        style="vertical-align: middle; padding: 2%;width:100px;height: 100px;border-radius: 50%"
+                                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                        src="{{asset("storage/app/public/shop")}}/{{$seller->shop->image}}">
+                                                    <p class="text-center small ">{{Str::limit($seller->shop->name, 14)}}</p>
+                                                </a>
+                                            </center>
+                                        </div>
                                     @endif
                                 @endforeach    
                             </div>
@@ -965,17 +953,15 @@
             </div>
         </div>
     </div>
-    <div class="container rtl mb-3" style="">
-        <div class="col-md-12" style="background-color:white;padding:20px;border-radius:10px;">
-            <div class="new_arrival_product" style="margin-left:-5px;">
-                <div class="carousel-wrap" >
-                    <div class="owl-carousel owl-theme p-2" id="new-arrivals-product">
-                        @foreach($latest_products as $key=>$product)
-                            
-                                @include('web-views.partials._product-card-1',['product'=>$product,'decimal_point_settings'=>$decimal_point_settings])
-                            
-                        @endforeach
-                    </div>
+    <div class="container rtl mb-3" style="padding-left: 5px !important; padding-right:11px !important;">
+        <div class="col-md-12">
+            <div class="carousel-wrap">
+                <div class="owl-carousel owl-theme mt-2" id="new-arrivals-product">
+                    @foreach($latest_products as $key=>$product)
+                        
+                            @include('web-views.partials._product-card-1',['product'=>$product])
+                        
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -1211,7 +1197,7 @@
                             @foreach($category['products'] as $key=>$product)
                             @if ($key<4)
                                 <div class="col-md-3 col-6 mt-2 mt-md-0" style="">
-                                    @include('web-views.partials._category-single-product',['product'=>$product,'decimal_point_settings'=>$decimal_point_settings])
+                                    @include('web-views.partials._category-single-product',['product'=>$product])
                                 </div>
                             @endif
                         @endforeach

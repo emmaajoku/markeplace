@@ -10,7 +10,6 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\Subscription;
-use App\Model\BusinessSetting;
 
 class CustomerController extends Controller
 {
@@ -91,64 +90,4 @@ class CustomerController extends Controller
         $subscription_list = $subscription_list->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
         return view('admin-views.customer.subscriber-list',compact('subscription_list','search'));
     }
-    public function customer_settings()
-    {
-        $data = BusinessSetting::where('type','like','wallet_%')->orWhere('type','like','loyalty_point_%')->get();
-        $data = array_column($data->toArray(), 'value','type');
-    
-        return view('admin-views.customer.customer-settings', compact('data'));
-    }
-
-    public function customer_update_settings(Request $request)
-    {
-        if (env('APP_MODE') == 'demo') {
-            Toastr::info(\App\CPU\translate('update_option_is_disable_for_demo'));
-            return back();
-        }
-        
-        $request->validate([
-            'add_fund_bonus'=>'nullable|numeric|max:100|min:0',
-            'loyalty_point_exchange_rate'=>'nullable|numeric',
-        ]);
-        BusinessSetting::updateOrInsert(['type' => 'wallet_status'], [
-            'value' => $request['customer_wallet']??0
-        ]);
-        BusinessSetting::updateOrInsert(['type' => 'loyalty_point_status'], [
-            'value' => $request['customer_loyalty_point']??0
-        ]);
-        BusinessSetting::updateOrInsert(['type' => 'wallet_add_refund'], [
-            'value' => $request['refund_to_wallet']??0
-        ]);
-        BusinessSetting::updateOrInsert(['type' => 'loyalty_point_exchange_rate'], [
-            'value' => $request['loyalty_point_exchange_rate']??0
-        ]);
-        BusinessSetting::updateOrInsert(['type' => 'loyalty_point_item_purchase_point'], [
-            'value' => $request['item_purchase_point']??0
-        ]);
-        BusinessSetting::updateOrInsert(['type' => 'loyalty_point_minimum_point'], [
-            'value' => $request['minimun_transfer_point']??0
-        ]);
-        
-        Toastr::success(\App\CPU\translate('customer_settings_updated_successfully'));
-        return back();
-    }
-
-    public function get_customers(Request $request){
-        $key = explode(' ', $request['q']);
-        $data = User::where('id','!=',0)->
-        where(function ($q) use ($key) {
-            foreach ($key as $value) {
-                $q->orWhere('f_name', 'like', "%{$value}%")
-                ->orWhere('l_name', 'like', "%{$value}%")
-                ->orWhere('phone', 'like', "%{$value}%");
-            }
-        })
-        ->limit(8)
-        ->get([DB::raw('id, CONCAT(f_name, " ", l_name, " (", phone ,")") as text')]);
-        if($request->all) $data[]=(object)['id'=>false, 'text'=>trans('messages.all')];
-        
-
-        return response()->json($data);
-    }
-
 }

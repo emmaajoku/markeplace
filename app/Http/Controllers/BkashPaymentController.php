@@ -23,7 +23,7 @@ class BkashPaymentController extends Controller
         $bkash_app_secret = $config['api_secret']; // bKash Merchant API APP SECRET
         $bkash_username = $config['username']; // bKash Merchant API USERNAME
         $bkash_password = $config['password']; // bKash Merchant API PASSWORD
-        $bkash_base_url = ($config['environment'] == 'live') ? 'https://checkout.pay.bka.sh/v1.2.0-beta' : 'https://checkout.sandbox.bka.sh/v1.2.0-beta';
+        $bkash_base_url = (env('APP_MODE') == 'live') ? 'https://checkout.pay.bka.sh/v1.2.0-beta' : 'https://checkout.sandbox.bka.sh/v1.2.0-beta';
 
         $this->app_key = $bkash_app_key;
         $this->app_secret = $bkash_app_secret;

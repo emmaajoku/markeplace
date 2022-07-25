@@ -8,18 +8,18 @@
 
                 <a class="navbar-brand" href="{{route('seller.dashboard.index')}}" aria-label="">
                     @if (isset($shop))
-                        <img class="navbar-brand-logo" style="max-height: 42px;"
-                             onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
-                             src="{{asset("storage/app/public/shop/$shop->image")}}" alt="Logo" height="40" width="40">
-                        <img class="navbar-brand-logo-mini" style="max-height: 42px;"
-                             onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
-                             src="{{asset("storage/app/public/shop/$shop->image")}}"
-                             alt="Logo" height="40" width="40">
+                    <img class="navbar-brand-logo" style="max-height: 42px;"
+                            onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                            src="{{asset("storage/app/public/shop/$shop->image")}}" alt="Logo" height="40" width="40">
+                    <img class="navbar-brand-logo-mini" style="max-height: 42px;"
+                            onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                            src="{{asset("storage/app/public/shop/$shop->image")}}"
+                            alt="Logo" height="40" width="40">
 
                     @else
                         <img class="navbar-brand-logo-mini" style="max-height: 42px;"
-                             src="{{asset('public/assets/back-end/img/160x160/img1.jpg')}}"
-                             alt="Logo" height="40" width="40">
+                                src="{{asset('public/assets/back-end/img/160x160/img1.jpg')}}"
+                                alt="Logo" height="40" width="40">
                     @endif
 
                 </a>
@@ -44,8 +44,7 @@
 
 
             <!-- Secondary Content -->
-            <div class="navbar-nav-wrap-content-right"
-                 style="{{Session::get('direction') === "rtl" ? 'margin-left:unset; margin-right: auto' : 'margin-right:unset; margin-left: auto'}}">
+            <div class="navbar-nav-wrap-content-right" style="{{Session::get('direction') === "rtl" ? 'margin-left:unset; margin-right: auto' : 'margin-right:unset; margin-left: auto'}}">
                 <!-- Navbar -->
                 <ul class="navbar-nav align-items-center flex-row">
 
@@ -56,12 +55,10 @@
                                 @php($lang = \App\Model\BusinessSetting::where('type', 'language')->first())
                                 <div
                                     class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-3' : 'm-1'}} text-capitalize">
-                                    <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown"
-                                       style="color: black!important;">
+                                    <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown" style="color: black!important;">
                                         @foreach(json_decode($lang['value'],true) as $data)
                                             @if($data['code']==$local)
-                                                <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
-                                                     width="20"
+                                                <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}" width="20"
                                                      src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
                                                      alt="Eng">
                                                 {{$data['name']}}
@@ -72,15 +69,12 @@
                                         @foreach(json_decode($lang['value'],true) as $key =>$data)
                                             @if($data['status']==1)
                                                 <li>
-                                                    <a class="dropdown-item pb-1"
-                                                       href="{{route('lang',[$data['code']])}}">
-                                                        <img
-                                                            class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
-                                                            width="20"
-                                                            src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
-                                                            alt="{{$data['name']}}"/>
-                                                        <span
-                                                            style="text-transform: capitalize">{{$data['name']}}</span>
+                                                    <a class="dropdown-item pb-1" href="{{route('lang',[$data['code']])}}">
+                                                        <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+                                                             width="20"
+                                                             src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                                             alt="{{$data['name']}}"/>
+                                                        <span style="text-transform: capitalize">{{$data['name']}}</span>
                                                     </a>
                                                 </li>
                                             @endif
@@ -94,8 +88,7 @@
                     <li class="nav-item d-none d-sm-inline-block">
                         <!-- Notification -->
                         <div class="hs-unfold">
-                            <a title="Website Home"
-                               class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                            <a title="Website Home" class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
                                href="{{route('home')}}" target="_blank">
                                 <i class="tio-globe"></i>
                                 {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
@@ -131,15 +124,6 @@
                         <!-- End Notification -->
                     </li>
 
-                    <li class="nav-item view-web-site-info">
-                        <div class="hs-unfold">
-                            <a style="background-color: rgb(255, 255, 255)" onclick="openInfoWeb()" href="javascript:"
-                               class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle">
-                                <i class="tio-info"></i>
-                            </a>
-                        </div>
-                    </li>
-
 
                     <li class="nav-item">
                         <!-- Account -->
@@ -150,7 +134,7 @@
                                      "type": "css-animation"
                                    }'>
                                 <div class="avatar avatar-sm avatar-circle">
-
+                                    {{-- <img src="{{asset('storage/app/public/seller/'.auth('seller')->user()->image)}}"  onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" class="img-profile rounded-circle"> --}}
                                     <img class="avatar-img"
                                          onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
                                          src="{{asset('storage/app/public/seller/')}}/{{auth('seller')->user()->image}}"
@@ -165,7 +149,7 @@
                                 <div class="dropdown-item-text">
                                     <div class="media align-items-center text-break">
                                         <div class="avatar avatar-sm avatar-circle mr-2">
-
+                                            {{-- <img src="{{asset('storage/app/public/seller/'.auth('seller')->user()->image)}}"  onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'" class="img-profile rounded-circle"> --}}
                                             <img class="avatar-img"
                                                  onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
                                                  src="{{asset('storage/app/public/seller/')}}/{{auth('seller')->user()->image}}"
@@ -183,8 +167,7 @@
 
                                 <a class="dropdown-item"
                                    href="{{route('seller.profile.update',auth('seller')->user()->id)}}">
-                                    <span class="text-truncate pr-2"
-                                          title="Settings">{{\App\CPU\translate('Settings')}}</span>
+                                    <span class="text-truncate pr-2" title="Settings">{{\App\CPU\translate('Settings')}}</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -204,8 +187,7 @@
                                     Swal.fire('Canceled', '', 'info')
                                     }
                                     })">
-                                    <span class="text-truncate pr-2"
-                                          title="Sign out">{{\App\CPU\translate('Sign out')}}</span>
+                                    <span class="text-truncate pr-2" title="Sign out">{{\App\CPU\translate('Sign out')}}</span>
                                 </a>
                             </div>
                         </div>
@@ -215,76 +197,6 @@
                 <!-- End Navbar -->
             </div>
             <!-- End Secondary Content -->
-        </div>
-        <div id="website_info"
-             style="display:none;background-color:rgb(165, 164, 164);width:100%;border-radius:0px 0px 5px 5px;">
-            <div style="padding: 20px;">
-                <div style="background:white;padding: 2px;border-radius: 5px;">
-                    @php( $local = session()->has('local')?session('local'):'en')
-                    @php($lang = \App\Model\BusinessSetting::where('type', 'language')->first())
-                    <div
-                        class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-3' : 'm-1'}} text-capitalize">
-                        <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown"
-                           style="color: black!important;">
-                            @foreach(json_decode($lang['value'],true) as $data)
-                                @if($data['code']==$local)
-                                    <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
-                                         width="20"
-                                         src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
-                                         alt="Eng">
-                                    {{$data['name']}}
-                                @endif
-                            @endforeach
-                        </a>
-                        <ul class="dropdown-menu">
-                            @foreach(json_decode($lang['value'],true) as $key =>$data)
-                                @if($data['status']==1)
-                                    <li>
-                                        <a class="dropdown-item pb-1"
-                                           href="{{route('lang',[$data['code']])}}">
-                                            <img
-                                                class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
-                                                width="20"
-                                                src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
-                                                alt="{{$data['name']}}"/>
-                                            <span style="text-transform: capitalize">{{$data['name']}}</span>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-                <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
-                    <a title="Website home" class="p-2"
-                       href="{{route('home')}}" target="_blank">
-                        <i class="tio-globe"></i>
-
-                        {{\App\CPU\translate('view_website')}}
-                    </a>
-                </div>
-
-                <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
-                    <a class="p-2"
-                       href="{{route('seller.messages.chat')}}">
-                        <i class="tio-email"></i>
-                        {{\App\CPU\translate('message')}}
-                        @php($message=\App\Model\Chatting::where(['seen_by_seller'=>1,'seller_id'=>auth('seller')->id()])->count())
-                        @if($message!=0)
-                            <span class="">({{ $message }})</span>
-                        @endif
-                    </a>
-                </div>
-           
-                <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
-                    <a class="p-2"
-                       href="{{route('seller.orders.list',['pending'])}}">
-                        <i class="tio-shopping-cart-outlined"></i>
-                        {{\App\CPU\translate('Order_list')}}
-                    </a>
-                </div>
-
-            </div>
         </div>
     </header>
 </div>

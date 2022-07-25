@@ -79,7 +79,12 @@
                             </div>
 
                             <div class="row">
-                                
+                                {{--to do--}}
+                                {{--<div class="col-md-12" style="padding-top: 20px">
+                                    <input type="checkbox" name="featured"
+                                        {{$deal['featured']==1?'checked':''}}>
+                                    <label for="featured">{{ \App\CPU\translate('featured')}}</label>
+                                </div>--}}
                                 <div class="col-md-12 pt-3">
                                     <label for="name">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('Image')}}</label><span class="badge badge-soft-danger">( {{\App\CPU\translate('ratio')}} 5:1 )</span>
                                     <div class="custom-file" style="text-align: left">

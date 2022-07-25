@@ -33,10 +33,12 @@
                                     <select
                                         class="js-example-basic-multiple js-states js-example-responsive form-control"
                                         name="product_id">
-                                        @foreach (\App\Model\Product::active()->orderBy('name', 'asc')->get() as $key => $product)
+                                        @foreach (\App\Model\Product::active()->whereNotIn('id',$flash_deal_products)->orderBy('name', 'asc')->get() as $key => $product)
+                                            
                                             <option value="{{ $product->id }}">
                                                 {{$product['name']}}
                                             </option>
+                                            
                                         @endforeach
                                     </select>
                                 </div>
@@ -67,6 +69,8 @@
                                 <th scope="col">{{ \App\CPU\translate('sl')}}</th>
                                 <th scope="col">{{ \App\CPU\translate('name')}}</th>
                                 <th scope="col">{{ \App\CPU\translate('price')}}</th>
+                                {{--<th scope="col">{{ \App\CPU\translate('discount')}}</th>
+                                <th scope="col">{{ \App\CPU\translate('discount_type')}}</th>--}}
                                 <th scope="col" style="width: 50px">{{ \App\CPU\translate('action')}}</th>
                             </tr>
                             </thead>
@@ -76,7 +80,8 @@
                                     <th scope="row">{{$products->firstitem()+$k}}</th>
                                     <td>{{$de_p['name']}}</td>
                                     <td>{{\App\CPU\BackEndHelper::usd_to_currency($de_p['unit_price'])}}</td>
-                                    
+                                    {{--<td>{{$de_p->discount}}</td>
+                                    <td>{{$de_p->discount_type}}</td>--}}
                                     <td>
                                         <a  title="{{ trans ('Delete')}}"
                                             class="btn btn-danger btn-sm delete"

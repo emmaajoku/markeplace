@@ -112,9 +112,8 @@
                                             value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{\App\CPU\translate('Confirmed')}}</option>
                                         <option
                                             value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{\App\CPU\translate('Processing')}} </option>
-                                        
-                                        @php($shippingMethod=\App\CPU\Helpers::get_business_settings('shipping_method'))
-                                        @if( $shippingMethod=='sellerwise_shipping')
+
+                                        @if( isset($order->shipping) && $order->shipping->creator_type != 'admin')
                                             <option
                                                 value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{\App\CPU\translate('out_for_delivery')}} </option>
                                             <option
@@ -434,7 +433,7 @@
                                 class="text-body text-hover-primary">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</span>
                                 </div>
                                 <div class="media-body text-right">
-                                    
+                                    {{--<i class="tio-chevron-right text-body"></i>--}}
                                 </div>
                             </div>
 
@@ -663,13 +662,8 @@
                                 toastr.success('{{\App\CPU\translate('Order is already delivered, You can not change it !!')}}');
                                 location.reload();
                             } else {
-                                if(data.payment_status == 0){
-                                    toastr.warning('{{\App\CPU\translate('Before delivered you need to make payment status paid!')}}!');
-                                    location.reload();
-                                }else{
-                                    toastr.success('{{\App\CPU\translate('Status Change successfully')}}!');
-                                    location.reload();
-                                }
+                                toastr.success('{{\App\CPU\translate('Status Change successfully !')}}');
+                                location.reload();
                             }
                         }
                     });
@@ -759,7 +753,7 @@
         }
     </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key={{\App\CPU\Helpers::get_business_settings('map_api_key')}}&v=3.49"></script>
+        src="https://maps.googleapis.com/maps/api/js?key={{\App\CPU\Helpers::get_business_settings('map_api_key')}}&v=3.45.8"></script>
     <script>
 
         function initializegLocationMap() {

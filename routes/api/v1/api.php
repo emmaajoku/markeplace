@@ -144,16 +144,6 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
             Route::get('messages', 'ChatController@messages');
             Route::post('send-message', 'ChatController@messages_store');
         });
-
-        //wallet
-        Route::group(['prefix' => 'wallet'], function () {
-            Route::get('list', 'UserWalletController@list');
-        });
-        //loyalty
-        Route::group(['prefix' => 'loyalty'], function () {
-            Route::get('list', 'UserLoyaltyController@list');
-            Route::post('loyalty-exchange-currency', 'UserLoyaltyController@loyalty_exchange_currency');
-        });
     });
 
     Route::group(['prefix' => 'order'], function () {
@@ -175,8 +165,6 @@ Route::group(['namespace' => 'api\v1', 'prefix' => 'v1', 'middleware' => ['api_l
     Route::group(['prefix' => 'coupon','middleware' => 'auth:api'], function () {
         Route::get('apply', 'CouponController@apply');
     });
-
-    
 
     //map api
     Route::group(['prefix' => 'mapapi'], function () {

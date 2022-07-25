@@ -8,7 +8,8 @@
 
             </h3>
         </div>
-        
+        {{-- <div class="row" style="margin-top: 20px"> --}}
+        {{-- <div class="col-md-12"> --}}
         <div class="card">
             <div class="card-header">
                 <div class="flex-between justify-content-between align-items-center flex-grow-1">
@@ -100,6 +101,8 @@
             </div>
 
         </div>
-        
+        {{-- </div> --}}
+
+        {{-- </div> --}}
     </div>
 @endsection

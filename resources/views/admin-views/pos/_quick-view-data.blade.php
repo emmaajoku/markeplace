@@ -103,7 +103,7 @@
             }
 
             ?>
-            <h2>{{\App\CPU\translate('description')}}</h2>
+            <h2>{{__('messages.description')}}</h2>
             <span class="d-block text-dark">
                 {!! $product->description !!}
             </span>
@@ -115,7 +115,7 @@
                         <div class="flex-start">
                             <div class="product-description-label mt-2">{{\App\CPU\translate('color')}}:
                             </div>
-                            <div class="d-flex justify-content-left flex-wrap" id="option1" style="height: 16px;">
+                            <div class="d-flex justify-content-left flex-wrap" id="option1">
                                     @foreach (json_decode($product->colors) as $key => $color)
                                        
                                            
@@ -146,7 +146,7 @@
                     <div class="h3 p-0 pt-2">{{ $choice->title }}
                     </div>
 
-                    <div class="d-flex justify-content-left flex-wrap" style="height: 25px;">
+                    <div class="d-flex justify-content-left flex-wrap">
                         @foreach ($choice->options as $key => $option)
                             <input class="btn-check" type="radio"
                                    id="{{ $choice->name }}-{{ $option }}"
@@ -160,7 +160,7 @@
 
             <!-- Quantity + Add to cart -->
                 <div class="d-flex justify-content-between">
-                    <div class="product-description-label mt-2 text-dark h3">{{\App\CPU\translate('Quantity')}}:</div>
+                    <div class="product-description-label mt-2 text-dark h3">{{__('Quantity')}}:</div>
                     <div class="product-quantity d-flex align-items-center">
                         <div class="input-group input-group--style-2 pr-3"
                              style="width: 160px;">
@@ -186,7 +186,7 @@
                 
                 <div class="row no-gutters mt-2 text-dark" id="chosen_price_div">
                     <div class="col-2">
-                        <div class="product-description-label">{{\App\CPU\translate('Total Price')}}:</div>
+                        <div class="product-description-label">Total Price:</div>
                     </div>
                     <div class="col-10">
                         <div class="product-price">
@@ -201,7 +201,7 @@
                             type="button"
                             style="width:37%; height: 45px">
                         <i class="tio-shopping-cart"></i>
-                        {{\App\CPU\translate('add')}}
+                        {{trans('messages.add')}}
                     </button>
                 </div>
             </form>

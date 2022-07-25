@@ -273,22 +273,15 @@
                                 </a>
                             </td>
                             <td>
-                                <div class="text-wrap" style="width: 28rem;">
+                                <div class="text-wrap" style="width: 18rem;">
                                     <div class="d-flex mb-2">
                                         <label class="badge badge-soft-info">
-                                            <span style="font-size: .9rem;">{{$review->rating}} <i class="tio-star"></i> </span>
+                                            {{$review->rating}} <i class="tio-star"></i>
                                         </label>
                                     </div>
                                     <p>
                                         {{$review['comment']}}
                                     </p>
-                                    @foreach (json_decode($review->attachment) as $img)
-                                                
-                                        <a class="float-left" href="{{asset('storage/app/public/review')}}/{{$img}}" data-lightbox="mygallery">
-                                            <img style="width: 60px;height:60px;padding:10px; " src="{{asset('storage/app/public/review')}}/{{$img}}" alt="">
-                                        </a>
-                                    
-                                    @endforeach
                                 </div>
                             </td>
                             <td>

@@ -41,14 +41,10 @@ class EmailVerificationController extends Controller
             'updated_at' => now(),
         ]);
 
-        $emailServices_smtp = Helpers::get_business_settings('mail_config');
-        if ($emailServices_smtp['status'] == 0) {
-            $emailServices_smtp = Helpers::get_business_settings('mail_config_sendgrid');
-        }
-        if ($emailServices_smtp['status'] == 1) {
+        try {
             Mail::to($request['email'])->send(new \App\Mail\EmailVerification($token));
             $response = translate('check_your_email');
-        }else{
+        } catch (\Exception $exception) {
             $response= translate('email_failed');
         }
 

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
 use App\Model\BusinessSetting;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
@@ -29,10 +27,11 @@ class MailController extends Controller
             "encryption" => 'required',
             "password" => 'required',
         ]);
-
-        if ($request['status'] == 1) {
-            $mail_config_sendgrid = BusinessSetting::where(['type' => 'mail_config_sendgrid'])->first();
-            $data_mail_sendgrid = json_decode($mail_config_sendgrid['value'], true);
+        
+        if($request['status']==1)
+        {
+            $mail_config_sendgrid = BusinessSetting::where(['type'=>'mail_config_sendgrid'])->first();
+            $data_mail_sendgrid=json_decode($mail_config_sendgrid['value'],true);
 
             BusinessSetting::where(['type' => 'mail_config_sendgrid'])->update([
                 'value' => json_encode([
@@ -48,7 +47,7 @@ class MailController extends Controller
                 ])
             ]);
         }
-
+        
         BusinessSetting::where(['type' => 'mail_config'])->update([
             'value' => json_encode([
                 "status" => $request['status'],
@@ -65,7 +64,6 @@ class MailController extends Controller
         Toastr::success('Configuration updated successfully!');
         return back();
     }
-
     public function update_sendgrid(Request $request)
     {
         $request->validate([
@@ -80,9 +78,10 @@ class MailController extends Controller
             "password" => 'required',
         ]);
 
-        if ($request['status'] == 1) {
-            $mail_config = BusinessSetting::where(['type' => 'mail_config'])->first();
-            $data_mail_smtp = json_decode($mail_config['value'], true);
+        if($request['status']==1)
+        {
+            $mail_config = BusinessSetting::where(['type'=>'mail_config'])->first();
+            $data_mail_smtp=json_decode($mail_config['value'],true);
 
             BusinessSetting::where(['type' => 'mail_config'])->update([
                 'value' => json_encode([
@@ -113,24 +112,5 @@ class MailController extends Controller
         ]);
         Toastr::success('SendGrid Configuration updated successfully!');
         return back();
-    }
-
-    public function send(Request $request)
-    {
-        $response_flag = 0;
-        try {
-            $emailServices_smtp = Helpers::get_business_settings('mail_config');
-            if ($emailServices_smtp['status'] == 0) {
-                $emailServices_smtp = Helpers::get_business_settings('mail_config_sendgrid');
-            }
-            if ($emailServices_smtp['status'] == 1) {
-                Mail::to($request->email)->send(new \App\Mail\TestEmailSender());
-                $response_flag = 1;
-            }
-        } catch (\Exception $exception) {
-            $response_flag = 2;
-        }
-
-        return response()->json(['success' => $response_flag]);
     }
 }

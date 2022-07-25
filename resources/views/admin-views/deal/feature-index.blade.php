@@ -44,7 +44,7 @@
                                         <div class="col-md-12 {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
                                             <label for="name">{{ \App\CPU\translate('Title')}} ({{strtoupper($lang)}})</label>
                                             <input type="text" name="title[]" class="form-control" id="title"
-                                                   placeholder="{{\App\CPU\translate('Ex')}} : {{\App\CPU\translate('LUX')}}" {{$lang == $default_lang? 'required':''}}>
+                                                   placeholder="{{\App\CPU\translate('Ex')}} : {{\App\CPU\translate('LUX')}}">
                                         </div>
                                         <input type="hidden" name="lang[]" value="{{$lang}}" id="lang">
                                     @endforeach

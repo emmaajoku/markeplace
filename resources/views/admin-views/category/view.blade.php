@@ -141,13 +141,13 @@
                                     <th>{{ \App\CPU\translate('icon')}}</th>
                                     <th>{{\App\CPU\translate('priority')}}</th>
                                     <th>{{ \App\CPU\translate('home_status')}}</th>
-                                    <th  style="width:15%;">{{ \App\CPU\translate('action')}}</th>
+                                    <th class="text-center" style="width:15%;">{{ \App\CPU\translate('action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($categories as $key=>$category)
                                     <tr>
-                                        <td >{{$category['id']}}</td>
+                                        <td class="text-center">{{$category['id']}}</td>
                                         <td>{{$category['name']}}</td>
                                         <td>{{$category['slug']}}</td>
                                         <td>

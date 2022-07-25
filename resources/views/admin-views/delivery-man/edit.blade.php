@@ -29,7 +29,7 @@
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('first')}} {{\App\CPU\translate('name')}}</label>
                                         <input type="text" value="{{$delivery_man['f_name']}}" name="f_name"
-                                               class="form-control" placeholder="{{\App\CPU\translate('New delivery-man')}}"
+                                               class="form-control" placeholder="New delivery-man"
                                                required>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('last')}} {{\App\CPU\translate('name')}}</label>
                                         <input type="text" value="{{$delivery_man['l_name']}}" name="l_name"
-                                               class="form-control" placeholder="{{\App\CPU\translate('Last Name')}}"
+                                               class="form-control" placeholder="Last Name"
                                                required>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('email')}}</label>
                                         <input type="email" value="{{$delivery_man['email']}}" name="email" class="form-control"
-                                               placeholder="{{\App\CPU\translate('Ex : ex@example.com')}}"
+                                               placeholder="Ex : ex@example.com"
                                                required>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('phone')}}</label>
                                         <input type="text" name="phone" value="{{$delivery_man['phone']}}" class="form-control"
-                                               placeholder="{{\App\CPU\translate('Ex : 017********')}}"
+                                               placeholder="Ex : 017********"
                                                required>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                         <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('identity')}} {{\App\CPU\translate('number')}}</label>
                                         <input type="text" name="identity_number" value="{{$delivery_man['identity_number']}}"
                                                class="form-control"
-                                               placeholder="{{\App\CPU\translate('Ex : DH-23434-LS')}}"
+                                               placeholder="Ex : DH-23434-LS"
                                                required>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
 
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('password')}}</label>
-                                <input type="text" name="password" class="form-control" placeholder="{{\App\CPU\translate('Ex : password')}}">
+                                <input type="text" name="password" class="form-control" placeholder="Ex : password">
                             </div>
 
                             <div class="form-group">

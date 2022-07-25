@@ -26,8 +26,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group mb-2">
-                                <label class="input-label" style="padding-left: 10px">{{\App\CPU\translate('pixel_analytics_your_pixel_id')}}</label>
-                                <textarea type="text" placeholder="{{\App\CPU\translate('pixel_analytics_your_pixel_id_from_facebook')}}" class="form-control" name="pixel_analytics">{{env('APP_MODE')!='demo'?$pixel_analytics??'':''}}</textarea>
+                                <label class="input-label" style="padding-left: 10px">{{\App\CPU\translate('pixel_analytics_script')}}</label>
+                                <textarea type="text" placeholder="{{\App\CPU\translate('pixel_analytics_script_from_facebook')}}" class="form-control" name="pixel_analytics">{{env('APP_MODE')!='demo'?$pixel_analytics??'':''}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -35,24 +35,6 @@
                 </form>
             </div>
         </div>
-        <div class="row gx-2 gx-lg-3">
-            @php($google_tag_manager_id=\App\CPU\Helpers::get_business_settings('google_tag_manager_id'))
-                <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-                    <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.analytics-update-google-tag'):'javascript:'}}" method="post"
-                          enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group mb-2">
-                                    <label class="input-label" style="padding-left: 10px">{{\App\CPU\translate('google_tag_manager_id')}}</label>
-                                    <textarea type="text" placeholder="{{\App\CPU\translate('google_tag_manager_script_id_from_google')}}" class="form-control" name="google_tag_manager_id">{{env('APP_MODE')!='demo'?$google_tag_manager_id??'':''}}</textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('save')}}</button>
-                    </form>
-                </div>
-            </div>
     </div>
 @endsection
 

@@ -22,7 +22,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row  justify-content-between align-items-center flex-grow-1">
-                        
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <h5>{{\App\CPU\translate('order_table')}} </h5>
+                            </div>
                             <div class="col-12 col-sm-6 col-md-4">
 
                                 <form action="{{ url()->current() }}" method="GET">
@@ -41,25 +43,6 @@
                                 </form>
                                 
                             </div>
-                            <div class="col-12 col-sm-6 col-md-6 mt-2 mt-sm-0">
-                                <form action="{{ url()->current() }}" method="GET">
-                                    
-                                    <div class="row">
-                                        
-                                        <div class="col-12 col-sm-5">
-                                            <input type="date" name="from" value="{{$from}}" id="from_date"
-                                                    class="form-control" required>
-                                        </div>
-                                        <div class="col-12 col-sm-5 mt-2 mt-sm-0">
-                                            <input type="date" value="{{$to}}" name="to" id="to_date"
-                                                    class="form-control" required> 
-                                        </div>
-                                        <div class="col-12 col-sm-2 mt-2 mt-sm-0  ">
-                                            <button type="submit" class="btn btn-primary float-right float-sm-none">{{\App\CPU\translate('filter')}}</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                     </div>
                     <div class="card-body" style="padding: 0">
@@ -71,7 +54,6 @@
                                 <tr>
                                     <th>{{\App\CPU\translate('SL#')}}</th>
                                     <th>{{\App\CPU\translate('Order')}}</th>
-                                    <th>{{\App\CPU\translate('Date')}}</th>
                                     <th>{{\App\CPU\translate('customer_name')}}</th>
                                     <th>{{\App\CPU\translate('Phone')}}</th>
                                     <th>{{\App\CPU\translate('Payment')}}</th>
@@ -88,7 +70,6 @@
                                         <td>
                                             <a href="{{route('seller.orders.details',$order['id'])}}">{{$order['id']}}</a>
                                         </td>
-                                        <td>{{date('d M Y',strtotime($order['created_at']))}}</td>
                                         <td> {{$order->customer ? $order->customer['f_name'].' '.$order->customer['l_name'] : 'Customer Data not found'}}</td>
                                         <td>{{ $order->customer ? $order->customer->phone : '' }}</td>
                                         <td>
@@ -105,19 +86,19 @@
                                             <td class="text-capitalize ">
                                                 @if($order->order_status=='pending')
                                                     <label
-                                                        class="badge badge-primary">{{$order['order_status']}}</label>
+                                                        class="badge badge-primary">{{\App\CPU\translate($order['order_status'])}}</label>
                                                 @elseif($order->order_status=='processing' || $order->order_status=='out_for_delivery')
                                                     <label
-                                                        class="badge badge-warning">{{$order['order_status']}}</label>
+                                                        class="badge badge-warning">{{\App\CPU\translate($order['order_status'])}}</label>
                                                 @elseif($order->order_status=='delivered' || $order->order_status=='confirmed')
                                                     <label
-                                                        class="badge badge-success">{{$order['order_status']}}</label>
+                                                        class="badge badge-success">{{\App\CPU\translate($order['order_status'])}}</label>
                                                 @elseif($order->order_status=='returned')
                                                     <label
-                                                        class="badge badge-danger">{{$order['order_status']}}</label>
+                                                        class="badge badge-danger">{{\App\CPU\translate($order['order_status'])}}</label>
                                                 @else
                                                     <label
-                                                        class="badge badge-danger">{{$order['order_status']}}</label>
+                                                        class="badge badge-danger">{{\App\CPU\translate($order['order_status'])}}</label>
                                                 @endif
                                             </td>
                                             <td>

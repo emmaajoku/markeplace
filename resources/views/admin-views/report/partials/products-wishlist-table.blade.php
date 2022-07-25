@@ -85,7 +85,7 @@
         datatable.button('.buttons-pdf').trigger()
     });
 
-    $('#\App\CPU\translate(export-print').click(function () {
+    $('#export-print').click(function () {
         datatable.button('.buttons-print').trigger()
     });
 

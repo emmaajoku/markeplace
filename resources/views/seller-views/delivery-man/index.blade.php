@@ -44,14 +44,14 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('email')}}</label>
-                                        <input type="email" name="email" class="form-control" placeholder="{{\App\CPU\translate('Ex : ex@example.com')}}"
+                                        <input type="email" name="email" class="form-control" placeholder="Ex : ex@example.com"
                                                required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('phone')}}</label>
-                                        <input type="text" name="phone" class="form-control" placeholder="{{\App\CPU\translate('Ex : 017********')}}"
+                                        <input type="text" name="phone" class="form-control" placeholder="Ex : 017********"
                                                required>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
 
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{\App\CPU\translate('password')}}</label>
-                                <input type="text" name="password" class="form-control" placeholder="{{\App\CPU\translate('Ex : password')}}"
+                                <input type="text" name="password" class="form-control" placeholder="Ex : password"
                                        required>
                             </div>
 

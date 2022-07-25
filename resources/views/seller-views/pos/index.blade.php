@@ -40,19 +40,17 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #FC6A57;
         }
-
         .deco-none {
             color: inherit;
             text-decoration: inherit;
         }
-
-        .qcont {
+        .qcont{
             text-transform: lowercase;
         }
-
         .qcont:first-letter {
             text-transform: capitalize;
         }
+
 
 
         .navbar-vertical .nav-link {
@@ -82,27 +80,18 @@
         .navbar-vertical .navbar-nav.nav-tabs .active .nav-link, .navbar-vertical .navbar-nav.nav-tabs .active.nav-link {
             border-left-color: #C6FFC1;
         }
-
-        .item-box {
-            height: 250px;
-            width: 150px;
-            padding: 3px;
+        .item-box{
+            height:250px;
+            width:150px;
+            padding:3px;
         }
 
-        .header-item {
-            width: 10rem;
-        }
-
-        @media only screen and (min-width: 768px) {
-            .view-web-site-info {
-                display: none;
-            }
-
+        .header-item{
+            width:10rem;
         }
     </style>
 
-    <script
-        src="{{asset('public/assets/back-end')}}/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js"></script>
+    <script src="{{asset('public/assets/back-end')}}/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js"></script>
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css">
 </head>
 
@@ -121,195 +110,123 @@
 </div>
 {{--loader--}}
 <!-- JS Preview mode only -->
-<header id="header"
-        class="col-12 navbar navbar-expand-lg navbar-fixed navbar-height navbar-flush navbar-container navbar-bordered">
-    <div class="navbar-nav-wrap">
-        <div class="navbar-brand-wrapper">
-            <!-- Logo Div-->
-            <a class="navbar-brand" href="{{route('seller.dashboard.index')}}" aria-label="Front"
-               style="padding-top: 0!important;padding-bottom: 0!important;">
-                <img class="navbar-brand-logo"
-                     style="height: 55px;"
-                     onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'"
-                     src="{{asset("storage/app/public/shop/$shop->image")}}"
-                     alt="Logo">
-            </a>
-        </div>
+    <header id="header"
+            class="col-12 navbar navbar-expand-lg navbar-fixed navbar-height navbar-flush navbar-container navbar-bordered">
+        <div class="navbar-nav-wrap">
+            <div class="navbar-brand-wrapper">
+                <!-- Logo Div-->
+                <a class="navbar-brand" href="{{route('seller.dashboard.index')}}" aria-label="Front" style="padding-top: 0!important;padding-bottom: 0!important;">
+                    <img class="navbar-brand-logo"
+                         style="height: 55px;"
+                         onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'"
+                         src="{{asset("storage/app/public/shop/$shop->image")}}"
+                         alt="Logo">
+                </a>
+            </div>
 
-        <!-- Secondary Content -->
-        <div class="navbar-nav-wrap-content-right">
-            <!-- Navbar -->
-            <ul class="navbar-nav align-items-center flex-row">
-                <li class="nav-item d-none d-sm-inline-block">
-                    <!-- Notification -->
-                    <div class="hs-unfold">
-                        <a title="Website Home"
-                           class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
-                           href="{{route('home')}}" target="_blank">
-                            <i class="tio-globe"></i>
-                            {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
-                        </a>
-                    </div>
-                    <!-- End Notification -->
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <!-- Notification -->
-                    <div class="hs-unfold">
-                        <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
-                           href="{{route('seller.messages.chat')}}">
-                            <i class="tio-email"></i>
-                            @php($message=\App\Model\Chatting::where(['seen_by_seller'=>1,'seller_id'=>auth('seller')->id()])->count())
-                            @if($message!=0)
-                                <span class="btn-status btn-sm-status btn-status-danger"></span>
-                            @endif
-                        </a>
-                    </div>
-                    <!-- End Notification -->
-                </li>
-                <li class="nav-item d-sm-inline-block">
-                    <!-- short cut key -->
-                    <div class="hs-unfold">
-                        <a id="short-cut" class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
-                           data-toggle="modal" data-target="#short-cut-keys"
-                           title="{{\App\CPU\translate('short_cut_keys')}}">
-                            <i class="tio-keyboard"></i>
+            <!-- Secondary Content -->
+            <div class="navbar-nav-wrap-content-right">
+                <!-- Navbar -->
+                <ul class="navbar-nav align-items-center flex-row">
+                    <li class="nav-item d-sm-inline-block">
+                        <!-- short cut key -->
+                        <div class="hs-unfold">
+                            <a id="short-cut" class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                              data-toggle="modal" data-target="#short-cut-keys" title="{{\App\CPU\translate('short_cut_keys')}}">
+                                <i class="tio-keyboard"></i>
+    
+                            </a>
+                        </div>
+                        <!-- End short cut key -->
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <!-- Notification -->
+                        <div class="hs-unfold">
+                            <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                               href="">
+                                <i class="tio-shopping-cart-outlined"></i>
+                                {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
+                            </a>
+                        </div>
+                        <!-- End Notification -->
+                    </li>
 
-                        </a>
-                    </div>
-                    <!-- End short cut key -->
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <!-- Notification -->
-                    <div class="hs-unfold">
-                        <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
-                           href="">
-                            <i class="tio-shopping-cart-outlined"></i>
-                            {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
-                        </a>
-                    </div>
-                    <!-- End Notification -->
-                </li>
-
-                <li class="nav-item view-web-site-info">
-                    <div class="hs-unfold">
-                        <a style="background-color: rgb(255, 255, 255)" onclick="openInfoWeb()" href="javascript:"
-                           class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle">
-                            <i class="tio-info"></i>
-                        </a>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <!-- Account -->
-                    <div class="hs-unfold">
-                        <a class="js-hs-unfold-invoker navbar-dropdown-account-wrapper" href="javascript:;"
-                           data-hs-unfold-options='{
+                    <li class="nav-item">
+                        <!-- Account -->
+                        <div class="hs-unfold">
+                            <a class="js-hs-unfold-invoker navbar-dropdown-account-wrapper" href="javascript:;"
+                               data-hs-unfold-options='{
                                      "target": "#accountNavbarDropdown",
                                      "type": "css-animation"
                                    }'>
-                            <div class="avatar avatar-sm avatar-circle">
-                                <img class="avatar-img"
-                                     onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
-                                     src="{{asset('storage/app/public/seller/')}}/{{auth('seller')->user()->image}}"
-                                     alt="Image">
-                                <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                            </div>
-                        </a>
+                                <div class="avatar avatar-sm avatar-circle">
+                                    <img class="avatar-img"
+                                        onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                                        src="{{asset('storage/app/public/seller/')}}/{{auth('seller')->user()->image}}"
+                                        alt="Image">
+                                    <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                                </div>
+                            </a>
 
-                        <div id="accountNavbarDropdown"
-                             class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right navbar-dropdown-menu navbar-dropdown-account"
-                             style="width: 16rem;">
-                            <div class="dropdown-item-text">
-                                <div class="media align-items-center text-break">
-                                    <div class="avatar avatar-sm avatar-circle mr-2">
-                                        <img class="avatar-img"
-                                             onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
-                                             src="{{asset('storage/app/public/seller/')}}/{{auth('seller')->user()->image}}"
-                                             alt="Owner image">
-                                    </div>
-                                    <div class="media-body">
-                                        <span class="card-title h5">{{ auth('seller')->user()->f_name }}</span>
-                                        <span class="card-text">{{ auth('seller')->user()->email }}</span>
+                            <div id="accountNavbarDropdown"
+                                 class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right navbar-dropdown-menu navbar-dropdown-account"
+                                 style="width: 16rem;">
+                                <div class="dropdown-item-text">
+                                    <div class="media align-items-center text-break">
+                                        <div class="avatar avatar-sm avatar-circle mr-2">
+                                            <img class="avatar-img"
+                                                 onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                                                 src="{{asset('storage/app/public/seller/')}}/{{auth('seller')->user()->image}}"
+                                                 alt="Owner image">
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="card-title h5">{{ auth('seller')->user()->f_name }}</span>
+                                            <span class="card-text">{{ auth('seller')->user()->email }}</span>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="javascript:" onclick="Swal.fire({
+                                    title: 'Do you want to logout?',
+                                    showDenyButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#FC6A57',
+                                    cancelButtonColor: '#363636',
+                                    confirmButtonText: `Yes`,
+                                    denyButtonText: `Don't Logout`,
+                                    }).then((result) => {
+                                    if (result.value) {
+                                    location.href='{{route('seller.auth.logout')}}';
+                                    } else{
+                                    Swal.fire('Canceled', '', 'info')
+                                    }
+                                    })">
+                                    <span class="text-truncate pr-2" title="Sign out">{{\App\CPU\translate('sign_out')}}</span>
+                                </a>
                             </div>
-
-                            <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item"
-                               href="{{route('seller.profile.update',auth('seller')->user()->id)}}">
-                                <span class="text-truncate pr-2"
-                                      title="Settings">{{\App\CPU\translate('Settings')}}</span>
-                            </a>
-
-                            <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item" href="javascript:" onclick="Swal.fire({
-                                title: 'Do you want to logout?',
-                                showDenyButton: true,
-                                showCancelButton: true,
-                                confirmButtonColor: '#FC6A57',
-                                cancelButtonColor: '#363636',
-                                confirmButtonText: `Yes`,
-                                denyButtonText: `Don't Logout`,
-                                }).then((result) => {
-                                if (result.value) {
-                                location.href='{{route('seller.auth.logout')}}';
-                                } else{
-                                Swal.fire('Canceled', '', 'info')
-                                }
-                                })">
-                                <span class="text-truncate pr-2"
-                                      title="Sign out">{{\App\CPU\translate('sign_out')}}</span>
-                            </a>
                         </div>
-                    </div>
-                    <!-- End Account -->
-                </li>
-            </ul>
-            <!-- End Navbar -->
-        </div>
-        <!-- End Secondary Content -->
-    </div>
-    <div id="website_info"
-         style="display:none;background-color:rgb(165, 164, 164);width:100%;border-radius:0px 0px 5px 5px;">
-        <div style="padding: 20px;">
-
-            <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
-                <a title="Website home" class="p-2"
-                   href="{{route('home')}}" target="_blank">
-                    <i class="tio-globe"></i>
-                    {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
-                    {{\App\CPU\translate('view_website')}}
-                </a>
+                        <!-- End Account -->
+                    </li>
+                </ul>
+                <!-- End Navbar -->
             </div>
-            <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
-                <a class="p-2"
-                   href="{{route('seller.messages.chat')}}">
-                    <i class="tio-email"></i>
-                    {{\App\CPU\translate('message')}}
-                    @php($message=\App\Model\Chatting::where(['seen_by_seller'=>1,'seller_id'=>auth('seller')->id()])->count())
-                    @if($message!=0)
-                        <span class="">({{ $message }})</span>
-                    @endif
-                </a>
-            </div>
-
+            <!-- End Secondary Content -->
         </div>
-    </div>
-</header>
+    </header>
 <!-- END ONLY DEV -->
 <main id="content" role="main" class="main pointer-event">
-    <!-- Content -->
-    <!-- ========================= SECTION CONTENT ========================= -->
-    <section class="section-content padding-y-sm bg-default mt-1">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8 card padding-y-sm ">
+<!-- Content -->
+	<!-- ========================= SECTION CONTENT ========================= -->
+	<section class="section-content padding-y-sm bg-default mt-1">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-8 card padding-y-sm ">
                     <div class="card-header">
                         <div class="row w-100 d-flex flex-between justify-content-between">
                             <div class="col-sm-6 col-md-12 col-lg-5 mb-2">
-                                <form class="col-sm-12 col-md-12 col-lg-12">
+                                <form  class="col-sm-12 col-md-12 col-lg-12">
                                     <!-- Search -->
                                     <div class="input-group-overlay input-group-merge input-group-flush">
                                         <div class="input-group-prepend">
@@ -317,28 +234,22 @@
                                                 <i class="tio-search"></i>
                                             </div>
                                         </div>
-                                        <input id="search" autocomplete="off" type="text"
-                                               value="{{$keyword?$keyword:''}}"
-                                               name="search" class="form-control search-bar-input"
-                                               placeholder="{{\App\CPU\translate('Search here')}}"
-                                               aria-label="Search here">
-                                        <diV class="card search-card w-4"
-                                             style="position: absolute;z-index: 1;width: 100%;">
-                                            <div id="search-box" class="card-body search-result-box"
-                                                 style="display: none;"></div>
+                                        <input id="search" autocomplete="off" type="text" value="{{$keyword?$keyword:''}}" 
+                                                name="search" class="form-control search-bar-input" placeholder="Search here" 
+                                                aria-label="Search here">
+                                        <diV class="card search-card w-4" style="position: absolute;z-index: 1;width: 100%;">
+                                            <div id="search-box" class="card-body search-result-box" style="display: none;"></div>
                                         </diV>
                                     </div>
                                     <!-- End Search -->
                                 </form>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-5">
-                                <div class="input-group float-right">
-                                    <select name="category" id="category" class="form-control js-select2-custom mx-1"
-                                            title="select category" onchange="set_category_filter(this.value)">
+                                <div class="input-group float-right" >
+                                    <select name="category" id="category" class="form-control js-select2-custom mx-1" title="select category" onchange="set_category_filter(this.value)">
                                         <option value="">{{\App\CPU\translate('All Categories')}}</option>
                                         @foreach ($categories as $item)
-                                            <option
-                                                value="{{$item->id}}" {{$category==$item->id?'selected':''}}>{{$item->name}}</option>
+                                        <option value="{{$item->id}}" {{$category==$item->id?'selected':''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -346,7 +257,7 @@
                         </div>
 
                     </div>
-                    <div class="card-body" id="items">
+					<div class="card-body" id="items">
                         <div class="d-flex flex-wrap mt-2 mb-3" style="justify-content: space-around;">
                             @foreach($products as $product)
                                 <div class="item-box">
@@ -362,62 +273,59 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 padding-y-sm mt-2">
+				</div>
+				<div class="col-md-4 padding-y-sm mt-2">
                     <div class="card pr-1 pl-1">
-
-                        <div class="row mt-2">
-                            <div class="form-group mt-1 col-12 w-i6">
-                                <select onchange="customer_change(this.value);" id='customer' name="customer_id"
-                                        data-placeholder="Walk In Customer" class="js-data-example-ajax form-control">
+                        
+                            <div class="row mt-2">
+                                <div class="form-group mt-1 col-12 w-i6">
+                                <select onchange="customer_change(this.value);" id='customer' name="customer_id" data-placeholder="Walk In Customer" class="js-data-example-ajax form-control">
                                     <option value="0">{{\App\CPU\translate('walking_customer')}}</option>
                                 </select>
-
+                                <!-- <button class="btn btn-sm btn-white btn-outline-primary ml-1" type="button" title="Add Customer">
+                                    <i class="tio-add-circle text-dark"></i>
+                                </button> -->
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group mt-1 col-12 col-lg-6 mb-0">
-                                <button class="w-100 d-inline-block btn btn-success rounded" id="add_new_customer"
-                                        type="button" data-toggle="modal" data-target="#add-customer"
-                                        title="Add Customer">
-                                    <i class="tio-add-circle-outlined"></i> {{ \App\CPU\translate('customer')}}
-                                </button>
+                            <div class="row">
+                                <div class="form-group mt-1 col-12 col-lg-6 mb-0">
+                                    <button class="w-100 d-inline-block btn btn-success rounded" id="add_new_customer" type="button" data-toggle="modal" data-target="#add-customer" title="Add Customer">
+                                       <i class="tio-add-circle-outlined"></i> {{ \App\CPU\translate('customer')}}
+                                    </button>
+                                </div>
+                                <div class="form-group mt-1 col-12 col-lg-6 mb-0">
+                                    <a class="w-100 d-inline-block btn btn-warning rounded" onclick="new_order()">
+                                        {{ \App\CPU\translate('new_order')}}
+                                    </a>
+                                </div>
                             </div>
-                            <div class="form-group mt-1 col-12 col-lg-6 mb-0">
-                                <a class="w-100 d-inline-block btn btn-warning rounded" onclick="new_order()">
-                                    {{ \App\CPU\translate('new_order')}}
-                                </a>
+                            <div class="row mt-2">
+                                <div class="form-group col-12 mb-0">
+                                    <label class="input-label text-capitalize border p-1" >{{\App\CPU\translate('current_customer')}} : <span class="style-i4 mb-0 p-1" id="current_customer"></span></label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="form-group col-12 mb-0">
-                                <label
-                                    class="input-label text-capitalize border p-1">{{\App\CPU\translate('current_customer')}}
-                                    : <span class="style-i4 mb-0 p-1" id="current_customer"></span></label>
+                            <div class="row mb-2">
+                                <div class="form-group mt-1 col-12 col-lg-6 mt-2 mb-0">
+                                    <select id='cart_id' name="cart_id"
+                                            class=" form-control js-select2-custom" onchange="cart_change(this.value);">
+                                    </select>
+                                </div>
+    
+                                <div class="form-group mt-1 col-12 col-lg-6 mt-2 mb-0">
+                                    <a class="w-100 d-inline-block btn btn-danger rounded" onclick="clear_cart()">
+                                        {{ \App\CPU\translate('clear_cart')}}
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="form-group mt-1 col-12 col-lg-6 mt-2 mb-0">
-                                <select id='cart_id' name="cart_id"
-                                        class=" form-control js-select2-custom" onchange="cart_change(this.value);">
-                                </select>
-                            </div>
-
-                            <div class="form-group mt-1 col-12 col-lg-6 mt-2 mb-0">
-                                <a class="w-100 d-inline-block btn btn-danger rounded" onclick="clear_cart()">
-                                    {{ \App\CPU\translate('clear_cart')}}
-                                </a>
-                            </div>
-                        </div>
-
+                        
                         <div class='w-100' id="cart">
                             @include('seller-views.pos._cart',['cart_id'=>$cart_id])
                         </div>
                     </div>
-                </div>
-            </div>
-        </div><!-- container //  -->
-    </section>
+				</div>
+			</div>
+		</div><!-- container //  -->
+	</section>
 
     <!-- End Content -->
     <div class="modal fade" id="quick-view" tabindex="-1">
@@ -430,35 +338,33 @@
 
     @php($order=\App\Model\Order::find(session('last_order')))
     @if($order)
-        @php(session(['last_order'=> false]))
-        <div class="modal fade" id="print-invoice" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">{{ \App\CPU\translate('Print Invoice')}}</h5>
-                        <button id="invoice_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+    @php(session(['last_order'=> false]))
+    <div class="modal fade" id="print-invoice" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ \App\CPU\translate('Print Invoice')}}</h5>
+                    <button id="invoice_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body row" style="font-family: emoji;">
+                    <div class="col-md-12">
+                        <center>
+                            <input id="print_invoice" type="button" class="btn btn-primary non-printable" onclick="printDiv('printableArea')"
+                                value="Proceed, If thermal printer is ready."/>
+                            <a href="{{url()->previous()}}" class="btn btn-danger non-printable">{{ \App\CPU\translate('Back')}}</a>
+                        </center>
+                        <hr class="non-printable">
                     </div>
-                    <div class="modal-body row" style="font-family: emoji;">
-                        <div class="col-md-12">
-                            <center>
-                                <input id="print_invoice" type="button" class="btn btn-primary non-printable"
-                                       onclick="printDiv('printableArea')"
-                                       value="Proceed, If thermal printer is ready."/>
-                                <a href="{{url()->previous()}}"
-                                   class="btn btn-danger non-printable">{{ \App\CPU\translate('Back')}}</a>
-                            </center>
-                            <hr class="non-printable">
-                        </div>
-                        <div class="row" id="printableArea" style="margin: auto;">
-                            @include('seller-views.pos.order.invoice')
-                        </div>
+                    <div class="row" id="printableArea" style="margin: auto;">
+                        @include('seller-views.pos.order.invoice')
+                    </div>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
     @endif
 
     <div class="modal fade" id="add-customer" tabindex="-1">
@@ -472,83 +378,73 @@
                 </div>
                 <div class="modal-body">
                     <form action="{{route('seller.pos.customer-store')}}" method="post" id="product_form"
-                    >
+                          >
                         @csrf
-                        <div class="row pl-2">
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="input-label">{{\App\CPU\translate('first_name')}} <span
-                                            class="input-label-secondary text-danger">*</span></label>
-                                    <input type="text" name="f_name" class="form-control" value="{{ old('f_name') }}"
-                                           placeholder="{{\App\CPU\translate('first_name')}}" required>
+                            <div class="row pl-2" >
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label" >{{\App\CPU\translate('first_name')}} <span
+                                                class="input-label-secondary text-danger">*</span></label>
+                                        <input type="text" name="f_name" class="form-control" value="{{ old('f_name') }}"  placeholder="{{\App\CPU\translate('first_name')}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label" >{{\App\CPU\translate('last_name')}} <span
+                                                class="input-label-secondary text-danger">*</span></label>
+                                        <input type="text" name="l_name" class="form-control" value="{{ old('l_name') }}"  placeholder="{{\App\CPU\translate('last_name')}}" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="input-label">{{\App\CPU\translate('last_name')}} <span
+                            <div class="row pl-2" >
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label" >{{\App\CPU\translate('email')}}<span
                                             class="input-label-secondary text-danger">*</span></label>
-                                    <input type="text" name="l_name" class="form-control" value="{{ old('l_name') }}"
-                                           placeholder="{{\App\CPU\translate('last_name')}}" required>
+                                        <input type="email" name="email" class="form-control" value="{{ old('email') }}"  placeholder="{{\App\CPU\translate('Ex_:_ex@example.com')}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label" >{{\App\CPU\translate('phone')}}<span
+                                            class="input-label-secondary text-danger">*</span></label>
+                                        <input type="text" name="phone" class="form-control" value="{{ old('phone') }}"  placeholder="{{\App\CPU\translate('phone')}}" required>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row pl-2">
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="input-label">{{\App\CPU\translate('email')}}<span
+                            <div class="row pl-2" >
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label">{{\App\CPU\translate('country')}} <span
                                             class="input-label-secondary text-danger">*</span></label>
-                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}"
-                                           placeholder="{{\App\CPU\translate('Ex_:_ex@example.com')}}" required>
+                                        <input type="text"  name="country" class="form-control" value="{{ old('country') }}"  placeholder="{{\App\CPU\translate('country')}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label">{{\App\CPU\translate('city')}} <span
+                                            class="input-label-secondary text-danger">*</span></label>
+                                        <input type="text"  name="city" class="form-control" value="{{ old('city') }}"  placeholder="{{\App\CPU\translate('city')}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label">{{\App\CPU\translate('zip_code')}} <span
+                                            class="input-label-secondary text-danger">*</span></label>
+                                        <input type="text"  name="zip_code" class="form-control" value="{{ old('zip_code') }}"  placeholder="{{\App\CPU\translate('zip_code')}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label">{{\App\CPU\translate('address')}} <span
+                                            class="input-label-secondary text-danger">*</span></label>
+                                        <input type="text"  name="address" class="form-control" value="{{ old('address') }}"  placeholder="{{\App\CPU\translate('address')}}" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="input-label">{{\App\CPU\translate('phone')}}<span
-                                            class="input-label-secondary text-danger">*</span></label>
-                                    <input type="text" name="phone" class="form-control" value="{{ old('phone') }}"
-                                           placeholder="{{\App\CPU\translate('phone')}}" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pl-2">
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="input-label">{{\App\CPU\translate('country')}} <span
-                                            class="input-label-secondary text-danger">*</span></label>
-                                    <input type="text" name="country" class="form-control" value="{{ old('country') }}"
-                                           placeholder="{{\App\CPU\translate('country')}}" required>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="input-label">{{\App\CPU\translate('city')}} <span
-                                            class="input-label-secondary text-danger">*</span></label>
-                                    <input type="text" name="city" class="form-control" value="{{ old('city') }}"
-                                           placeholder="{{\App\CPU\translate('city')}}" required>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="input-label">{{\App\CPU\translate('zip_code')}} <span
-                                            class="input-label-secondary text-danger">*</span></label>
-                                    <input type="text" name="zip_code" class="form-control"
-                                           value="{{ old('zip_code') }}"
-                                           placeholder="{{\App\CPU\translate('zip_code')}}" required>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="input-label">{{\App\CPU\translate('address')}} <span
-                                            class="input-label-secondary text-danger">*</span></label>
-                                    <input type="text" name="address" class="form-control" value="{{ old('address') }}"
-                                           placeholder="{{\App\CPU\translate('address')}}" required>
-                                </div>
-                            </div>
-                        </div>
-
+                        
                         <hr>
-                        <button type="submit" id="submit_new_customer"
-                                class="btn btn-primary">{{\App\CPU\translate('submit')}}</button>
+                        <button type="submit" id="submit_new_customer" class="btn btn-primary">{{\App\CPU\translate('submit')}}</button>
                     </form>
                 </div>
             </div>
@@ -576,16 +472,7 @@
         @endforeach
     </script>
 @endif
-<script>
-    function openInfoWeb() {
-        var x = document.getElementById("website_info");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
+
 <script>
     $(document).on('ready', function () {
         // INITIALIZATION OF UNFOLD
@@ -605,13 +492,13 @@
             success: function (data) {
                 //console.log(data.cus);
                 var output = '';
-                for (var i = 0; i < data.cart_nam.length; i++) {
-                    output += `<option value="${data.cart_nam[i]}" ${data.current_user == data.cart_nam[i] ? 'selected' : ''}>${data.cart_nam[i]}</option>`;
-                }
-                $('#cart_id').html(output);
-                $('#current_customer').text(data.current_customer);
-                $('#cart').empty().html(data.view);
-
+                    for(var i=0; i<data.cart_nam.length; i++) {
+                        output += `<option value="${data.cart_nam[i]}" ${data.current_user==data.cart_nam[i]?'selected':''}>${data.cart_nam[i]}</option>`;
+                    }
+                    $('#cart_id').html(output);
+                    $('#current_customer').text(data.current_customer);
+                    $('#cart').empty().html(data.view);
+                    
             },
             complete: function () {
                 $('#loading').addClass('d-none');
@@ -620,94 +507,108 @@
     });
 </script>
 <script>
-    document.addEventListener("keydown", function (event) {
-        "use strict";
-        if (event.altKey && event.code === "KeyO") {
-            $('#submit_order').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyZ") {
-            $('#payment_close').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyS") {
-            $('#order_complete').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyC") {
-            emptyCart();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyA") {
-            $('#add_new_customer').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyN") {
-            $('#submit_new_customer').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyK") {
-            $('#short-cut').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyP") {
-            $('#print_invoice').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyQ") {
-            $('#search').focus();
-            $("#search-box").css("display", "none");
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyE") {
-            $("#search-box").css("display", "none");
-            $('#extra_discount').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyD") {
-            $("#search-box").css("display", "none");
-            $('#coupon_discount').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyB") {
-            $('#invoice_close').click();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyX") {
-            clear_cart();
-            event.preventDefault();
-        }
-        if (event.altKey && event.code === "KeyR") {
-            new_order();
-            event.preventDefault();
-        }
-
-    });
+    document.addEventListener("keydown", function(event) {
+    "use strict";
+    if (event.altKey && event.code === "KeyO")
+    {
+        $('#submit_order').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyZ")
+    {
+        $('#payment_close').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyS")
+    {
+        $('#order_complete').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyC")
+    {
+        emptyCart();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyA")
+    {
+        $('#add_new_customer').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyN")
+    {
+        $('#submit_new_customer').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyK")
+    {
+        $('#short-cut').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyP")
+    {
+        $('#print_invoice').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyQ")
+    {
+        $('#search').focus();
+        $("#search-box").css("display", "none");
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyE")
+    {
+        $("#search-box").css("display", "none");
+        $('#extra_discount').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyD")
+    {
+        $("#search-box").css("display", "none");
+        $('#coupon_discount').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyB")
+    {
+        $('#invoice_close').click();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyX")
+    {
+        clear_cart();
+        event.preventDefault();
+    }
+    if (event.altKey && event.code === "KeyR")
+    {
+        new_order();
+        event.preventDefault();
+    }
+    
+});
 </script>
 <script>
     "use strict";
-
-    function clear_cart() {
+    function clear_cart()
+    {
         let url = "{{route('seller.pos.clear-cart-ids')}}";
-        document.location.href = url;
+        document.location.href=url;
     }
 </script>
 <script>
     "use strict";
-
-    function new_order() {
+    function new_order()
+    {
         let url = "{{route('seller.pos.new-cart-id')}}";
-        document.location.href = url;
+        document.location.href=url;
     }
 </script>
 <!-- JS Plugins Init. -->
 <script>
-    jQuery(".search-bar-input").on('keyup', function () {
+    jQuery(".search-bar-input").on('keyup',function () {
         //$('#search-box').removeClass('d-none');
         $(".search-card").removeClass('d-none').show();
         let name = $(".search-bar-input").val();
         //console.log(name);
-        if (name.length > 0) {
+        if (name.length >0) {
             $('#search-box').removeClass('d-none').show();
             $.get({
                 url: '{{route('seller.pos.search-products')}}',
@@ -722,7 +623,8 @@
                     //console.log(data.count);
 
                     $('.search-result-box').empty().html(data.result);
-                    if (data.count == 1) {
+                    if(data.count==1)
+                    {
                         $('.search-result-box').empty().hide();
                         $('#search').val('');
                         quickView(data.id);
@@ -740,54 +642,54 @@
 </script>
 <script>
     "use strict";
-
     function customer_change(val) {
         //let  cart_id = $('#cart_id').val();
         $.post({
-            url: '{{route('seller.pos.remove-discount')}}',
-            data: {
-                _token: '{{csrf_token()}}',
-                //cart_id:cart_id,
-                user_id: val
-            },
-            beforeSend: function () {
-                $('#loading').removeClass('d-none');
-            },
-            success: function (data) {
-                console.log(data);
+                url: '{{route('seller.pos.remove-discount')}}',
+                data: {
+                    _token: '{{csrf_token()}}',
+                    //cart_id:cart_id,
+                    user_id:val
+                },
+                beforeSend: function () {
+                    $('#loading').removeClass('d-none');
+                },
+                success: function (data) {
+                    console.log(data);
 
-                var output = '';
-                for (var i = 0; i < data.cart_nam.length; i++) {
-                    output += `<option value="${data.cart_nam[i]}" ${data.current_user == data.cart_nam[i] ? 'selected' : ''}>${data.cart_nam[i]}</option>`;
+                    var output = '';
+                    for(var i=0; i<data.cart_nam.length; i++) {
+                        output += `<option value="${data.cart_nam[i]}" ${data.current_user==data.cart_nam[i]?'selected':''}>${data.cart_nam[i]}</option>`;
+                    }
+                    $('#cart_id').html(output);
+                    $('#current_customer').text(data.current_customer);
+                    $('#cart').empty().html(data.view);
+                },
+                complete: function () {
+                    $('#loading').addClass('d-none');
                 }
-                $('#cart_id').html(output);
-                $('#current_customer').text(data.current_customer);
-                $('#cart').empty().html(data.view);
-            },
-            complete: function () {
-                $('#loading').addClass('d-none');
-            }
-        });
+            });
     }
 </script>
 <script>
     "use strict";
-
-    function cart_change(val) {
-        let cart_id = val;
-        let url = "{{route('seller.pos.change-cart')}}" + '/?cart_id=' + val;
-        document.location.href = url;
+    function cart_change(val)
+    {
+        let  cart_id = val;
+        let url = "{{route('seller.pos.change-cart')}}"+'/?cart_id='+val;
+        document.location.href=url;
     }
 </script>
 <script>
     "use strict";
-
-    function extra_discount() {
+    function extra_discount()
+    {
         //let  user_id = $('#customer').val();
         let discount = $('#dis_amount').val();
         let type = $('#type_ext_dis').val();
         //let  cart_id = $('#cart_id').val();
-        if (discount > 0) {
+        if(discount > 0)
+        {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -797,27 +699,29 @@
                 url: '{{route('seller.pos.discount')}}',
                 data: {
                     _token: '{{csrf_token()}}',
-                    discount: discount,
-                    type: type,
+                    discount:discount,
+                    type:type,
                     //cart_id:cart_id
                 },
                 beforeSend: function () {
                     $('#loading').removeClass('d-none');
                 },
                 success: function (data) {
-                    // console.log(data);
-                    if (data.extra_discount === 'success') {
+                   // console.log(data);
+                    if(data.extra_discount==='success')
+                    {
                         toastr.success('{{ \App\CPU\translate('extra_discount_added_successfully') }}', {
                             CloseButton: true,
                             ProgressBar: true
                         });
-                    } else if (data.extra_discount === 'empty') {
+                    }else if(data.extra_discount==='empty')
+                    {
                         toastr.warning('{{ \App\CPU\translate('your_cart_is_empty') }}', {
                             CloseButton: true,
                             ProgressBar: true
                         });
 
-                    } else {
+                    }else{
                         toastr.warning('{{ \App\CPU\translate('this_discount_is_not_applied_for_this_amount') }}', {
                             CloseButton: true,
                             ProgressBar: true
@@ -826,7 +730,7 @@
 
                     $('.modal-backdrop').addClass('d-none');
                     $('#cart').empty().html(data.view);
-
+                    
                     $('#search').focus();
                 },
                 complete: function () {
@@ -835,7 +739,7 @@
                     $('#loading').addClass('d-none');
                 }
             });
-        } else {
+        }else{
             toastr.warning('{{ \App\CPU\translate('amount_can_not_be_negative_or_zero!') }}', {
                 CloseButton: true,
                 ProgressBar: true
@@ -845,59 +749,63 @@
 </script>
 <script>
     "use strict";
-
-    function coupon_discount() {
-
-        let coupon_code = $('#coupon_code').val();
+    function coupon_discount()
+    {
+    
+        let  coupon_code = $('#coupon_code').val();
 
         $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
-        $.post({
-            url: '{{route('seller.pos.coupon-discount')}}',
-            data: {
-                _token: '{{csrf_token()}}',
-                coupon_code: coupon_code,
-            },
-            beforeSend: function () {
-                $('#loading').removeClass('d-none');
-            },
-            success: function (data) {
-                console.log(data);
-                if (data.coupon === 'success') {
-                    toastr.success('{{ \App\CPU\translate('coupon_added_successfully') }}', {
-                        CloseButton: true,
-                        ProgressBar: true
-                    });
-                } else if (data.coupon === 'amount_low') {
-                    toastr.warning('{{ \App\CPU\translate('this_discount_is_not_applied_for_this_amount') }}', {
-                        CloseButton: true,
-                        ProgressBar: true
-                    });
-                } else if (data.coupon === 'cart_empty') {
-                    toastr.warning('{{ \App\CPU\translate('your_cart_is_empty') }}', {
-                        CloseButton: true,
-                        ProgressBar: true
-                    });
-                } else {
-                    toastr.warning('{{ \App\CPU\translate('coupon_is_invalid') }}', {
-                        CloseButton: true,
-                        ProgressBar: true
-                    });
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
+            });
+            $.post({
+                url: '{{route('seller.pos.coupon-discount')}}',
+                data: {
+                    _token: '{{csrf_token()}}',
+                    coupon_code:coupon_code,
+                },
+                beforeSend: function () {
+                    $('#loading').removeClass('d-none');
+                },
+                success: function (data) {
+                    console.log(data);
+                    if(data.coupon === 'success')
+                    {
+                        toastr.success('{{ \App\CPU\translate('coupon_added_successfully') }}', {
+                            CloseButton: true,
+                            ProgressBar: true
+                        });
+                    }else if(data.coupon === 'amount_low')
+                    {
+                        toastr.warning('{{ \App\CPU\translate('this_discount_is_not_applied_for_this_amount') }}', {
+                            CloseButton: true,
+                            ProgressBar: true
+                        });
+                    }else if(data.coupon === 'cart_empty')
+                    {
+                        toastr.warning('{{ \App\CPU\translate('your_cart_is_empty') }}', {
+                            CloseButton: true,
+                            ProgressBar: true
+                        });
+                    }
+                    else {
+                        toastr.warning('{{ \App\CPU\translate('coupon_is_invalid') }}', {
+                            CloseButton: true,
+                            ProgressBar: true
+                        });
+                    }
 
-                $('#cart').empty().html(data.view);
-
-                $('#search').focus();
-            },
-            complete: function () {
-                $('.modal-backdrop').addClass('d-none');
-                $(".footer-offset").removeClass("modal-open");
-                $('#loading').addClass('d-none');
-            }
-        });
+                    $('#cart').empty().html(data.view);
+                    
+                    $('#search').focus();
+                },
+                complete: function () {
+                    $('.modal-backdrop').addClass('d-none');
+                    $(".footer-offset").removeClass("modal-open");
+                    $('#loading').addClass('d-none');
+                }
+            });
 
     }
 </script>
@@ -907,7 +815,6 @@
         $('#print-invoice').modal('show');
         @endif
     });
-
     function printDiv(divName) {
         var printContents = document.getElementById(divName).innerHTML;
         var originalContents = document.body.innerHTML;
@@ -926,7 +833,7 @@
 
     $('#search-form').on('submit', function (e) {
         e.preventDefault();
-        var keyword = $('#datatableSearch').val();
+        var keyword= $('#datatableSearch').val();
         var nurl = new URL('{!!url()->full()!!}');
         nurl.searchParams.set('keyword', keyword);
         location.href = nurl;
@@ -941,11 +848,11 @@
         $.post({
             url: '{{route('seller.pos.store-keys')}}',
             data: {
-                key: key,
-                value: value,
+                key:key,
+                value:value,
             },
             success: function (data) {
-                toastr.success(key + ' ' + '{{\App\CPU\translate('selected')}}!', {
+                toastr.success(key+' '+'{{\App\CPU\translate('selected')}}!', {
                     CloseButton: true,
                     ProgressBar: true
                 });
@@ -953,15 +860,18 @@
         });
     }
 
-    function addon_quantity_input_toggle(e) {
+    function addon_quantity_input_toggle(e)
+    {
         var cb = $(e.target);
-        if (cb.is(":checked")) {
-            cb.siblings('.addon-quantity-input').css({'visibility': 'visible'});
-        } else {
-            cb.siblings('.addon-quantity-input').css({'visibility': 'hidden'});
+        if(cb.is(":checked"))
+        {
+            cb.siblings('.addon-quantity-input').css({'visibility':'visible'});
+        }
+        else
+        {
+            cb.siblings('.addon-quantity-input').css({'visibility':'hidden'});
         }
     }
-
     function quickView(product_id) {
         $.ajax({
             url: '{{route('seller.pos.quick-view')}}',
@@ -1118,7 +1028,7 @@
                 url: '{{ route('seller.pos.variant_price') }}',
                 data: $('#add-to-cart-form').serializeArray(),
                 success: function (data) {
-
+                    
                     $('#add-to-cart-form #chosen_price_div').removeClass('d-none');
                     $('#add-to-cart-form #chosen_price_div #chosen_price').html(data.price);
                     $('#set-discount-amount').html(data.discount);
@@ -1141,25 +1051,25 @@
                     $('#loading').show();
                 },
                 success: function (data) {
-
+                    
                     if (data.data == 1) {
                         Swal.fire({
                             icon: 'info',
                             title: 'Cart',
-                            text: '{{ \App\CPU\translate("Product already added in cart")}}'
+                            text: "Product already added in cart"
                         });
                         return false;
                     } else if (data.data == 0) {
                         Swal.fire({
                             icon: 'error',
                             title: 'Cart',
-                            text: '{{ \App\CPU\translate("Sorry, product out of stock")}}'
+                            text: 'Sorry, product out of stock.'
                         });
                         return false;
                     }
                     $('.call-when-done').click();
 
-                    toastr.success('{{ \App\CPU\translate("Item has been added in your cart!")}}', {
+                    toastr.success('Item has been added in your cart!', {
                         CloseButton: true,
                         ProgressBar: true
                     });
@@ -1174,7 +1084,7 @@
             Swal.fire({
                 type: 'info',
                 title: 'Cart',
-                text: '{{ \App\CPU\translate("Please choose all the options")}}'
+                text: 'Please choose all the options'
             });
         }
     }
@@ -1192,13 +1102,13 @@
                 }
             } else {
                 //updateCart();
-
-                toastr.info('{{ \App\CPU\translate("Item has been removed from cart")}}', {
+                
+                toastr.info('Item has been removed from cart', {
                     CloseButton: true,
                     ProgressBar: true
                 });
             }
-
+            
 
         });
     }
@@ -1218,7 +1128,7 @@
             if (result.value) {
                 $.post('{{ route('seller.pos.emptyCart') }}', {_token: '{{ csrf_token() }}'}, function (data) {
                     $('#cart').empty().html(data.view);
-                    toastr.info('{{ \App\CPU\translate("Item has been removed from cart")}}', {
+                    toastr.info('Item has been removed from cart', {
                         CloseButton: true,
                         ProgressBar: true
                     });
@@ -1233,41 +1143,37 @@
         });
     }
 
-    $(function () {
-        $(document).on('click', 'input[type=number]', function () {
-            this.select();
-        });
+   $(function(){
+        $(document).on('click','input[type=number]',function(){ this.select(); });
     });
 
 
-    function updateQuantity(key, qty, e) {
-        if (qty !== "") {
-            var element = $(e.target);
+    function updateQuantity(key,qty,e){
+        if(qty!==""){
+            var element = $( e.target );
             var minValue = parseInt(element.attr('min'));
             // maxValue = parseInt(element.attr('max'));
             var valueCurrent = parseInt(element.val());
 
             //var key = element.data('key');
-
-            $.post('{{ route('seller.pos.updateQuantity') }}', {
-                _token: '{{ csrf_token() }}',
-                key: key,
-                quantity: qty
-            }, function (data) {
-
-                if (data.qty < 0) {
+        
+            $.post('{{ route('seller.pos.updateQuantity') }}', {_token: '{{ csrf_token() }}', key: key, quantity:qty}, function (data) {
+                
+                if(data.qty<0)
+                {
                     toastr.warning('{{\App\CPU\translate('product_quantity_is_not_enough!')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 }
-                if (data.upQty === 'zeroNegative') {
+                if(data.upQty==='zeroNegative')
+                {
                     toastr.warning('{{\App\CPU\translate('Product_quantity_can_not_be_zero_or_less_than_zero_in_cart!')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 }
-                if (data.qty_update == 1) {
+                if(data.qty_update==1){
                     toastr.success('{{\App\CPU\translate('Product_quantity_updated!')}}', {
                         CloseButton: true,
                         ProgressBar: true
@@ -1275,33 +1181,31 @@
                 }
                 $('#cart').empty().html(data.view);
             });
-        } else {
-            var element = $(e.target);
+        }else{
+            var element = $( e.target );
             var minValue = parseInt(element.attr('min'));
             // maxValue = parseInt(element.attr('max'));
             var valueCurrent = parseInt(element.val());
 
             //var key = element.data('key');
-
-            $.post('{{ route('seller.pos.updateQuantity') }}', {
-                _token: '{{ csrf_token() }}',
-                key: key,
-                quantity: minValue
-            }, function (data) {
-
-                if (data.qty < 0) {
+        
+            $.post('{{ route('seller.pos.updateQuantity') }}', {_token: '{{ csrf_token() }}', key: key, quantity:minValue}, function (data) {
+                
+                if(data.qty<0)
+                {
                     toastr.warning('{{\App\CPU\translate('product_quantity_is_not_enough!')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 }
-                if (data.upQty === 'zeroNegative') {
+                if(data.upQty==='zeroNegative')
+                {
                     toastr.warning('{{\App\CPU\translate('Product_quantity_can_not_be_zero_or_less_than_zero_in_cart!')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 }
-                if (data.qty_update == 1) {
+                if(data.qty_update==1){
                     toastr.success('{{\App\CPU\translate('Product_quantity_updated!')}}', {
                         CloseButton: true,
                         ProgressBar: true
@@ -1313,7 +1217,8 @@
 
 
         // Allow: backspace, delete, tab, escape, enter and .
-        if (e.type == 'keydown') {
+        if(e.type == 'keydown')
+        {
             if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
                 // Allow: Ctrl+A
                 (e.keyCode == 65 && e.ctrlKey === true) ||
@@ -1347,7 +1252,7 @@
             },
             processResults: function (data) {
                 return {
-                    results: data
+                results: data
                 };
             },
             __port: function (params, success, failure) {
@@ -1362,9 +1267,10 @@
     });
 
 
-    $('#order_place').submit(function (eventObj) {
-        if ($('#customer').val()) {
-            $(this).append('<input type="hidden" name="user_id" value="' + $('#customer').val() + '" /> ');
+    $('#order_place').submit(function(eventObj) {
+        if($('#customer').val())
+        {
+            $(this).append('<input type="hidden" name="user_id" value="'+$('#customer').val()+'" /> ');
         }
         return true;
     });

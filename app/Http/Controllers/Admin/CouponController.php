@@ -18,7 +18,8 @@ class CouponController extends Controller
     {
         $query_param = [];
         $search = $request['search'];
-        if ($request->has('search')) {
+        if ($request->has('search'))
+        {
             $key = explode(' ', $request['search']);
             $cou = Coupon::where(function ($q) use ($key) {
                 foreach ($key as $value) {
@@ -28,12 +29,12 @@ class CouponController extends Controller
                 }
             });
             $query_param = ['search' => $request['search']];
-        } else {
+        }else{
             $cou = new Coupon();
         }
-
+        
         $cou = $cou->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
-        return view('admin-views.coupon.add-new', compact('cou', 'search'));
+        return view('admin-views.coupon.add-new', compact('cou','search'));
     }
 
     public function store(Request $request)
@@ -48,19 +49,21 @@ class CouponController extends Controller
             'limit' => 'required',
         ]);
 
-        $coupon = new Coupon();
-        $coupon->coupon_type = $request->coupon_type;
-        $coupon->title = $request->title;
-        $coupon->code = $request->code;
-        $coupon->start_date = $request->start_date;
-        $coupon->expire_date = $request->expire_date;
-        $coupon->min_purchase = Convert::usd($request->min_purchase);
-        $coupon->max_discount = Convert::usd($request->max_discount != null ? $request->max_discount : $request->discount);
-        $coupon->discount = $request->discount_type == 'amount' ? Convert::usd($request->discount) : $request['discount'];
-        $coupon->discount_type = $request->discount_type;
-        $coupon->limit = $request->limit;
-        $coupon->status = 1;
-        $coupon->save();
+        DB::table('coupons')->insert([
+            'coupon_type' => $request->coupon_type,
+            'title' => $request->title,
+            'code' => $request->code,
+            'start_date' => $request->start_date,
+            'expire_date' => $request->expire_date,
+            'min_purchase' => Convert::usd($request->min_purchase),
+            'max_discount' => Convert::usd($request->max_discount != null ? $request->max_discount : $request->discount),
+            'discount' => $request->discount_type == 'amount' ? Convert::usd($request->discount) : $request['discount'],
+            'discount_type' => $request->discount_type,
+            'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'limit' =>$request->limit,
+        ]);
 
         Toastr::success('Coupon added successfully!');
         return back();
@@ -95,7 +98,7 @@ class CouponController extends Controller
             'discount' => $request->discount_type == 'amount' ? Convert::usd($request->discount) : $request['discount'],
             'discount_type' => $request->discount_type,
             'updated_at' => now(),
-            'limit' => $request->limit,
+            'limit' =>$request->limit,
         ]);
 
         Toastr::success('Coupon updated successfully!');
@@ -112,7 +115,6 @@ class CouponController extends Controller
         Toastr::success('Coupon status updated!');
         return back();
     }
-
     public function delete($id)
     {
         $coupon = Coupon::find($id);

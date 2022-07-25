@@ -192,13 +192,7 @@
                                             @endif
                                         </td>
                                         <td>{{date('d-M-y',strtotime($r['created_at']))}}</td>
-                                        <td>
-                                            <label class="switch switch-status">
-                                                <input type="checkbox" class="employee-role-status"
-                                                       id="{{$r['id']}}" {{$r['status'] == 1?'checked':''}}>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </td>
+                                        <td>{{\App\CPU\Helpers::status($r['status'])}}</td>
                                         <td>
                                             <a href="{{route('admin.custom-role.update',[$r['id']])}}"
                                                class="btn btn-primary btn-sm"
@@ -243,34 +237,6 @@
             }else{
                 $('#submit-create-role').submit();
             } 
-        });
-    </script>
-    <script>
-        $(document).on('change', '.employee-role-status', function () {
-            var id = $(this).attr("id");
-            if ($(this).prop("checked") == true) {
-                var status = 1;
-            } else if ($(this).prop("checked") == false) {
-                var status = 0;
-            }
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: "{{route('admin.custom-role.employee-role-status')}}",
-                method: 'POST',
-                data: {
-                    id: id,
-                    status: status
-                },
-                success: function (data) {
-                    if(data.success == true) {
-                        toastr.success('{{\App\CPU\translate('Status updated successfully')}}');
-                    }
-                }
-            });
         });
     </script>
 @endpush

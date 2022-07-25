@@ -34,13 +34,13 @@
                         </div>
                         <div class="col-6 col-md-4 mt-2 mt-md-0 text-capitalize">{{\App\CPU\translate('refund_status')}}:
                             @if ($refund->status == 'pending')
-                                <span style="color: coral"> {{\App\CPU\translate($refund->status)}}</span>
+                                <span style="color: coral"> {{$refund->status}}</span>
                             @elseif($refund->status == 'approved')
-                                <span style="color: rgb(21, 115, 255)"> {{\App\CPU\translate($refund->status)}}</span>
+                                <span style="color: rgb(21, 115, 255)"> {{$refund->status}}</span>
                             @elseif($refund->status == 'refunded')
-                                <span style="color: rgba(1, 255, 44, 0.979)"> {{\App\CPU\translate($refund->status)}}</span>
+                                <span style="color: rgba(1, 255, 44, 0.979)"> {{$refund->status}}</span>
                             @elseif($refund->status == 'rejected')
-                                <span style="color: rgba(255, 42, 5, 0.979)"> {{\App\CPU\translate($refund->status)}}</span>
+                                <span style="color: rgba(255, 42, 5, 0.979)"> {{$refund->status}}</span>
                             @endif
                         </div>
                         
@@ -188,7 +188,7 @@
                                         {{$r_status->change_by}}
                                     </td>
                                     <td>
-                                        {{\App\CPU\translate($r_status->status)}}
+                                        {{$r_status->status}}
                                     </td>
                                     <td class="text-break">
                                         {{$r_status->message}}

@@ -107,7 +107,10 @@
                                                         class="tio-download"></i> {{\App\CPU\translate('Invoice')}}</a>
                                             </div>
                                         </div>
-                                        
+                                        {{-- <a href="{{route('admin.sellers.order-details',[$order['id'],$seller['id']])}}"
+                                           class="btn btn-outline-info btn-block">
+                                            <i class="fa fa-eye"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endforeach

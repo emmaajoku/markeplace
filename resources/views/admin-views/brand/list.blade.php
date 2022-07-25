@@ -105,7 +105,6 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: '{{ \App\CPU\translate('Yes')}}, {{ \App\CPU\translate('delete_it')}}!',
-                cancelButtonText: "{{ \App\CPU\translate('cancel')}}",      
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {

@@ -262,7 +262,16 @@
                                     <input class="form-control" type="number" id="zip_code" name="zip" value="{{$shippingAddress->zip}}" required>
                                 </div>
                             </div>
-                            
+                            {{-- <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="own_state">{{\App\CPU\translate('State')}}</label>
+                                    <input type="text" class="form-control" name="state" value="{{ $shippingAddress->state }}" id="own_state"  placeholder="" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="own_country">{{\App\CPU\translate('Country')}}</label>
+                                    <input type="text" class="form-control" id="own_country" name="country" value="{{ $shippingAddress->country }}" placeholder="" required>
+                                </div>
+                            </div> --}}
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="own_address">{{\App\CPU\translate('address')}}</label>
@@ -296,7 +305,7 @@
 @endsection
 
 @push('script')
-<script src="https://maps.googleapis.com/maps/api/js?key={{\App\CPU\Helpers::get_business_settings('map_api_key')}}&libraries=places&v=3.49"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{\App\CPU\Helpers::get_business_settings('map_api_key')}}&libraries=places&v=3.45.8"></script>
 <script>
 
     function initAutocomplete() {

@@ -161,12 +161,7 @@
         .slider.round:before {
             border-radius: 50%;
         }
-        @media only screen and (min-width: 768px) {
-            .view-web-site-info {
-                display: none;
-            }
-        
-        }
+
     </style>
     <script src="{{asset('public/assets/back-end')}}/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js"></script>
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css">
@@ -264,11 +259,11 @@
 
         // INITIALIZATION OF MEGA MENU
         // =======================================================
-        /*var megaMenu = new HSMegaMenu($('.js-mega-menu'), {
+        var megaMenu = new HSMegaMenu($('.js-mega-menu'), {
             desktop: {
                 position: 'left'
             }
-        }).init();*/
+        }).init();
 
 
         // INITIALIZATION OF NAVBAR VERTICAL NAVIGATION
@@ -452,17 +447,7 @@
         });
     }
 </script>
-<script>
-    function openInfoWeb()
-    {
-        var x = document.getElementById("website_info");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
+
 <!-- IE Support -->
 <script>
     if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public/assets/back-end')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');

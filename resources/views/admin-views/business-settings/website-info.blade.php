@@ -200,7 +200,7 @@
         </div>
 
         <div
-            style="padding: 10px;margin-bottom:30px;background: white;border-radius: 10px; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+            style="padding: 10px;background: white;border-radius: 10px; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
             <h3>Web config Form</h3>
             <form action="{{ route('admin.business-settings.update-info') }}" method="POST"
                   enctype="multipart/form-data">
@@ -315,11 +315,11 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        @php($decimal_point=\App\Model\BusinessSetting::where('type','decimal_point_settings')->first())
+                        @php($decimal_point_settings=\App\CPU\Helpers::get_business_settings('decimal_point_settings'))
                         <div class="form-group">
                             <label
                                 class="input-label text-capitalize">{{\App\CPU\translate('digit_after_decimal_point ')}}({{\App\CPU\translate(' ex: 0.00')}})</label>
-                            <input type="number" value="{{$decimal_point->value}}"
+                            <input type="number" value="{{$decimal_point_settings}}"
                                    name="decimal_point_settings" class="form-control" min="0" placeholder="{{\App\CPU\translate('4')}}">
                         </div>
                     </div>
@@ -1319,7 +1319,7 @@
 
                 </div>
                 <hr>
-                <button type="submit" class="btn btn-primary float-right ">{{\App\CPU\translate('Submit')}}</button>
+                <button type="submit" class="btn btn-primary float-right">{{\App\CPU\translate('Submit')}}</button>
             </form>
         </div>
         {{-- Edited by safayet end--}}

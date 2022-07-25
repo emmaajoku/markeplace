@@ -152,7 +152,6 @@ class SellerController extends Controller
             'branch' => $request['branch'],
             'account_no' => $request['account_no'],
             'holder_name' => $request['holder_name'],
-            'phone'=> $request['phone'],
             'password' => $request['password'] != null ? bcrypt($request['password']) : Seller::where(['id' => $seller['id']])->first()->password,
             'image' => $imageName,
             'updated_at' => now()
@@ -177,10 +176,6 @@ class SellerController extends Controller
                 'auth-001' => translate('Your existing session token does not authorize you any more')
             ], 401);
         }
-        if($seller->account_no==null || $seller->bank_name==null)
-        {
-            return response()->json(['message'=>translate('Update your bank info first')], 202);
-        }
 
         $wallet = SellerWallet::where('seller_id', $seller['id'])->first();
         if (($wallet->total_earning) >= Convert::usd($request['amount']) && $request['amount'] > 1) {
@@ -197,7 +192,7 @@ class SellerController extends Controller
             $wallet->save();
             return response()->json(translate('Withdraw request sent successfully!'), 200);
         }
-        return response()->json(['message'=>translate('Invalid withdraw request')], 400);
+        return response()->json(translate('Invalid withdraw request'), 400);
     }
 
     public function close_withdraw_request(Request $request)

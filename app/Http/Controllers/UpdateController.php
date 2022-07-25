@@ -23,15 +23,10 @@ class UpdateController extends Controller
         Helpers::setEnvironmentValue('SOFTWARE_ID', 'MzE0NDg1OTc=');
         Helpers::setEnvironmentValue('BUYER_USERNAME', $request['username']);
         Helpers::setEnvironmentValue('PURCHASE_CODE', $request['purchase_key']);
-        Helpers::setEnvironmentValue('SOFTWARE_VERSION', '10.0');
+        Helpers::setEnvironmentValue('SOFTWARE_VERSION', '9.0');
         Helpers::setEnvironmentValue('APP_MODE', 'live');
         Helpers::setEnvironmentValue('APP_NAME', '6valley' . time());
         Helpers::setEnvironmentValue('SESSION_LIFETIME', '60');
-
-        $data = Helpers::requestSender();
-        if (!$data['active']) {
-            return redirect(base64_decode('aHR0cHM6Ly82YW10ZWNoLmNvbS9zb2Z0d2FyZS1hY3RpdmF0aW9u'));
-        }
 
         Artisan::call('migrate', ['--force' => true]);
         $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
@@ -322,43 +317,6 @@ class UpdateController extends Controller
             ]);
         }
 
-        if(BusinessSetting::where(['type' => 'wallet_status'])->first() == false)
-        {
-            BusinessSetting::updateOrInsert(['type' => 'wallet_status'], [
-                'value' => 0
-            ]);
-        }
-        if(BusinessSetting::where(['type' => 'loyalty_point_status'])->first() == false)
-        {
-            BusinessSetting::updateOrInsert(['type' => 'loyalty_point_status'], [
-                'value' => 0
-            ]);
-        }
-        if(BusinessSetting::where(['type' => 'wallet_add_refund'])->first() == false)
-        {
-            BusinessSetting::updateOrInsert(['type' => 'wallet_add_refund'], [
-                'value' => 0
-            ]);
-        }
-        if(BusinessSetting::where(['type' => 'loyalty_point_exchange_rate'])->first() == false)
-        {
-            BusinessSetting::updateOrInsert(['type' => 'loyalty_point_exchange_rate'], [
-                'value' => 0
-            ]);
-        }
-        if(BusinessSetting::where(['type' => 'loyalty_point_item_purchase_point'])->first() == false)
-        {
-            BusinessSetting::updateOrInsert(['type' => 'loyalty_point_item_purchase_point'], [
-            'value' => 0
-        ]);
-        }
-        if(BusinessSetting::where(['type' => 'loyalty_point_minimum_point'])->first() == false)
-        {
-            BusinessSetting::updateOrInsert(['type' => 'loyalty_point_minimum_point'], [
-            'value' => 0
-        ]);
-        }
-
         if (BusinessSetting::where(['type' => 'flutterwave'])->first() == false) {
             DB::table('business_settings')->updateOrInsert(['type' => 'flutterwave'], [
                 'value' => json_encode([
@@ -404,10 +362,10 @@ class UpdateController extends Controller
         if (BusinessSetting::where(['type' => 'announcement'])->first() == false) {
             DB::table('business_settings')->updateOrInsert(['type' => 'announcement'], [
                 'value' => json_encode(
-                    ['status' => 0,
-                        'color' => '#ffffff',
-                        'text_color' => '#000000',
-                        'announcement' => '',
+                    ['status' => $request['announcement_status'],
+                        'color' => $request['announcement_color'],
+                        'text_color' => $request['text_color'],
+                        'announcement' => $request['announcement'],
                     ]),
             ]);
         }
@@ -586,6 +544,6 @@ class UpdateController extends Controller
             ]);
         }
 
-        return redirect(env('APP_URL'));
+        return redirect('/admin/auth/login');
     }
 }

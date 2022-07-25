@@ -195,7 +195,6 @@
     <?php
     $overallRating = \App\CPU\ProductManager::get_overall_rating($product->reviews);
     $rating = \App\CPU\ProductManager::get_rating($product->reviews);
-    $decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings');
     ?>
     <!-- Page Content-->
     <div class="container mt-4 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
@@ -212,7 +211,7 @@
                                         <div
                                             class="cz-preview-item d-flex align-items-center justify-content-center {{$key==0?'active':''}}"
                                             id="image{{$key}}">
-                                            <img class="cz-image-zoom img-responsive" style="width:100%;max-height:323px;"
+                                            <img class="cz-image-zoom img-responsive" style="width:100%;height:auto"
                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                 src="{{asset("storage/app/public/product/$photo")}}"
                                                 data-zoom="{{asset("storage/app/public/product/$photo")}}"
@@ -889,7 +888,7 @@
                    
                     @foreach($more_product_from_seller as $item)
                         
-                            @include('web-views.partials.seller-products-product-details',['product'=>$item,'decimal_point_settings'=>$decimal_point_settings])
+                            @include('web-views.partials.seller-products-product-details',['product'=>$item])
                         
                     @endforeach
                     
@@ -924,7 +923,7 @@
             @if (count($relatedProducts)>0)
                 @foreach($relatedProducts as $key => $relatedProduct)
                     <div class="col-xl-2 col-sm-3 col-6" style="margin-bottom: 20px;">
-                        @include('web-views.partials._single-product',['product'=>$relatedProduct,'decimal_point_settings'=>$decimal_point_settings])
+                        @include('web-views.partials._single-product',['product'=>$relatedProduct])
                     </div>
                 @endforeach
             @else

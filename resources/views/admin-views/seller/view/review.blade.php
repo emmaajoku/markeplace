@@ -229,7 +229,7 @@
                         <div class="table-responsive datatable-custom">
                             <table id="columnSearchDatatable"
                                    style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                   class="table table-borderless table-thead-bordered table-align-middle card-table"
+                                   class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                                    data-hs-datatables-options='{
                                  "order": [],
                                  "orderCellsTop": true
@@ -258,16 +258,7 @@
                                             </td>
 
                                             <td>
-                                                <p style=" word-wrap: break-word;">
-                                                    {{$review->comment?$review->comment:"No Comment Found"}}
-                                                </p>
-                                                @foreach (json_decode($review->attachment) as $img)
-                                                
-                                                    <a class="float-left" href="{{asset('storage/app/public/review')}}/{{$img}}" data-lightbox="mygallery">
-                                                        <img style="width: 60px;height:60px;padding:10px; " src="{{asset('storage/app/public/review')}}/{{$img}}" alt="">
-                                                    </a>
-                                                
-                                                @endforeach
+                                                {{$review->comment?$review->comment:"No Comment Found"}}
                                             </td>
                                             <td>
                                                 <label class="badge badge-soft-info">

@@ -86,10 +86,7 @@
                 height: 250px;
                 padding-bottom: 10px;
             }
-            
         }
-
-        
 
         .deco-none {
             color: inherit;
@@ -160,13 +157,6 @@
         .slider.round:before {
             border-radius: 50%;
         }
-        @media only screen and (min-width: 768px) {
-            .view-web-site-info {
-                display: none;
-            }
-        
-        }
-        
 
     </style>
     <script
@@ -237,7 +227,6 @@
 @endif
 <!-- JS Plugins Init. -->
 <script>
-
     $(document).on('ready', function () {
         // ONLY DEV
         // =======================================================
@@ -267,11 +256,11 @@
 
         // INITIALIZATION OF MEGA MENU
         // =======================================================
-        /*var megaMenu = new HSMegaMenu($('.js-mega-menu'), {
+        var megaMenu = new HSMegaMenu($('.js-mega-menu'), {
             desktop: {
                 position: 'left'
             }
-        }).init();*/
+        }).init();
 
 
         // INITIALIZATION OF NAVBAR VERTICAL NAVIGATION
@@ -354,17 +343,7 @@
         });
     });
 </script>
-<script>
-    function openInfoWeb()
-    {
-        var x = document.getElementById("website_info");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
+
 @stack('script')
 
 
@@ -473,6 +452,9 @@
 
 <!-- ck editor -->
 
+{{--<script src="{{ asset('public/ckeditor/ckeditor.js')}}"></script>--}}
+{{--<script>CKEDITOR.replace('editor');</script>--}}
+
 <!-- ck editor -->
 
 <script>
@@ -480,7 +462,15 @@
 </script>
 
 <script>
-    
+    // $(document).ready(function () {
+    //     $('.navbar-vertical-content').animate({
+    //         scrollTop: $(".scroll-here").offset().top
+    //     }, 2000);
+    // });
+
+    /*$(function() {
+        $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
+    });*/
 </script>
 </body>
 </html>

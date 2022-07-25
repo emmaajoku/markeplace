@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="mb-3 {{Session::get('direction') === "rtl" ? 'ml-2' : ''}}">
                                     <a class="btn btn-outline-primary"
-                                       href="{{route('customer.auth.sign-up')}}">
+                                       href="{{route('customer.auth.register')}}">
                                         <i class="fa fa-user-circle"></i> {{\App\CPU\translate('sing_up')}}
                                     </a>
                                 </div>
@@ -144,7 +144,51 @@
 @endsection
 
 @push('script')
-    
+    <!--    <script>
+        $('#sign-in-form').submit(function (e) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.post({
+                url: '{{route('customer.auth.login')}}',
+                dataType: 'json',
+                data: $('#sign-in-form').serialize(),
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                success: function (data) {
+                    if (data.errors) {
+                        for (var i = 0; i < data.errors.length; i++) {
+                            toastr.error(data.errors[i].message, {
+                                CloseButton: true,
+                                ProgressBar: true
+                            });
+                        }
+                    } else {
+                        toastr.success(data.message, {
+                            CloseButton: true,
+                            ProgressBar: true
+                        });
+                        setInterval(function () {
+                            location.href = data.url;
+                        }, 2000);
+                    }
+                },
+                complete: function () {
+                    $('#loading').hide();
+                },
+                error: function () {
+                    toastr.error('Credentials do not match or account has been suspended.', {
+                        CloseButton: true,
+                        ProgressBar: true
+                    });
+                }
+            });
+        });
+    </script>-->
     {{-- recaptcha scripts start --}}
     @if(isset($recaptcha) && $recaptcha['status'] == 1)
         <script type="text/javascript">

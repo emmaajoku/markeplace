@@ -421,7 +421,7 @@
             $to = \Carbon\Carbon::now()->endOfYear()->format('Y-m-d');
 
             $data=\App\Model\Order::where('order_type','default_type')
-            ->where(['order_status'=>'processing'])->select(
+            ->where(['order_status'=>'canceled'])->select(
             \Illuminate\Support\Facades\DB::raw('COUNT(id) as count'),
             \Illuminate\Support\Facades\DB::raw('YEAR(created_at) year, MONTH(created_at) month')
             )->whereBetween('created_at', [$from, $to])->groupby('year', 'month')->get()->toArray();

@@ -124,7 +124,11 @@
             transition: .2s ease-in-out;
         }
 
-        
+        /*//for -message*/
+        /* .container {
+            max-width: 1170px;
+            margin: auto;
+        } */
 
         img {
             max-width: 100%;
@@ -531,7 +535,7 @@
                                                     id="msgInputValue"
                                                     type="text" placeholder="{{\App\CPU\translate('Send a message')}}" aria-label="Search">
                                                 <input class="aSend" type="submit" id="msgSendBtn" style="width: 45px;"
-                                                       value="{{\App\CPU\translate('Send')}}">
+                                                       value="Send">
                                                 {{-- <a class="aSend" id="msgSendBtn">Send</a> --}}
                                                 {{-- <i class="fa fa-send" style="color: #92C6FF" aria-hidden="true"></i> --}}
 

@@ -354,7 +354,7 @@
                                                         <span class="badge badge-soft-danger ml-2 ml-sm-3">
                                                     <span class="legend-indicator bg-danger"
                                                           style="{{Session::get('direction') === "rtl" ? 'margin-right: 0;margin-left: .4375rem;' : 'margin-left: 0;margin-right: .4375rem;'}}">
-                                                    </span>{{\App\CPU\translate(str_replace('_',' ',$order['order_status']))}}
+                                                    </span>{{str_replace('_',' ',$order['order_status'])}}
                                                     </span>
                                                 @endif
                                             </td>

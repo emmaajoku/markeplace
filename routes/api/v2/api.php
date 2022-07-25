@@ -37,7 +37,6 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
             Route::put('assign-delivery-man', 'OrderController@assign_delivery_man');
 
             Route::post('assign-third-party-delivery','OrderController@assign_third_party_delivery');
-            Route::post('update-payment-status','OrderController@update_payment_status');
         });
         Route::group(['prefix' => 'refund'], function () {
             Route::get('list', 'RefundController@list');
@@ -69,10 +68,6 @@ Route::group(['namespace' => 'api\v2', 'prefix' => 'v2', 'middleware' => ['api_l
 
         Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
             Route::post('login', 'LoginController@login');
-
-            Route::post('forgot-password', 'ForgotPasswordController@reset_password_request');
-            Route::post('verify-otp', 'ForgotPasswordController@otp_verification_submit');
-            Route::put('reset-password', 'ForgotPasswordController@reset_password_submit');
         });
     });
     Route::post('ls-lib-update', 'LsLibController@lib_update');

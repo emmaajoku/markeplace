@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 05, 2022 at 09:36 AM
+-- Generation Time: Apr 23, 2022 at 01:05 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `6valley_live`
+-- Database: `6valley_db`
 --
 
 -- --------------------------------------------------------
@@ -199,8 +199,8 @@ INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_a
 (2, 'language', '[{\"id\":\"1\",\"name\":\"english\",\"code\":\"en\",\"status\":1}]', '2020-10-11 07:53:02', '2021-06-10 21:16:25'),
 (3, 'mail_config', '{\"status\":0,\"name\":\"demo\",\"host\":\"mail.demo.com\",\"driver\":\"SMTP\",\"port\":\"587\",\"username\":\"info@demo.com\",\"email_id\":\"info@demo.com\",\"encryption\":\"TLS\",\"password\":\"demo\"}', '2020-10-12 10:29:18', '2021-07-06 12:32:01'),
 (4, 'cash_on_delivery', '{\"status\":\"1\"}', NULL, '2021-05-25 21:21:15'),
-(6, 'ssl_commerz_payment', '{\"status\":\"0\",\"environment\":\"sandbox\",\"store_id\":\"\",\"store_password\":\"\"}', '2020-11-09 08:36:51', '2022-06-05 09:35:46'),
-(7, 'paypal', '{\"status\":\"0\",\"environment\":\"sandbox\",\"paypal_client_id\":\"\",\"paypal_secret\":\"\"}', '2020-11-09 08:51:39', '2022-06-05 09:35:46'),
+(6, 'ssl_commerz_payment', '{\"status\":\"0\",\"environment\":\"sandbox\",\"store_id\":\"\",\"store_password\":\"\"}', '2020-11-09 08:36:51', '2022-04-23 13:05:05'),
+(7, 'paypal', '{\"status\":\"0\",\"environment\":\"sandbox\",\"paypal_client_id\":\"\",\"paypal_secret\":\"\"}', '2020-11-09 08:51:39', '2022-04-23 13:05:05'),
 (8, 'stripe', '{\"status\":\"0\",\"api_key\":null,\"published_key\":null}', '2020-11-09 09:01:47', '2021-07-06 12:30:05'),
 (10, 'company_phone', '000000000', NULL, '2020-12-08 14:15:01'),
 (11, 'company_name', '', NULL, '2021-02-27 18:11:53'),
@@ -248,7 +248,7 @@ INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_a
 (55, 'pagination_limit', '10', NULL, NULL),
 (56, 'shipping_method', 'inhouse_shipping', NULL, NULL),
 (57, 'paymob_accept', '{\"status\":\"0\",\"api_key\":\"\",\"iframe_id\":\"\",\"integration_id\":\"\",\"hmac\":\"\"}', NULL, NULL),
-(58, 'bkash', '{\"status\":\"0\",\"environment\":\"sandbox\",\"api_key\":\"\",\"api_secret\":\"\",\"username\":\"\",\"password\":\"\"}', NULL, '2022-06-05 09:35:46'),
+(58, 'bkash', '{\"status\":\"0\",\"environment\":\"sandbox\",\"api_key\":\"\",\"api_secret\":\"\",\"username\":\"\",\"password\":\"\"}', NULL, '2022-04-23 13:05:05'),
 (59, 'forgot_password_verification', 'email', NULL, NULL),
 (60, 'paytabs', '{\"status\":0,\"profile_id\":\"\",\"server_key\":\"\",\"base_url\":\"https:\\/\\/secure-egypt.paytabs.com\\/\"}', NULL, '2021-11-21 03:01:40'),
 (61, 'stock_limit', '10', NULL, NULL),
@@ -259,19 +259,11 @@ INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_a
 (66, 'recaptcha', '{\"status\":0,\"site_key\":\"\",\"secret_key\":\"\"}', NULL, '2022-01-18 09:46:30'),
 (67, 'seller_pos', '0', NULL, NULL),
 (68, 'liqpay', '{\"status\":0,\"public_key\":\"\",\"private_key\":\"\"}', NULL, NULL),
-(69, 'paytm', '{\"status\":0,\"environment\":\"sandbox\",\"paytm_merchant_key\":\"\",\"paytm_merchant_mid\":\"\",\"paytm_merchant_website\":\"\",\"paytm_refund_url\":\"\"}', NULL, '2022-06-05 09:35:46'),
+(69, 'paytm', '{\"status\":0,\"environment\":\"sandbox\",\"paytm_merchant_key\":\"\",\"paytm_merchant_mid\":\"\",\"paytm_merchant_website\":\"\",\"paytm_refund_url\":\"\"}', NULL, '2022-04-23 13:05:05'),
 (70, 'refund_day_limit', '0', NULL, NULL),
 (71, 'business_mode', 'multi', NULL, NULL),
 (72, 'mail_config_sendgrid', '{\"status\":0,\"name\":\"\",\"host\":\"\",\"driver\":\"\",\"port\":\"\",\"username\":\"\",\"email_id\":\"\",\"encryption\":\"\",\"password\":\"\"}', NULL, NULL),
-(73, 'decimal_point_settings', '2', NULL, NULL),
-(74, 'shop_address', '', NULL, NULL),
-(75, 'billing_input_by_customer', '1', NULL, NULL),
-(76, 'wallet_status', '0', NULL, NULL),
-(77, 'loyalty_point_status', '0', NULL, NULL),
-(78, 'wallet_add_refund', '0', NULL, NULL),
-(79, 'loyalty_point_exchange_rate', '0', NULL, NULL),
-(80, 'loyalty_point_item_purchase_point', '0', NULL, NULL),
-(81, 'loyalty_point_minimum_point', '0', NULL, NULL);
+(73, 'decimal_point_settings', '2', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -806,25 +798,6 @@ CREATE TABLE `jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loyalty_point_transactions`
---
-
-CREATE TABLE `loyalty_point_transactions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `transaction_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `credit` decimal(24,3) NOT NULL DEFAULT '0.000',
-  `debit` decimal(24,3) NOT NULL DEFAULT '0.000',
-  `balance` decimal(24,3) NOT NULL DEFAULT '0.000',
-  `reference` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `transaction_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `migrations`
 --
 
@@ -1003,11 +976,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (162, '2022_03_18_143339_add_shipping_type_to_carts_table', 63),
 (163, '2022_04_06_020313_create_subscriptions_table', 64),
 (164, '2022_04_12_233704_change_column_to_products_table', 64),
-(165, '2022_04_19_095926_create_jobs_table', 64),
-(166, '2022_05_12_104247_create_wallet_transactions_table', 65),
-(167, '2022_05_12_104511_add_two_column_to_users_table', 65),
-(168, '2022_05_14_063309_create_loyalty_point_transactions_table', 65),
-(169, '2022_05_26_044016_add_user_type_to_password_resets_table', 65);
+(165, '2022_04_19_095926_create_jobs_table', 64);
 
 -- --------------------------------------------------------
 
@@ -1230,8 +1199,7 @@ CREATE TABLE `order_transactions` (
 CREATE TABLE `password_resets` (
   `identity` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `user_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'customer'
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1807,37 +1775,15 @@ CREATE TABLE `users` (
   `social_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_phone_verified` tinyint(1) NOT NULL DEFAULT '0',
   `temporary_token` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_email_verified` tinyint(1) NOT NULL DEFAULT '0',
-  `wallet_balance` double(8,2) DEFAULT NULL,
-  `loyalty_point` double(8,2) DEFAULT NULL
+  `is_email_verified` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `f_name`, `l_name`, `phone`, `image`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `street_address`, `country`, `city`, `zip`, `house_no`, `apartment_no`, `cm_firebase_token`, `is_active`, `payment_card_last_four`, `payment_card_brand`, `payment_card_fawry_token`, `login_medium`, `social_id`, `is_phone_verified`, `temporary_token`, `is_email_verified`, `wallet_balance`, `loyalty_point`) VALUES
-(0, 'walking customer', 'walking', 'customer', '000000000000', 'def.png', 'walking@customer.com', NULL, '', NULL, NULL, '2022-02-03 03:46:01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wallet_transactions`
---
-
-CREATE TABLE `wallet_transactions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `transaction_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `credit` decimal(24,3) NOT NULL DEFAULT '0.000',
-  `debit` decimal(24,3) NOT NULL DEFAULT '0.000',
-  `admin_bonus` decimal(24,3) NOT NULL DEFAULT '0.000',
-  `balance` decimal(24,3) NOT NULL DEFAULT '0.000',
-  `transaction_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `reference` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `users` (`id`, `name`, `f_name`, `l_name`, `phone`, `image`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `street_address`, `country`, `city`, `zip`, `house_no`, `apartment_no`, `cm_firebase_token`, `is_active`, `payment_card_last_four`, `payment_card_brand`, `payment_card_fawry_token`, `login_medium`, `social_id`, `is_phone_verified`, `temporary_token`, `is_email_verified`) VALUES
+(0, 'walking customer', 'walking', 'customer', '000000000000', 'def.png', 'walking@customer.com', NULL, '', NULL, NULL, '2022-02-03 03:46:01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -2050,12 +1996,6 @@ ALTER TABLE `help_topics`
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `jobs_queue_index` (`queue`);
-
---
--- Indexes for table `loyalty_point_transactions`
---
-ALTER TABLE `loyalty_point_transactions`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -2284,12 +2224,6 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Indexes for table `wallet_transactions`
---
-ALTER TABLE `wallet_transactions`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `wishlists`
 --
 ALTER TABLE `wishlists`
@@ -2357,7 +2291,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `business_settings`
 --
 ALTER TABLE `business_settings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `carts`
@@ -2480,16 +2414,10 @@ ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `loyalty_point_transactions`
---
-ALTER TABLE `loyalty_point_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -2670,12 +2598,6 @@ ALTER TABLE `translations`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `wallet_transactions`
---
-ALTER TABLE `wallet_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `wishlists`

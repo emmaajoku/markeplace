@@ -1,12 +1,12 @@
 @if(isset($product))
     @php($overallRating = \App\CPU\ProductManager::get_overall_rating($product->reviews))
-    <div class="flash_deal_product rtl" style="border:#0000000d 1px solid;cursor: pointer; height:150px;{{Session::get('direction') === "rtl" ? 'margin-right:6px;' : 'margin-left:6px;'}}"
+    <div class="flash_deal_product rtl" style="cursor: pointer; height:150px;{{Session::get('direction') === "rtl" ? 'margin-right:6px;' : 'margin-left:6px;'}}"
          onclick="location.href='{{route('product',$product->slug)}}'">
         @if($product->discount > 0)
         <div class="d-flex" style="top:0;position:absolute;">
             <span class="for-discoutn-value p-1 pl-2 pr-2" style="{{Session::get('direction') === "rtl" ? 'border-radius:0px 5px' : 'border-radius:5px 0px'}};">
                 @if ($product->discount_type == 'percent')
-                    {{round($product->discount,$decimal_point_settings)}}%
+                    {{round($product->discount)}}%
                 @elseif($product->discount_type =='flat')
                     {{\App\CPU\Helpers::currency_converter($product->discount)}}
                 @endif {{\App\CPU\translate('off')}}

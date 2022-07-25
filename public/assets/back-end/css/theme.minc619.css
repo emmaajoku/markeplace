@@ -18399,7 +18399,7 @@ a.badge-soft-success:focus, a.badge-soft-success:hover {
 
 .badge-soft-info {
     color: #00c9db;
-    background-color: rgba(0, 201, 219, .05)
+    background-color: rgba(0, 201, 219, .1)
 }
 
 a.badge-soft-info:focus, a.badge-soft-info:hover {

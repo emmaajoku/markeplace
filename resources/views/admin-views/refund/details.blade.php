@@ -23,8 +23,6 @@
 
 <div class="content container-fluid">
     @php($order = App\Model\Order::find($refund->order_id))
-    @php($wallet_status = App\CPU\Helpers::get_business_settings('wallet_status'))                         
-    @php($wallet_add_refund = App\CPU\Helpers::get_business_settings('wallet_add_refund'))
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -36,13 +34,13 @@
                         </div>
                         <div class="col-6 col-md-4 mt-2 mt-md-0 text-capitalize">{{\App\CPU\translate('refund_status')}}:
                             @if ($refund->status == 'pending')
-                                <span  style="color: coral"> {{\App\CPU\translate($refund->status)}}}</span>
+                                <span  style="color: coral"> {{$refund->status}}</span>
                             @elseif($refund->status == 'approved')
-                                <span style="color: rgb(21, 115, 255)"> {{\App\CPU\translate($refund->status)}}}</span>
+                                <span style="color: rgb(21, 115, 255)"> {{$refund->status}}</span>
                             @elseif($refund->status == 'refunded')
-                                <span style="color: rgba(1, 255, 44, 0.979)"> {{\App\CPU\translate($refund->status)}}}</span>
+                                <span style="color: rgba(1, 255, 44, 0.979)"> {{$refund->status}}</span>
                             @elseif($refund->status == 'rejected')
-                                <span style="color: rgba(255, 42, 5, 0.979)"> {{\App\CPU\translate($refund->status)}}}</span>
+                                <span style="color: rgba(255, 42, 5, 0.979)"> {{$refund->status}}</span>
                             @endif
                         </div>
                         <div class="col-6 col-md-4 mt-2 mt-md-0 " >
@@ -234,7 +232,7 @@
                                         {{$r_status->change_by}}
                                     </td>
                                     <td>
-                                        {{\App\CPU\translate($r_status->status)}}
+                                        {{$r_status->status}}
                                     </td>
                                     <td class="text-break">
                                         {{$r_status->message}}
@@ -336,15 +334,11 @@
                         <label class="input-label" for="">{{\App\CPU\translate('rejected_note')}}</label>
                         <input type="text" class="form-control" id="rejected_note" name="rejected_note">
                     </div>
-                    
                     <div class="form-group col-12" id="payment_option">
                         <label class="input-label" for="">{{\App\CPU\translate('payment_method')}}</label>
                         <select class="form-control" name="payment_method" id="payment_method">
                             <option value="cash">{{\App\CPU\translate('cash')}}</option>
                             <option value="digitally_paid">{{\App\CPU\translate('digitally_paid')}}</option>
-                            @if ($wallet_status == 1 && $wallet_add_refund == 1)
-                                <option value="customer_wallet">{{\App\CPU\translate('customer_wallet')}}</option>
-                            @endif
                         </select>
                     </div>
                     <div class="form-group col-12" id="refunded">

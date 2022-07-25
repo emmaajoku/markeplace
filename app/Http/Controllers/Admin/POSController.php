@@ -21,35 +21,28 @@ class POSController extends Controller
 {
     public function order_list(Request $request)
     {
-        
+        $query_param = [];
         $search = $request['search'];
-        $from = $request['from'];
-        $to = $request['to'];
         
             
         $orders = Order::with(['customer'])->where(['seller_is'=>'admin'])->where('order_status','delivered');
             
         
 
-        
+        if ($request->has('search')) {
             $key = explode(' ', $request['search']);
-            
-            $orders = $orders->when($request->has('search') && $search!=null,function ($q) use ($key) {
-                $q->where(function($qq) use ($key){
-                    foreach ($key as $value) {
-                        $qq->where('id', 'like', "%{$value}%")
-                            ->orWhere('order_status', 'like', "%{$value}%")
-                            ->orWhere('transaction_ref', 'like', "%{$value}%");
-                    }});
-                })->when($from!=null , function($dateQuery) use($from, $to) {
-                    $dateQuery->whereDate('created_at', '>=',$from)
-                                ->whereDate('created_at', '<=',$to);
-                    });
-        
-        
+            $orders = $orders->where(function ($q) use ($key) {
+                foreach ($key as $value) {
+                    $q->orWhere('id', 'like', "%{$value}%")
+                        ->orWhere('order_status', 'like', "%{$value}%")
+                        ->orWhere('transaction_ref', 'like', "%{$value}%");
+                }
+            });
+            $query_param = ['search' => $request['search']];
+        }
 
-        $orders = $orders->where('order_type','POS')->orderBy('id','desc')->paginate(Helpers::pagination_limit())->appends(['search'=>$request['search'],'from'=>$request['from'],'to'=>$request['to']]);
-        return view('admin-views.pos.order.list', compact('orders', 'search','from','to'));
+        $orders = $orders->where('order_type','POS')->orderBy('id','desc')->paginate(Helpers::pagination_limit())->appends($query_param);
+        return view('admin-views.pos.order.list', compact('orders', 'search'));
     }
     public function order_details($id)
     {

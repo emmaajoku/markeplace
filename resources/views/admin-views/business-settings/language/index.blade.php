@@ -265,6 +265,13 @@
                 },
                 success: function (data) {
                     console.log(data);
+                    // if(data == true) {
+                    //     Toastr::success('Language Status Updated Successfully!');
+                    //     window.reload();
+                    // }else{
+                    //     Toastr::error('Language Status Updated Failed!');
+                    //     window.reload();
+                    // }
                 }
             });
         }
@@ -300,7 +307,7 @@
                     showCancelButton: true,
                     confirmButtonColor: 'primary',
                     cancelButtonColor: 'secondary',
-                    confirmButtonText: '{{\App\CPU\translate("Yes, delete it")}}!'
+                    confirmButtonText: '{{\App\CPU\translate('Yes, delete it')}}!'
                 }).then((result) => {
                     if (result.value) {
                         window.location.href = $(this).attr("id");

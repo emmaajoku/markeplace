@@ -130,7 +130,19 @@
                                             </label>
                                         </td>
                                         <td>
-                                            
+                                            {{-- @if($help->status== 1)
+                                            <a class=" status_id  btn btn-success btn-sm" data-id="{{ $help->id }}">
+                                                <i class="fa fa-sync"></i>
+                                            </a>
+                                            @else
+                                            <a class=" status_id btn btn-danger btn-sm" data-id="{{ $help->id }}">
+                                                <i class="fa fa-sync"></i>
+                                            </a>
+                                            @endif --}}
+
+                                            {{--
+                                                                                    <a href="{{ route('admin.helpTopic.delete',$help->id) }}" class="btn btn-danger btn-sm " onclick="alert('Are You sure to Delete')"  >
+                                                                                        <i class="fa fa-trash"></i> --}}
                                             <div class="d-flex">
                                                 <a class="btn btn-primary btn-sm edit m-1" style="cursor: pointer;"
                                                     data-toggle="modal" data-target="#editModal"

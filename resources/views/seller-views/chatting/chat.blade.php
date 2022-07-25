@@ -357,7 +357,7 @@
                                                     type="text" placeholder="{{\App\CPU\translate('Send a message')}}"
                                                     aria-label="Search">
                                                 <input class="aSend" type="submit" id="msgSendBtn" style="width: 45px;"
-                                                       value="{{\App\CPU\translate('Send')}}">
+                                                       value="Send">
                                                 <i class="fa fa-send" style="color: #92C6FF" aria-hidden="true"></i>
 
                                             </form>

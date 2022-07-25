@@ -58,7 +58,12 @@
                                                     class="btn btn-primary">{{\App\CPU\translate('Update')}}
                                             </button>
                                         </td>
-                                    
+                                    <!--<td style="width: 100px">
+                                            <button type="button"
+                                                    onclick="remove_key('{{$language['key']}}')"
+                                                    class="btn btn-danger">Remove
+                                            </button>
+                                        </td>-->
                                     </tr>
                                 @endforeach
                                 </tbody>

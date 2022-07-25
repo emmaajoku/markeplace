@@ -213,7 +213,7 @@
                     <div class="card-body">
                         <div class="card-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                             <div class="flex-start">
-                                <div><h4>{{\App\CPU\translate('Status')}} : </h4></div>
+                                <div><h4>Status : </h4></div>
                                 <div class="mx-1"><h4>{!! $seller->status=='approved'?'<label class="badge badge-success">Active</label>':'<label class="badge badge-danger">In-Active</label>' !!}</h4></div>
                             </div>
                             <div class="flex-start">
@@ -265,26 +265,52 @@
                         <div class="col-md-8 mt-2">
                             <div class="flex-start">
                                 <div><h4>{{\App\CPU\translate('bank_name')}} : </h4></div>
-                                <div class="mx-1"><h4>{{$seller->bank_name ? $seller->bank_name : \App\CPU\translate('No Data found')}}</h4></div>
+                                <div class="mx-1"><h4>{{$seller->bank_name ? $seller->bank_name : 'No Data found'}}</h4></div>
                             </div>
                             <div class="flex-start">
                                 <div><h6>{{\App\CPU\translate('Branch')}} : </h6></div>
-                                <div class="mx-1"><h6>{{$seller->branch ? $seller->branch : \App\CPU\translate('No Data found')}}</h6></div>
+                                <div class="mx-1"><h6>{{$seller->branch ? $seller->branch : 'No Data found'}}</h6></div>
                             </div>
                             <div class="flex-start">
                                 <div><h6>{{\App\CPU\translate('holder_name')}} : </h6></div>
-                                <div class="mx-1"><h6>{{$seller->holder_name ? $seller->holder_name : \App\CPU\translate('No Data found')}}</h6></div>
+                                <div class="mx-1"><h6>{{$seller->holder_name ? $seller->holder_name : 'No Data found'}}</h6></div>
                             </div>
                             <div class="flex-start">
                                 <div><h6>{{\App\CPU\translate('account_no')}} : </h6></div>
-                                <div class="mx-1"><h6>{{$seller->account_no ? $seller->account_no : \App\CPU\translate('No Data found')}}</h6></div>
+                                <div class="mx-1"><h6>{{$seller->account_no ? $seller->account_no : 'No Data found'}}</h6></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            
+            {{-- <div class="col-md-6 mt-3">
+                <form action="{{route('admin.sellers.sales-commission-update',[$seller['id']])}}" method="post">
+                    @csrf
+                    <div class="card">
+                        <div class="card-header">
+                            <label> Sales Commission : </label>
+                            <label class="switch ml-3">
+                                <input type="checkbox" name="status"
+                                       class="status"
+                                       value="1" {{$seller['sales_commission_percentage']!=null?'checked':''}}>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="card-body">
+                            <small class="badge badge-soft-danger mb-3">
+                                If sales commission is disabled here, the system default commission will be applied.
+                            </small>
+                            <div class="form-group">
+                                <label>Commission ( % )</label>
+                                <input type="number" value="{{$seller['sales_commission_percentage']}}"
+                                       class="form-control" name="commission">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div> --}}
         </div>
 </div>
 @endsection

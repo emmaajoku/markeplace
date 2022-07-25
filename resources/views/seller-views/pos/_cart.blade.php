@@ -201,7 +201,7 @@
                         <div class="form-group col-sm-12">
                             <label for="">{{\App\CPU\translate('coupon_code')}}</label>
                             <input type="text" id="coupon_code" class="form-control" name="coupon_code">
-                            
+                            {{-- <input type="hidden" id="user_id" name="user_id" > --}}
                         </div>
     
                         <div class="form-group col-sm-12">

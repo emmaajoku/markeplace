@@ -1,7 +1,9 @@
 <div style="width:410px;">
     <div class="text-center pt-4 mb-3">
         <h2 style="line-height: 1">{{$shop->name}}</h2>
-        
+        {{-- <h5 style="font-size: 20px;font-weight: lighter;line-height: 1">
+            {{\App\Model\BusinessSetting::where(['type'=>'address'])->first()->value}}
+        </h5> --}}
         <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
             {{\App\CPU\translate('Phone')}}
             : {{$shop->contact}}
@@ -121,7 +123,7 @@
         </div>
     </div>
     <div class="d-flex flex-row justify-content-between border-top">
-        <span>{{\App\CPU\translate('Paid_by')}}: {{\App\CPU\translate($order->payment_method)}}</span>
+        <span>{{\App\CPU\translate('Paid_by')}}: {{$order->payment_method}}</span>
     </div>
     <span>---------------------------------------------------------------------------------------</span>
     <h5 class="text-center pt-3">

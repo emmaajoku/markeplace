@@ -40,9 +40,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_active' => 'integer',
         'is_phone_verified'=>'integer',
-        'is_email_verified' => 'integer',
-        'wallet_balance'=>'float',
-        'loyalty_point'=>'float'
+        'is_email_verified' => 'integer'
     ];
 
     public function wish_list()

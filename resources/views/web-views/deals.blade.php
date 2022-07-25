@@ -137,7 +137,6 @@
 @endpush
 
 @section('content')
-@php($decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings'))
     <div class="for-banner container rtl"
          style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
 
@@ -204,7 +203,7 @@
                             @if (isset($dp->product))
                                 <div class="col-xl-2 col-sm-3 col-6" style="margin-bottom: 10px">
                                     
-                                    @include('web-views.partials._single-product',['product'=>$dp->product,'decimal_point_settings'=>$decimal_point_settings])
+                                    @include('web-views.partials._single-product',['product'=>$dp->product])
                                     
                                     
                                 </div>

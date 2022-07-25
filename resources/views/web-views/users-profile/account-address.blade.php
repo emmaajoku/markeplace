@@ -261,11 +261,21 @@
                                         <input class="form-control" type="number" id="zip" name="zip" required>
                                     </div>
                                 </div>
-                                
+                                {{-- <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="state">{{\App\CPU\translate('State')}}</label>
+                                        <input type="text" class="form-control" id="state" name="state" placeholder="" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="country">{{\App\CPU\translate('Country')}}</label>
+                                        <input type="text" class="form-control" id="country" name="country"
+                                               placeholder="" required>
+                                    </div>
+                                </div> --}}
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="address">{{\App\CPU\translate('address')}}</label>
-                                        
+                                        {{-- <input class="form-control" type="text" id="address" name="address" required> --}}
                                         <textarea class="form-control" id="address"
                                                             type="text"  name="address" required></textarea>
                                     </div>
@@ -317,7 +327,7 @@
                     @foreach($shippingAddresses as $shippingAddress)
                         <section class="col-lg-6 col-md-6 mb-4 mt-5">
                             <div class="card" style="text-transform: capitalize;">
-                                
+                                {{-- <div class="card cardColor"> --}}
                                     <div class="card-header d-flex justify-content-between" style="padding: 5px;">
                                         <div>
                                             <i class="fa fa-thumb-tack fa-2x iconHad" aria-hidden="true"></i>
@@ -325,10 +335,12 @@
                                         <div>
                                             <span> {{$shippingAddress['address_type']}} {{\App\CPU\translate('address')}} ({{$shippingAddress['is_billing']==1?\App\CPU\translate('Billing_address'):\App\CPU\translate('shipping_address')}}) </span>
                                         </div>
-                                        
+                                        {{-- <div> --}}
                                         <div class="d-flex justify-content-between">
                                             
-                                                
+                                                {{-- <a class="" id="edit" data-toggle="modal" data-target="#editAddress_{{$shippingAddress->id}}">
+                                                    <i class="fa fa-edit fa-lg"></i>
+                                                </a> --}}
                                                 <a class="" id="edit" href="{{route('address-edit',$shippingAddress->id)}}">
                                                     <i class="fa fa-edit fa-lg"></i>
                                                 </a>
@@ -339,7 +351,7 @@
                                             
                                         </div>
                                     </div>
-                                        
+                                        {{-- </div> --}}
 
                                     {{-- Modal Address Edit --}}
                                     <div class="modal fade" id="editAddress_{{$shippingAddress->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -447,7 +459,7 @@
                                         </div>
                                         
                                     </div>
-                                
+                                {{-- </div> --}}
                             </div>
                         </section>
                     @endforeach
@@ -515,7 +527,10 @@
                     success: function () {
                         toastr.success('{{\App\CPU\translate('Address Update Successfully')}}.');
                         location.reload();
-                        
+                        // $('#name').val('');
+                        // $('#link').val('');
+                        // $('#icon').val('');
+                        // $('#image-set').val('');
 
                     }
                 });
@@ -531,7 +546,7 @@
             display: none;
         }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{\App\CPU\Helpers::get_business_settings('map_api_key')}}&libraries=places&v=3.49"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{\App\CPU\Helpers::get_business_settings('map_api_key')}}&libraries=places&v=3.45.8"></script>
     <script>
 
         function initAutocomplete() {

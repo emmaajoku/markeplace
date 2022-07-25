@@ -22,13 +22,13 @@
                         <div class="form-group">
                             <label for="purchase_code">Codecanyon Username</label>
                             <input type="text" value="{{env('BUYER_USERNAME')}}" class="form-control" id="username"
-                                   name="username" required>
+                                   name="username" placeholder="Enter Anything" required>
                         </div>
 
                         <div class="form-group">
                             <label for="purchase_code">Purchase Code</label>
                             <input type="text" value="{{env('PURCHASE_CODE')}}" class="form-control" id="purchase_key"
-                                   name="purchase_key" required>
+                                   name="purchase_key" placeholder="Enter Anything" required>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-info">Continue</button>

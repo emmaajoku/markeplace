@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use function App\CPU\translate;
-use App\CPU\Convert;
 
 class UserProfileController extends Controller
 {
@@ -158,7 +157,7 @@ class UserProfileController extends Controller
 
     public function account_oder()
     {
-        $orders = Order::where('customer_id', auth('customer')->id())->orderBy('id','DESC')->paginate(15);
+        $orders = Order::where('customer_id', auth('customer')->id())->orderBy('id','DESC')->get();
         return view('web-views.users-profile.account-orders', compact('orders'));
     }
 
@@ -293,12 +292,6 @@ class UserProfileController extends Controller
                     $query->where('customer_id',auth('customer')->id());
                 })->first();
             }
-            if($request->from_order_details==1)
-            {
-                $orderDetails = Order::where('id',$request['order_id'])->whereHas('details',function ($query){
-                    $query->where('customer_id',auth('customer')->id());
-                })->first();
-            }
             
         }
         
@@ -307,7 +300,7 @@ class UserProfileController extends Controller
             return view('web-views.order-tracking', compact('orderDetails'));
         }
 
-        return redirect()->route('track-order.index')->with('Error', \App\CPU\translate('Invalid Order Id or Phone Number'));
+        return redirect()->route('track-order.index')->with('Error', 'Invalid Order Id or Phone Number');
     }
 
     public function track_last_order()
@@ -317,7 +310,7 @@ class UserProfileController extends Controller
         if ($orderDetails != null) {
             return view('web-views.order-tracking', compact('orderDetails'));
         } else {
-            return redirect()->route('track-order.index')->with('Error', \App\CPU\translate('Invalid Order Id or Phone Number'));
+            return redirect()->route('track-order.index')->with('Error', 'Invalid Order Id or Phone Number');
         }
 
     }
@@ -339,21 +332,7 @@ class UserProfileController extends Controller
     public function refund_request(Request $request,$id)
     {
         $order_details = OrderDetail::find($id);
-        $user = auth('customer')->user();
-
-        $wallet_status = Helpers::get_business_settings('wallet_status');
-        $loyalty_point_status = Helpers::get_business_settings('loyalty_point_status');
-        if($loyalty_point_status == 1)
-        {
-            $loyalty_point = CustomerManager::count_loyalty_point_for_amount($id);
     
-            if($user->loyalty_point < $loyalty_point)
-            {
-                Toastr::warning(translate('you have not sufficient loyalty point to refund this order!!'));
-                return back();
-            }
-        }
-        
         return view('web-views.users-profile.refund-request',compact('order_details'));
     }
     public function store_refund(Request $request)
@@ -365,20 +344,7 @@ class UserProfileController extends Controller
             
         ]);
         $order_details = OrderDetail::find($request->order_details_id);
-        $user = auth('customer')->user();
 
-        
-        $loyalty_point_status = Helpers::get_business_settings('loyalty_point_status');
-        if($loyalty_point_status == 1)
-        {
-            $loyalty_point = CustomerManager::count_loyalty_point_for_amount($request->order_details_id);
-    
-            if($user->loyalty_point < $loyalty_point)
-            {
-                Toastr::warning(translate('you have not sufficient loyalty point to refund this order!!'));
-                return back();
-            }
-        }
         $refund_request = new RefundRequest;
         $refund_request->order_details_id = $request->order_details_id;
         $refund_request->customer_id = auth('customer')->id();
