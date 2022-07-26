@@ -22,13 +22,6 @@ spec:
             - containerPort: 80
               protocol: TCP
               name: http
-          resources:
-            requests:
-              memory: '2024Mi'
-              cpu: '1024m'
-            limits:
-              memory: '2024Mi'
-              cpu: '1024m'
           env:
             - name: APP_NAME
               value: "laravel"
