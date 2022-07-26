@@ -24,7 +24,7 @@ spec:
               name: http
           env:
             - name: APP_NAME
-              value: "Marketplace"
+              value: "laravel"
             - name: APP_ENV
               value: "local"
             - name: APP_KEY
@@ -32,7 +32,7 @@ spec:
             - name: APP_DEBUG
               value: "true"
             - name: APP_URL
-              value: "https://members.biazua.com"
+              value: "http://0.0.0.0"
             - name: LOG_CHANNEL
               value: "stack"
             - name: PAYMENT_FLUTTERWAVE_SK
@@ -135,6 +135,12 @@ spec:
               value: "https://listener.logz.io:8071"
             - name: PUSHER_APP_ID
               value: "946159"
+            - name: PURCHASE_CODE
+              value: "e73f140a-debf"
+            - name: BUYER_USERNAME
+              value: "sjfhlsdf"
+            - name: SOFTWARE_ID
+              value: "MzE0NDg1OTc="
             - name: PUSHER_KEY
               value: "9e07ca368dd6c88991a6"
             - name: PUSHER_SECRET
