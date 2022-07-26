@@ -27,6 +27,10 @@ RUN apt-get update && apt-get install -y \
     libmemcached-dev \
     nginx
 
+
+# Install PHP Redis extension
+RUN printf "\n \n" | pecl install redis && docker-php-ext-enable redis
+
 # Install supervisor
 RUN apt-get install -y supervisor
 
