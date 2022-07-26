@@ -32,7 +32,7 @@ spec:
             - name: APP_DEBUG
               value: "true"
             - name: APP_URL
-              value: "http://0.0.0.0"
+              value: "https://members.biazua.com"
             - name: LOG_CHANNEL
               value: "stack"
             - name: PAYMENT_FLUTTERWAVE_SK
