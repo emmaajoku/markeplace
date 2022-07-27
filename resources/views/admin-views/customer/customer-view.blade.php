@@ -137,7 +137,7 @@
                                 <div class="avatar avatar-circle {{Session::get('direction') === "rtl" ? 'ml-3' : 'mr-3'}}">
                                     <img
                                         class="avatar-img"
-                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                        onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                         src="{{asset('storage/app/public/profile/'.$customer->image)}}"
                                         alt="Image Description">
                                 </div>

@@ -30,9 +30,9 @@
                             <div class="row " style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                 <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
                                     <img
-                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                        onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                         style="height: 8rem; width: 9rem;" class="img-circle"
-                                        src="{{asset('public/assets/front-end')}}/img/contacts/blank.jpg"
+                                        src="{{asset('/assets/front-end')}}/img/contacts/blank.jpg"
                                         alt="User Pic">
 
                                 </div>

@@ -52,10 +52,10 @@
                                 <select name="language[]" id="language" onchange="$('#alert_box').show();"
                                         data-maximum-selection-length="3" class="form-control js-select2-custom country-var-select"
                                         required multiple=true>
-                                    @foreach(\Illuminate\Support\Facades\File::files(base_path('public/assets/front-end/img/flags')) as $path)
+                                    @foreach(\Illuminate\Support\Facades\File::files(base_path('/assets/front-end/img/flags')) as $path)
                                         <option value="{{ pathinfo($path)['filename'] }}"
                                                 {{in_array(pathinfo($path)['filename'],$language)?'selected':''}}
-                                                title="{{ asset('public/assets/front-end/img/flags/'.pathinfo($path)['filename'].'.png') }}">
+                                                title="{{ asset('/assets/front-end/img/flags/'.pathinfo($path)['filename'].'.png') }}">
                                             {{ strtoupper(pathinfo($path)['filename']) }}
                                         </option>
                                     @endforeach

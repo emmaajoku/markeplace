@@ -1,3 +1,9 @@
+<style>
+    ul.cdz-product-labels li.label-item .label-content {
+    text-align: center;
+    display: none;
+}
+    </style>
 <?php
 
 /**

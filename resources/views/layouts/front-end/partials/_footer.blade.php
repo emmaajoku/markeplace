@@ -86,7 +86,7 @@
         <div >
             <a href="{{route('about-us')}}">
                 <div style="text-align: center;">
-                    <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/about company.png")}}"
+                    <img style="height: 60px;width:60px;" src="{{asset("/assets/front-end/png/about company.png")}}"
                             alt="">
                 </div>
                 <div style="text-align: center;">
@@ -103,7 +103,7 @@
         <div >
             <a href="{{route('contacts')}}">
                 <div style="text-align: center;">
-                    <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/contact us.png")}}"
+                    <img style="height: 60px;width:60px;" src="{{asset("/assets/front-end/png/contact us.png")}}"
                              alt="">
                 </div>
                 <div style="text-align: center;">
@@ -118,7 +118,7 @@
         <div >
             <a href="{{route('helpTopic')}}">
                 <div style="text-align: center;">
-                    <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/faq.png")}}"
+                    <img style="height: 60px;width:60px;" src="{{asset("/assets/front-end/png/faq.png")}}"
                              alt="">
                 </div>
                 <div style="text-align: center;">
@@ -148,7 +148,7 @@
                     <a class="d-inline-block mt-n1" href="{{route('home')}}">
                         <img style="height: 46px!important; width: 180px;"
                              src="{{asset("storage/app/public/company/")}}/{{ $web_config['footer_logo']->value }}"
-                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                             onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                              alt="{{ $web_config['name']->value }}"/>
                     </a>
                 </div>
@@ -238,7 +238,7 @@
                                     @if($ios['status'])
                                         <div class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2">
                                             <a class="" href="{{ $ios['link'] }}" role="button"><img
-                                                    src="{{asset("public/assets/front-end/png/apple_app.png")}}"
+                                                    src="{{asset("/assets/front-end/png/apple_app.png")}}"
                                                     alt="" style="height: 51px!important;">
                                             </a>
                                         </div>
@@ -247,7 +247,7 @@
                                     @if($android['status'])
                                         <div class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}} mb-2">
                                             <a href="{{ $android['link'] }}" role="button">
-                                                <img src="{{asset("public/assets/front-end/png/google_app.png")}}"
+                                                <img src="{{asset("/assets/front-end/png/google_app.png")}}"
                                                      alt="" style="height: 51px!important;">
                                             </a>
                                         </div>

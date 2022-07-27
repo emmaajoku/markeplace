@@ -70,7 +70,7 @@
                         <div class="col-12 col-sm-6 col-md-2">
                             <div >
                                 <img style="width: 100%; height:100%;"
-                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                 src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$refund->product!=null?$refund->product->thumbnail:''}}"
                                 alt="VR Collection" >
                             </div>

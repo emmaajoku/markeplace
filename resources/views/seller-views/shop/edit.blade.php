@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="text-center">
                                     <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px;" id="viewer"
-                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                    onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                     src="{{asset('storage/app/public/shop/'.$shop->image)}}" alt="Product thumbnail"/>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="text-center">
                                     <img style="width: auto; height:auto; border: 1px solid; border-radius: 10px; max-height:200px" id="viewerBanner"
-                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                         onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                          src="{{asset('storage/app/public/shop/banner/'.$shop->banner)}}" alt="Product thumbnail"/>
                                 </div>
                             </div>

@@ -13,7 +13,7 @@
     <meta property="twitter:url" content="{{env('APP_URL')}}">
     <meta property="twitter:description" content="{!! substr($web_config['about']->value,0,100) !!}">
 
-    <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/home.css"/>
+    <link rel="stylesheet" href="{{asset('/assets/front-end')}}/css/home.css"/>
     <style>
         .media {
             background: white;
@@ -468,8 +468,8 @@
      }
     </style>
 
-    <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/owl.carousel.min.css"/>
-    <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/owl.theme.default.min.css"/>
+    <link rel="stylesheet" href="{{asset('/assets/front-end')}}/css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="{{asset('/assets/front-end')}}/css/owl.theme.default.min.css"/>
 @endpush
 
 @section('content')
@@ -584,7 +584,7 @@
                             <div class="d-flex align-items-center justify-content-center"
                                  style="height:100px;margin:5px;">
                                 <img style="border-radius: 50%;"
-                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                    onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                     src="{{asset("storage/app/public/brand/$brand->image")}}" alt="{{$brand->name}}">
                             </div>
                         </a>
@@ -677,7 +677,7 @@
                             <div class="d-flex justify-content-center align-items-center" style="margin:20px 20px -20px 20px;padding-top: 20px;">
                                 <img style="border-radius:5px 5px 0px opx;"
                                     src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$deal_of_the_day->product['thumbnail']}}"
-                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                    onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                     alt="">
                             </div>
                             <div style="background:#ffffff;margin:20px;padding-top: 10px;height: 200px;border-radius: 0px 0px 5px 5px;">
@@ -733,7 +733,7 @@
                                 <div class="d-flex justify-content-center align-items-center" style="margin:20px 20px -20px 20px;padding-top: 20px;">
                                     <img style=""
                                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
-                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                        onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                         alt="">
                                 </div>
                                 <div style="background:#ffffff;margin:20px;padding-top: 10px;height: 200px;border-radius: 0px 0px 5px 5px;">
@@ -823,7 +823,7 @@
                 <a href="{{$main_section_banner->url}}"
                     style="cursor: pointer;">
                     <img class="d-block footer_banner_img" style="width: 100%;border-radius: 5px;height: auto !important;"
-                            onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                            onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                             src="{{asset('storage/app/public/banner')}}/{{$main_section_banner['photo']}}">
                 </a>
             </div>
@@ -857,7 +857,7 @@
                                     <div class="text-center"  style="margin: 5px;">
                                         <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
                                             <img style="vertical-align: middle; height: 100px;border-radius: 5px;"
-                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                 src="{{asset("storage/app/public/category/$category->icon")}}"
                                                 alt="{{$category->name}}">
                                             <p class="text-center small "
@@ -892,7 +892,7 @@
                                         <div class="text-center"  style="margin: 5px;">
                                             <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
                                                 <img style="vertical-align: middle; height: 100px;border-radius: 5px;"
-                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                    onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                     src="{{asset("storage/app/public/category/$category->icon")}}"
                                                     alt="{{$category->name}}">
                                                 <p class="text-center small "
@@ -934,7 +934,7 @@
                                                     <a href="{{route('shopView',['id'=>$seller['id']])}}">
                                                         <img
                                                             style="vertical-align: middle; padding: 2%;width:100px;height: 100px;border-radius: 50%"
-                                                            onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                            onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                             src="{{asset("storage/app/public/shop")}}/{{$seller->shop->image}}">
                                                         <p class="text-center small ">{{Str::limit($seller->shop->name, 14)}}</p>
                                                     </a>
@@ -956,7 +956,7 @@
     <div class="container rtl mt-3">
         <div class="row d-flex justify-content-center">
             <div style="height: 90px;width:90px;">
-                <img  src="{{asset("public/assets/front-end/png/new-arrivals.png")}}"
+                <img  src="{{asset("/assets/front-end/png/new-arrivals.png")}}"
                                  alt="">
                                 
             </div>
@@ -988,7 +988,7 @@
                     <div class="card-body">
                         <div class="row d-flex justify-content-between m-3">
                             <div>
-                                <img style="height:30px;width:30px;"  src="{{asset("public/assets/front-end/png/best sellings.png")}}"
+                                <img style="height:30px;width:30px;"  src="{{asset("/assets/front-end/png/best sellings.png")}}"
                                          alt=""> 
                                     <span style="margin-left:10px;text-transform: uppercase;font-weight: 700;">{{ \App\CPU\translate('best sellings')}}</span>
                             </div>
@@ -1022,7 +1022,7 @@
                                                 <a class="d-block d-flex justify-content-center" style="width:100%;height:100%;"
                                                     href="{{route('product',$bestSell->product->slug)}}">
                                                     <img style="border-radius:5px;"
-                                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                        onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$bestSell->product['thumbnail']}}"
                                                         alt="Product"/>
                                                 </a>
@@ -1075,7 +1075,7 @@
                     <div class="card-body">
                         <div class="row d-flex justify-content-between m-3">
                             <div>
-                                <img style="height:30px;width:30px;"  src="{{asset("public/assets/front-end/png/top-rated.png")}}"
+                                <img style="height:30px;width:30px;"  src="{{asset("/assets/front-end/png/top-rated.png")}}"
                                          alt=""> 
                                     <span style="margin-left:10px;text-transform: uppercase;font-weight: 700;">{{ \App\CPU\translate('top rated')}}</span>
                             </div>
@@ -1109,7 +1109,7 @@
                                                 <a class="d-block d-flex justify-content-center" style="width:100%;height:100%;"
                                                     href="{{route('product',$top->product->slug)}}">
                                                     <img style="border-radius:5px;"
-                                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                        onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$top->product['thumbnail']}}"
                                                         alt="Product"/>
                                                 </a>
@@ -1169,7 +1169,7 @@
                     <a href="{{$banner->url}}"
                         style="cursor: pointer;">
                          <img class="" style="width: 100%; border-radius:5px;height:auto;"
-                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                              onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                               src="{{asset('storage/app/public/banner')}}/{{$banner['photo']}}">
                      </a>
                 </div>
@@ -1202,7 +1202,7 @@
                         <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}"
                             style="cursor: pointer;">
                              <img class="" style="width: 100%; border-radius:5px;height: 300px;"
-                                  onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                  onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                   src="{{asset('storage/app/public/category')}}/{{$category['icon']}}">
                          </a>
                     </div>
@@ -1231,7 +1231,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system" >
                     <div style="text-align: center;">
-                        <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/delivery.png")}}"
+                        <img style="height: 60px;width:60px;" src="{{asset("/assets/front-end/png/delivery.png")}}"
                                  alt="">
                     </div>
                     <div style="text-align: center;">
@@ -1244,7 +1244,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system">
                     <div style="text-align: center;">
-                        <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/Payment.png")}}"
+                        <img style="height: 60px;width:60px;" src="{{asset("/assets/front-end/png/Payment.png")}}"
                                  alt="">
                     </div>
                     <div style="text-align: center;">
@@ -1257,7 +1257,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system">
                     <div style="text-align: center;">
-                        <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/money.png")}}"
+                        <img style="height: 60px;width:60px;" src="{{asset("/assets/front-end/png/money.png")}}"
                                  alt="">
                     </div>
                     <div style="text-align: center;">
@@ -1270,7 +1270,7 @@
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="shipping-method-system">
                     <div style="text-align: center;">
-                        <img style="height: 60px;width:60px;" src="{{asset("public/assets/front-end/png/Genuine.png")}}"
+                        <img style="height: 60px;width:60px;" src="{{asset("/assets/front-end/png/Genuine.png")}}"
                                  alt="">
                     </div>
                     <div style="text-align: center;">
@@ -1287,7 +1287,7 @@
 
 @push('script')
     {{-- Owl Carousel --}}
-    <script src="{{asset('public/assets/front-end')}}/js/owl.carousel.min.js"></script>
+    <script src="{{asset('/assets/front-end')}}/js/owl.carousel.min.js"></script>
 
     <script>
         $('#flash-deal-slider').owlCarousel({

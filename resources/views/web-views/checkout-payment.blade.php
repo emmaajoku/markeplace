@@ -45,7 +45,7 @@
                                         <form action="{{route('checkout-complete',['payment_method'=>'cash_on_delivery'])}}" method="get" class="needs-validation">
                                             <button class="btn btn-block click-if-alone" type="submit">
                                                 <img width="150" style="margin-top: -10px"
-                                                     src="{{asset('public/assets/front-end/img/cod.png')}}"/>
+                                                     src="{{asset('/assets/front-end/img/cod.png')}}"/>
                                             </button>
                                         </form>
                                     </div>
@@ -62,7 +62,7 @@
                                             <button class="btn btn-block click-if-alone" type="submit">
                                             
                                                 <img width="150" style="margin-top: -10px"
-                                                     src="{{asset('public/assets/front-end/img/wallet.png')}}"/>
+                                                     src="{{asset('/assets/front-end/img/wallet.png')}}"/>
                                             </button>
                                         </form>
                                     </div>
@@ -79,7 +79,7 @@
                                             <input type="hidden" value="{{ csrf_token() }}" name="_token"/>
                                             <button class="btn btn-block click-if-alone" type="submit">
                                                 <img width="150"
-                                                     src="{{asset('public/assets/front-end/img/sslcomz.png')}}"/>
+                                                     src="{{asset('/assets/front-end/img/sslcomz.png')}}"/>
                                             </button>
                                         </form>
                                     </div>
@@ -97,7 +97,7 @@
                                             {{ csrf_field() }}
                                             <button class="btn btn-block click-if-alone" type="submit">
                                                 <img width="150"
-                                                     src="{{asset('public/assets/front-end/img/paypal.png')}}"/>
+                                                     src="{{asset('/assets/front-end/img/paypal.png')}}"/>
                                             </button>
                                         </form>
                                     </div>
@@ -116,7 +116,7 @@
                                         <button class="btn btn-block click-if-alone" type="button" id="checkout-button">
                                             {{-- <i class="czi-card"></i> {{\App\CPU\translate('Credit / Debit card ( Stripe )')}} --}}
                                             <img width="150"
-                                            src="{{asset('public/assets/front-end/img/stripe.png')}}"/>
+                                            src="{{asset('/assets/front-end/img/stripe.png')}}"/>
                                         </button>
                                         <script type="text/javascript">
                                             // Create an instance of the Stripe object with your publishable API key
@@ -172,7 +172,7 @@
                                         <button class="btn btn-block click-if-alone" type="button"
                                                 onclick="$('.razorpay-payment-button').click()">
                                             <img width="150"
-                                                 src="{{asset('public/assets/front-end/img/razor.png')}}"/>
+                                                 src="{{asset('/assets/front-end/img/razor.png')}}"/>
                                         </button>
                                     </div>
                                 </div>
@@ -216,7 +216,7 @@
                                         <button class="btn btn-block click-if-alone" type="button"
                                                 onclick="$('.paystack-payment-button').click()">
                                             <img width="100"
-                                                 src="{{asset('public/assets/front-end/img/paystack.png')}}"/>
+                                                 src="{{asset('/assets/front-end/img/paystack.png')}}"/>
                                         </button>
                                     </div>
                                 </div>
@@ -257,7 +257,7 @@
                                         <button class="btn btn-block click-if-alone" type="button"
                                                 onclick="document.order.submit()">
                                             <img width="100"
-                                                 src="{{asset('public/assets/front-end/img/senangpay.png')}}"/>
+                                                 src="{{asset('/assets/front-end/img/senangpay.png')}}"/>
                                         </button>
                                     </div>
                                 </div>
@@ -274,7 +274,7 @@
                                             {{ csrf_field() }}
                                             <button class="btn btn-block click-if-alone" type="submit">
                                                 <img width="150"
-                                                     src="{{asset('public/assets/front-end/img/paymob.png')}}"/>
+                                                     src="{{asset('/assets/front-end/img/paymob.png')}}"/>
                                             </button>
                                         </form>
                                     </div>
@@ -289,7 +289,7 @@
                                     <div class="card-body" style="height: 100px">
                                         <button class="btn btn-block click-if-alone" id="bKash_button"
                                                 onclick="BkashPayment()">
-                                            <img width="100" src="{{asset('public/assets/front-end/img/bkash.png')}}"/>
+                                            <img width="100" src="{{asset('/assets/front-end/img/bkash.png')}}"/>
                                         </button>
                                     </div>
                                 </div>
@@ -305,7 +305,7 @@
                                                 onclick="location.href='{{route('paytabs-payment')}}'"
                                                 style="margin-top: -11px">
                                             <img width="150"
-                                                 src="{{asset('public/assets/front-end/img/paytabs.png')}}"/>
+                                                 src="{{asset('/assets/front-end/img/paytabs.png')}}"/>
                                         </button>
                                     </div>
                                 </div>
@@ -318,7 +318,7 @@
                                 <div class="card">
                                     <div class="card-body" style="height: 100px">
                                         <button class="btn btn-block" onclick="location.href='{{route('fawry')}}'" style="margin-top: -11px">
-                                            <img width="150" src="{{asset('public/assets/front-end/img/fawry.svg')}}"/>
+                                            <img width="150" src="{{asset('/assets/front-end/img/fawry.svg')}}"/>
                                         </button>
                                     </div>
                                 </div>
@@ -332,7 +332,7 @@
                                     <div class="card-body pt-2" style="height: 100px">
                                         <a class="btn btn-block click-if-alone" href="{{route('mercadopago.index')}}">
                                             <img width="150"
-                                                 src="{{asset('public/assets/front-end/img/MercadoPago_(Horizontal).svg')}}"/>
+                                                 src="{{asset('/assets/front-end/img/MercadoPago_(Horizontal).svg')}}"/>
                                         </a>
                                     </div>
                                 </div>
@@ -349,7 +349,7 @@
 
                                             <button class="btn btn-block click-if-alone" type="submit">
                                                 <img width="200"
-                                                     src="{{asset('public/assets/front-end/img/fluterwave.png')}}"/>
+                                                     src="{{asset('/assets/front-end/img/fluterwave.png')}}"/>
                                             </button>
                                         </form>
                                     </div>
@@ -364,7 +364,7 @@
                                     <div class="card-body" style="height: 100px">
                                         <a class="btn btn-block click-if-alone" href="{{route('paytm-payment')}}">
                                             <img style="max-width: 150px; margin-top: -10px"
-                                                 src="{{asset('public/assets/front-end/img/paytm.png')}}"/>
+                                                 src="{{asset('/assets/front-end/img/paytm.png')}}"/>
                                         </a>
                                     </div>
                                 </div>
@@ -378,7 +378,7 @@
                                     <div class="card-body" style="height: 100px">
                                         <a class="btn btn-block click-if-alone" href="{{route('liqpay-payment')}}">
                                             <img style="max-width: 150px; margin-top: 0px"
-                                                 src="{{asset('public/assets/front-end/img/liqpay4.png')}}"/>
+                                                 src="{{asset('/assets/front-end/img/liqpay4.png')}}"/>
                                         </a>
                                     </div>
                                 </div>

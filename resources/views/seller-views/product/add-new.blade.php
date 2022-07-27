@@ -2,7 +2,7 @@
 
 @push('css_or_js')
     <link href="{{asset('/assets/back-end/css/tags-input.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('public/assets/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('/assets/select2/css/select2.min.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
@@ -349,7 +349,7 @@
 
 @push('script')
     <script src="{{asset('/assets/back-end')}}/js/tags-input.min.js"></script>
-    <script src="{{ asset('public/assets/select2/js/select2.min.js')}}"></script>
+    <script src="{{ asset('/assets/select2/js/select2.min.js')}}"></script>
     <script src="{{asset('/assets/back-end/js/spartan-multi-image-picker.js')}}"></script>
     <script>
         $(function () {

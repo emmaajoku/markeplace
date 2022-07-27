@@ -42,7 +42,7 @@
     @endif
     <meta property="twitter:url" content="{{route('product',[$product->slug])}}">
 
-    <link rel="stylesheet" href="{{asset('public/assets/front-end/css/product-details.css')}}"/>
+    <link rel="stylesheet" href="{{asset('/assets/front-end/css/product-details.css')}}"/>
     <style>
         .msg-option {
             display: none;
@@ -213,7 +213,7 @@
                                             class="cz-preview-item d-flex align-items-center justify-content-center {{$key==0?'active':''}}"
                                             id="image{{$key}}">
                                             <img class="cz-image-zoom img-responsive" style="width:100%;max-height:323px;"
-                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                 src="{{asset("storage/app/public/product/$photo")}}"
                                                 data-zoom="{{asset("storage/app/public/product/$photo")}}"
                                                 alt="Product image" width="">
@@ -233,7 +233,7 @@
                                                             <a class="cz-thumblist-item  {{$key==0?'active':''}} d-flex align-items-center justify-content-center "
                                                             href="#image{{$key}}">
                                                                 <img
-                                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                                    onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                                     src="{{asset("storage/app/public/product/$photo")}}"
                                                                     alt="Product thumb">
                                                             </a>
@@ -674,7 +674,7 @@
                 <div class="product-details-shipping-details">
                     <div class="shipping-details-bottom-border">
                         <div style="padding: 25px;">
-                            <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}}" style="height: 20px;width:20px;" src="{{asset("public/assets/front-end/png/Payment.png")}}"
+                            <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}}" style="height: 20px;width:20px;" src="{{asset("/assets/front-end/png/Payment.png")}}"
                                     alt="">
                             <span>{{\App\CPU\translate('Safe Payment')}}</span>
                         </div>
@@ -682,7 +682,7 @@
                     <div  class="shipping-details-bottom-border">
                         <div style="padding: 25px;">
                             <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}}" style="height: 20px;width:20px;" 
-                                src="{{asset("public/assets/front-end/png/money.png")}}"
+                                src="{{asset("/assets/front-end/png/money.png")}}"
                                     alt="">
                             <span>{{ \App\CPU\translate('7 Days Return Policy')}}</span>
                         </div>
@@ -691,7 +691,7 @@
                        <div style="padding: 25px;">
                             <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}}" 
                                 style="height: 20px;width:20px;" 
-                                src="{{asset("public/assets/front-end/png/Genuine.png")}}"
+                                src="{{asset("/assets/front-end/png/Genuine.png")}}"
                                 alt="">
                             <span>{{ \App\CPU\translate('100% Authentic Products')}}</span>
                        </div>
@@ -708,7 +708,7 @@
                                         <div>
                                             <img style="height: 65px; width: 65px; border-radius: 50%"
                                                 src="{{asset('storage/app/public/shop')}}/{{$product->seller->shop->image}}"
-                                                onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                 alt="">
                                         </div>
                                         <div class="{{Session::get('direction') === "rtl" ? 'right' : 'ml-3'}}">
@@ -813,7 +813,7 @@
                                     <div>
                                         <img style="height: 65px; width: 65px; border-radius: 50%"
                                             src="{{asset("storage/app/public/company")}}/{{$web_config['fav_icon']->value}}"
-                                            onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                            onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                             alt="">
                                     </div>
                                     <div class="{{Session::get('direction') === "rtl" ? 'right' : 'ml-3'}}">

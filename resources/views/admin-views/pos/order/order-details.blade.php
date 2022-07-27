@@ -292,7 +292,7 @@
                                 <div class="avatar avatar-circle mr-3">
                                     <img
                                         class="avatar-img" style="width: 75px;height: 42px"
-                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                        onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                         src="{{asset('storage/app/public/profile/'.$order->customer->image)}}"
                                         alt="Image">
                                 </div>

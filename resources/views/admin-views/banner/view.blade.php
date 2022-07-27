@@ -198,7 +198,7 @@
                                         <th scope="row">{{$banners->firstItem()+$key}}</th>
                                         <td>
                                             <img width="80"
-                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                 onerror="this.src='{{asset('/assets/front-end/img/image-place-holder.png')}}'"
                                                  src="{{asset('storage/app/public/banner')}}/{{$banner['photo']}}">
                                         </td>
                                         <td>{{$banner->banner_type}}</td>

@@ -23,7 +23,7 @@
             transform: translateX(26px);
         }
     </style>
-    <link href="{{ asset('public/assets/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('/assets/select2/css/select2.min.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')

@@ -27,7 +27,7 @@
                         <div class="row ">
                             <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
                                 <img style="height: 8rem; width: 9rem;" class="img-circle"
-                                     src="{{asset('public/assets/front-end')}}/img/contacts/blank.jpg"
+                                     src="{{asset('/assets/front-end')}}/img/contacts/blank.jpg"
                                      alt="User Pic">
                             </div>
 
