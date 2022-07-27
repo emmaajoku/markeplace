@@ -5,6 +5,7 @@ cd /var/www
 # php artisan migrate:fresh --seed
 php artisan cache:clear
 php artisan route:cache
+npm run prod
 php artisan storage:link
 chmod -R 777 /var/www/storage/
 chmod -R 777 /var/www/.env
