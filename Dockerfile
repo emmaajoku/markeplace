@@ -68,7 +68,7 @@ RUN COMPOSER_MEMORY_LIMIT=-1 composer install --ignore-platform-reqs
 # Install Node.js
  RUN apt-get update -yq \
     && apt-get install curl gnupg -yq \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash \
+    && curl -sL https://deb.nodesource.com/setup_17.x | bash \
     && apt-get install nodejs -yq
 
 RUN npm install
