@@ -126,6 +126,7 @@
               icon: "{{\App\CPU\translate('warning')}}",
               buttons: true,
               dangerMode: true,
+              confirmButtonText: "{{\App\CPU\translate('OK')}}",
           })
               .then((willDelete) => {
                   if (willDelete) {

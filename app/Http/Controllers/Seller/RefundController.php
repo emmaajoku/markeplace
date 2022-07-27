@@ -14,6 +14,8 @@ use App\Model\RefundTransaction;
 use App\CPU\Helpers;
 use App\Model\OrderDetail;
 Use App\Model\RefundStatus;
+use App\User;
+use App\CPU\CustomerManager;
 
 class RefundController extends Controller
 {
@@ -51,10 +53,28 @@ class RefundController extends Controller
             $query->where('seller_is', 'seller')->where('seller_id',auth('seller')->id());
                 })->find($request->id);
 
+        $user = User::find($refund->customer_id);
+
+        $wallet_status = Helpers::get_business_settings('wallet_status');
+        $loyalty_point_status = Helpers::get_business_settings('loyalty_point_status');
+        
+        if($loyalty_point_status == 1)
+        {
+            $loyalty_point = CustomerManager::count_loyalty_point_for_amount($refund->order_details_id);
+    
+            if($user->loyalty_point < $loyalty_point && $request->refund_status == 'approved')
+            {
+                Toastr::warning(translate('Customer has not sufficient loyalty point to take refund for this order!!'));
+                return back();
+            }
+        }
+
         if($refund->change_by =='admin'){
             Toastr::warning(translate('refunded status can not be changed!! Admin already changed the status : '.$refund->status.'!!'));
             return back();
         }
+
+
 
         if($refund->status != 'refunded')
         {

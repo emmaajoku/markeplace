@@ -8,8 +8,7 @@
 
             </h3>
         </div>
-        {{-- <div class="row" style="margin-top: 20px"> --}}
-        {{-- <div class="col-md-12"> --}}
+        
         <div class="card">
             <div class="card-header">
                 <div class="row d-flex justify-content-between align-items-center flex-grow-1">
@@ -23,7 +22,7 @@
                                     </div>
                                 </div>
                                 <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                       placeholder="Search by orders id or transaction id" aria-label="Search orders"
+                                       placeholder="{{ \App\CPU\translate('Search by orders id or transaction id')}}" aria-label="Search orders"
                                        value="{{ $search }}"
                                        required>
                                 <button type="submit" class="btn btn-primary">{{ \App\CPU\translate('search')}}</button>
@@ -32,10 +31,9 @@
                         </form>
                     </div>
                     <div class="col-md-3 col-12 mt-3">
-                        {{-- <div class="row float-right"> --}}
-                            {{-- <div class="col-md-4"> --}}
+                        
                                 <form action="{{ url()->current() }}" method="GET">
-                                    {{-- <div class="row"> --}}
+                                    
             
                                     <div class="row d-flex">
                                         <div class="ml-2">
@@ -60,9 +58,7 @@
             
                                         
                                 </form>
-                            {{-- </div> --}}
                             
-                        {{-- </div> --}}
                     </div>
                 </div>
             </div>
@@ -74,7 +70,6 @@
                         <thead class="thead-light">
                         <tr>
                             <th>{{\App\CPU\translate('SL#')}}</th>
-                            {{-- <th>{{\App\CPU\translate('seller')}}</th> --}}
                             <th>{{\App\CPU\translate('seller_name')}}</th>
                             <th>{{\App\CPU\translate('customer_name')}}</th>
                             <th>{{\App\CPU\translate('order_id')}}</th>
@@ -94,7 +89,6 @@
                         @foreach($transactions as $key=>$transaction)
                             <tr>
                                 <td>{{$transactions->firstItem()+$key}}</td>
-                                {{-- <td>{{$transaction['seller_id']}}</td> --}}
                                 <td>
                                     @if($transaction['seller_is'] == 'admin')
                                         {{ \App\CPU\Helpers::get_business_settings('company_name') }}
@@ -156,8 +150,6 @@
             </div>
 
         </div>
-        {{-- </div> --}}
-
-        {{-- </div> --}}
+        
     </div>
 @endsection

@@ -143,7 +143,7 @@ class Helpers
     public static function get_business_settings($name)
     {
         $config = null;
-        $check = ['currency_model', 'currency_symbol_position', 'system_default_currency', 'language', 'company_name','decimal_point_settings'];
+        $check = ['currency_model', 'currency_symbol_position', 'system_default_currency', 'language', 'company_name', 'decimal_point_settings'];
 
         if (in_array($name, $check) == true && session()->has($name)) {
             $config = session($name);
@@ -177,7 +177,11 @@ class Helpers
 
     public static function get_shipping_methods($seller_id, $type)
     {
-        return ShippingMethod::where(['status' => 1])->where(['creator_id' => $seller_id, 'creator_type' => $type])->get();
+        if ($type == 'admin') {
+            return ShippingMethod::where(['status' => 1])->where(['creator_type' => 'admin'])->get();
+        } else {
+            return ShippingMethod::where(['status' => 1])->where(['creator_id' => $seller_id, 'creator_type' => $type])->get();
+        }
     }
 
     public static function get_image_path($type)
@@ -186,36 +190,9 @@ class Helpers
         return $path;
     }
 
-    public static function product_data_formatting($data, $multi_data = false)
+    public static function set_data_format($data)
     {
-        $storage = [];
-        if ($multi_data == true) {
-            foreach ($data as $item) {
-                $variation = [];
-                $item['category_ids'] = json_decode($item['category_ids']);
-                $item['images'] = json_decode($item['images']);
-                $item['colors'] = Color::whereIn('code', json_decode($item['colors']))->get(['name', 'code']);
-                $attributes = [];
-                if (json_decode($item['attributes']) != null) {
-                    foreach (json_decode($item['attributes']) as $attribute) {
-                        array_push($attributes, (integer)$attribute);
-                    }
-                }
-                $item['attributes'] = $attributes;
-                $item['choice_options'] = json_decode($item['choice_options']);
-                foreach (json_decode($item['variation'], true) as $var) {
-                    array_push($variation, [
-                        'type' => $var['type'],
-                        'price' => (double)$var['price'],
-                        'sku' => $var['sku'],
-                        'qty' => (integer)$var['qty'],
-                    ]);
-                }
-                $item['variation'] = $variation;
-                array_push($storage, $item);
-            }
-            $data = $storage;
-        } else {
+        try {
             $variation = [];
             $data['category_ids'] = json_decode($data['category_ids']);
             $data['images'] = json_decode($data['images']);
@@ -223,20 +200,37 @@ class Helpers
             $attributes = [];
             if (json_decode($data['attributes']) != null) {
                 foreach (json_decode($data['attributes']) as $attribute) {
-                    array_push($attributes, (integer)$attribute);
+                    $attributes[] = (integer)$attribute;
                 }
             }
             $data['attributes'] = $attributes;
             $data['choice_options'] = json_decode($data['choice_options']);
             foreach (json_decode($data['variation'], true) as $var) {
-                array_push($variation, [
+                $variation[] = [
                     'type' => $var['type'],
                     'price' => (double)$var['price'],
                     'sku' => $var['sku'],
                     'qty' => (integer)$var['qty'],
-                ]);
+                ];
             }
             $data['variation'] = $variation;
+        } catch (\Exception $exception) {
+            info($exception);
+        }
+
+        return $data;
+    }
+
+    public static function product_data_formatting($data, $multi_data = false)
+    {
+        $storage = [];
+        if ($multi_data == true) {
+            foreach ($data as $item) {
+                $storage[] = Helpers::set_data_format($item);
+            }
+            $data = $storage;
+        } else {
+            $data = Helpers::set_data_format($data);;
         }
 
         return $data;
@@ -279,7 +273,7 @@ class Helpers
     {
         $err_keeper = [];
         foreach ($validator->errors()->getMessages() as $index => $error) {
-            array_push($err_keeper, ['code' => $index, 'message' => $error[0]]);
+            $err_keeper[] = ['code' => $index, 'message' => $error[0]];
         }
         return $err_keeper;
     }
@@ -371,8 +365,9 @@ class Helpers
 
     public static function module_permission_check($mod_name)
     {
-        $permission = auth('admin')->user()->role->module_access;
-        if (isset($permission) && in_array($mod_name, (array)json_decode($permission)) == true) {
+        $user_role = auth('admin')->user()->role;
+        $permission = $user_role->module_access;
+        if (isset($permission) && $user_role->status == 1  && in_array($mod_name, (array)json_decode($permission)) == true) {
             return true;
         }
 
@@ -679,7 +674,7 @@ class Helpers
     public static function gen_mpdf($view, $file_prefix, $file_postfix)
     {
         $mpdf = new \Mpdf\Mpdf(['default_font' => 'FreeSerif', 'mode' => 'utf-8', 'format' => [190, 250]]);
-       /* $mpdf->AddPage('XL', '', '', '', '', 10, 10, 10, '10', '270', '');*/
+        /* $mpdf->AddPage('XL', '', '', '', '', 10, 10, 10, '10', '270', '');*/
         $mpdf->autoScriptToLang = true;
         $mpdf->autoLangToFont = true;
 
@@ -729,7 +724,7 @@ function translate($key)
         } else {
             $result = __('messages.' . $key);
         }
-    }catch(\Exception $exception){
+    } catch (\Exception $exception) {
         $result = __('messages.' . $key);
     }
 

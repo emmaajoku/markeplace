@@ -258,6 +258,7 @@ class ProductManager
     {
         $paginator = Product::active()->with(['rating'])
             ->where(['user_id' => $seller_id, 'added_by' => 'seller'])
+            ->latest()
             ->paginate($limit, ['*'], 'page', $offset);
         /*$paginator->count();*/
         return [

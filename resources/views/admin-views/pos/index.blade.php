@@ -89,6 +89,12 @@
         .header-item{
             width:10rem;
         }
+        @media only screen and (min-width: 768px) {
+            .view-web-site-info {
+                display: none;
+            }
+        
+        }
     </style>
 
     <script src="{{asset('public/assets/back-end')}}/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js"></script>
@@ -118,7 +124,7 @@
                 @php($e_commerce_logo=\App\Model\BusinessSetting::where(['type'=>'company_web_logo'])->first()->value)
                 <a class="navbar-brand" href="{{route('admin.dashboard')}}" aria-label="Front" style="padding-top: 0!important;padding-bottom: 0!important;">
                     <img class=""
-                         style="height: 55px;"
+                         style="max-height: 42px;"
                          onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'"
                          src="{{asset("storage/app/public/company/$e_commerce_logo")}}"
                          alt="Logo">
@@ -128,6 +134,32 @@
             <div class="navbar-nav-wrap-content-right">
                 <!-- Navbar -->
                 <ul class="navbar-nav align-items-center flex-row">
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <div class="hs-unfold">
+                            <a title="Website home"
+                               class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                               href="{{route('home')}}" target="_blank">
+                                <i class="tio-globe"></i>
+                                {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
+                            </a>
+                        </div>
+                    </li>
+                    @if(\App\CPU\Helpers::module_permission_check('support_section'))
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <!-- Notification -->
+                        <div class="hs-unfold">
+                            <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                               href="{{route('admin.contact.list')}}">
+                                <i class="tio-email"></i>
+                                @php($message=\App\Model\Contact::where('seen',0)->count())
+                                @if($message!=0)
+                                    <span class="btn-status btn-status-danger">{{ $message }}</span>
+                                @endif
+                            </a>
+                        </div>
+                        <!-- End Notification -->
+                    </li>
+                    @endif
                     <li class="nav-item d-sm-inline-block">
                         <!-- short cut key -->
                         <div class="hs-unfold">
@@ -139,11 +171,18 @@
                         </div>
                         <!-- End short cut key -->
                     </li>
+                    <li class="nav-item view-web-site-info">
+                        <div class="hs-unfold" >
+                            <a style="background-color: rgb(255, 255, 255)" onclick="openInfoWeb()" href="javascript:" class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle">
+                                <i class="tio-info"></i>
+                            </a>
+                        </div>
+                    </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <!-- Notification -->
                         <div class="hs-unfold">
                             <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
-                               href="">
+                               href="{{route('admin.pos.orders')}}">
                                 <i class="tio-shopping-cart-outlined"></i>
                                 {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
                             </a>
@@ -188,6 +227,13 @@
 
                                 <div class="dropdown-divider"></div>
 
+                                <a class="dropdown-item"
+                                   href="{{route('admin.profile.update',auth('admin')->user()->id)}}">
+                                    <span class="text-truncate pr-2" title="Settings">Settings</span>
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+
                                 <a class="dropdown-item" href="javascript:" onclick="Swal.fire({
                                     title: 'Do you want to logout?',
                                     showDenyButton: true,
@@ -214,6 +260,33 @@
             </div>
             <!-- End Secondary Content -->
         </div>
+        <div id="website_info" style="display:none;background-color:rgb(165, 164, 164);width:100%;border-radius:0px 0px 5px 5px;">
+            <div style="padding: 20px;">
+                
+                <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
+                    <a title="Website home" class="p-2"
+                        href="{{route('home')}}" target="_blank">
+                        <i class="tio-globe"></i>
+                        {{--<span class="btn-status btn-sm-status btn-status-danger"></span>--}}
+                        {{\App\CPU\translate('view_website')}}
+                    </a>
+                </div>
+                @if(\App\CPU\Helpers::module_permission_check('support_section'))
+                    <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
+                        <a class="p-2"
+                            href="{{route('admin.contact.list')}}">
+                            <i class="tio-email"></i>
+                            {{\App\CPU\translate('message')}}
+                            @php($message=\App\Model\Contact::where('seen',0)->count())
+                            @if($message!=0)
+                                <span class="">({{ $message }})</span>
+                            @endif
+                        </a>
+                    </div>
+                @endif
+        
+            </div>
+        </div>
     </header>
 <!-- END ONLY DEV -->
 <main id="content" role="main" class="main pointer-event">
@@ -235,7 +308,7 @@
                                             </div>
                                         </div>
                                         <input id="search" autocomplete="off" type="text" value="{{$keyword?$keyword:''}}" 
-                                                name="search" class="form-control search-bar-input" placeholder="Search here" 
+                                                name="search" class="form-control search-bar-input" placeholder="{{\App\CPU\translate('Search here')}}" 
                                                 aria-label="Search here">
                                         <diV class="card search-card w-4" style="position: absolute;z-index: 1;width: 100%;">
                                             <div id="search-box" class="card-body search-result-box" style="display: none;"></div>
@@ -472,7 +545,17 @@
         @endforeach
     </script>
 @endif
-
+<script>
+    function openInfoWeb()
+    {
+        var x = document.getElementById("website_info");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 <script>
 
         function delay(callback, ms) {
@@ -1068,20 +1151,20 @@
                         Swal.fire({
                             icon: 'info',
                             title: 'Cart',
-                            text: "Product already added in cart"
+                            text: '{{ \App\CPU\translate("Product already added in cart")}}'
                         });
                         return false;
                     } else if (data.data == 0) {
                         Swal.fire({
                             icon: 'error',
                             title: 'Cart',
-                            text: 'Sorry, product is out of stock.'
+                            text: '{{ \App\CPU\translate("Sorry, product is out of stock.")}}'
                         });
                         return false;
                     }
                     $('.call-when-done').click();
 
-                    toastr.success('Item has been added in your cart!', {
+                    toastr.success('{{ \App\CPU\translate("Item has been added in your cart!")}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
@@ -1098,7 +1181,7 @@
             Swal.fire({
                 type: 'info',
                 title: 'Cart',
-                text: 'Please choose all the options'
+                text: '{{ \App\CPU\translate("Please choose all the options")}}'
             });
         }
     }
@@ -1118,7 +1201,7 @@
             } else {
                 //updateCart();
                 
-                toastr.info('Item has been removed from cart', {
+                toastr.info('{{ \App\CPU\translate("Item has been removed from cart")}}', {
                     CloseButton: true,
                     ProgressBar: true
                 });
@@ -1136,14 +1219,14 @@
             showCancelButton: true,
             cancelButtonColor: 'default',
             confirmButtonColor: '#161853',
-            cancelButtonText: 'No',
-            confirmButtonText: 'Yes',
+            cancelButtonText: '{{\App\CPU\translate("No")}}',
+            confirmButtonText: '{{\App\CPU\translate("Yes")}}',
             reverseButtons: true
         }).then((result) => {
             if (result.value) {
                 $.post('{{ route('admin.pos.emptyCart') }}', {_token: '{{ csrf_token() }}'}, function (data) {
                     $('#cart').empty().html(data.view);
-                    toastr.info('Item has been removed from cart', {
+                    toastr.info('{{ \App\CPU\translate("Item has been removed from cart")}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

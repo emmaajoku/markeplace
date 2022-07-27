@@ -172,32 +172,32 @@
                         <table class="table">
                             <thead>
                             <tr style="background: #6b6b6b">
-                                <td class="tdBorder">
+                                <td class="tdBorder" style="width: 30%;">
                                     <div class="py-2"><span
                                             class="d-block spandHeadO ">{{\App\CPU\translate('Topic')}}</span></div>
                                 </td>
-                                <td class="tdBorder">
+                                <td class="tdBorder" style="width: 20%;">
                                     <div class="py-2 {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}}"><span
                                             class="d-block spandHeadO ">{{\App\CPU\translate('submition_date')}}</span>
                                     </div>
                                 </td>
-                                <td class="tdBorder">
+                                <td class="tdBorder" style="width: 15%;">
                                     <div class="py-2"><span class="d-block spandHeadO">{{\App\CPU\translate('Type')}}</span>
                                     </div>
                                 </td>
-                                <td class="tdBorder">
+                                <td class="tdBorder" style="width: 9%;">
                                     <div class="py-2">
                                         <span class="d-block spandHeadO">
                                             {{\App\CPU\translate('Status')}}
                                         </span>
                                     </div>
                                 </td>
-                                <td class="tdBorder">
+                                <td class="tdBorder" style="width: 9%;">
                                     <div class="py-2">
                                         <span class="d-block spandHeadO"><i class="fa fa-eye"></i></span>
                                     </div>
                                 </td>
-                                <td class="tdBorder">
+                                <td class="tdBorder" style="width: 7%;">
                                     <div class="py-2"><span
                                             class="d-block spandHeadO">{{\App\CPU\translate('Action')}} </span></div>
                                 </td>
@@ -233,8 +233,8 @@
                                                showCancelButton: true,
                                                confirmButtonColor: '{{$web_config['primary_color']}}',
                                                cancelButtonColor: '{{$web_config['secondary_color']}}',
-                                               confirmButtonText: `Yes`,
-                                               denyButtonText: `Don't Delete`,
+                                               confirmButtonText: `{{\App\CPU\translate('Yes')}}`,
+                                               denyButtonText: `{{\App\CPU\translate("Don't Delete")}}`,
                                                }).then((result) => {
                                                if (result.value) {
                                                Swal.fire('Deleted!', '', 'success')

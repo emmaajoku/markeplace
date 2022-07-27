@@ -31,29 +31,33 @@ class POSController extends Controller
             return back();
         }
 
-        $query_param = [];
-        $search = $request['search'];
         
+        $search = $request['search'];
+        $from = $request['from'];
+        $to = $request['to'];
             
         $orders = Order::with(['customer'])->where(['seller_is'=>'seller'])->where(['seller_id'=>\auth('seller')->id()])->where('order_status','delivered');
+
+            $key = explode(' ', $request['search']);
+            $orders = $orders->when($request->has('search') && $search!=null,function ($q) use ($key) {
+                $q->where(function($qq) use ($key){
+                    foreach ($key as $value) {
+                        $qq->where('id', 'like', "%{$value}%")
+                            ->orWhere('order_status', 'like', "%{$value}%")
+                            ->orWhere('transaction_ref', 'like', "%{$value}%");
+                    }});
+                })->when($from!=null , function($dateQuery) use($from, $to) {
+                    $dateQuery->whereDate('created_at', '>=',$from)
+                                ->whereDate('created_at', '<=',$to);
+                    });
+            
+            
             
         
 
-        if ($request->has('search')) {
-            $key = explode(' ', $request['search']);
-            $orders = $orders->where(function ($q) use ($key) {
-                foreach ($key as $value) {
-                    $q->orWhere('id', 'like', "%{$value}%")
-                        ->orWhere('order_status', 'like', "%{$value}%")
-                        ->orWhere('transaction_ref', 'like', "%{$value}%");
-                }
-            });
-            $query_param = ['search' => $request['search']];
-        }
-
-        $orders = $orders->where('order_type','POS')->orderBy('id','desc')->paginate(Helpers::pagination_limit())->appends($query_param);
+        $orders = $orders->where('order_type','POS')->orderBy('id','desc')->paginate(Helpers::pagination_limit())->appends(['search'=>$request['search'],'from'=>$request['from'],'to'=>$request['to']]);
         
-        return view('seller-views.pos.order.list', compact('orders', 'search'));
+        return view('seller-views.pos.order.list', compact('orders', 'search','from','to'));
     }
 
     public function order_details($id)

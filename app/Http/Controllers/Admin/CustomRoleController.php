@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class CustomRoleController extends Controller
 {
     public function create()
-    {
+    { 
         $rl=AdminRole::whereNotIn('id',[1])->latest()->get();
         return view('admin-views.custom-role.create',compact('rl'));
     }
@@ -59,5 +59,17 @@ class CustomRoleController extends Controller
 
         Toastr::info('Role updated successfully!');
         return back();
+    }
+
+    public function employee_role_status_update(Request $request)
+    {
+        $admin_role = AdminRole::find($request->id);
+        $admin_role->status = $request->status;
+        $admin_role->save();
+
+        return response()->json([
+            'success' => 1,
+        ], 200);
+
     }
 }

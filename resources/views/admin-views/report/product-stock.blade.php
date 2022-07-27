@@ -28,12 +28,12 @@
                     <div class="card-header">
                         <form style="width: 100%;" action="{{route('admin.stock.product-stock')}}">
                             <div class="row text-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}">
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">{{\App\CPU\translate('Seller')}}</label>
+                                <div class="col-4 col-sm-2" >
+                                    <div class="mt-2">
+                                        <span>{{\App\CPU\translate('Seller_list')}}</span>
                                     </div>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-8 col-sm-8">
                                     <div class="form-group">
                                         <select class="js-select2-custom form-control"
                                                 name="seller_id">
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6 col-md-2">
+                                <div class="col-12 col-sm-2">
                                     <button type="submit" class="btn btn-primary btn-block">
                                         {{\App\CPU\translate('Filter')}}
                                     </button>
@@ -82,11 +82,13 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <table>
-                            <tfoot>
-                            {!! $products->links() !!}
-                            </tfoot>
-                        </table>
+                        <div class="card-footer">
+                            <div class=" row table-responsive">
+                            
+                                {!! $products->links() !!}
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -37,12 +37,13 @@
 @endpush
 
 @section('content')
+@php($billing_input_by_customer=\App\CPU\Helpers::get_business_settings('billing_input_by_customer'))
     <div class="container pb-5 mb-2 mb-md-4 rtl"
          style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
         <div class="row">
             <div class="col-md-12 mb-5 pt-5">
                 <div class="feature_header">
-                    <span>{{ \App\CPU\translate('shipping_and_billing_address')}}</span>
+                    <span>{{ \App\CPU\translate('shipping')}} {{$billing_input_by_customer==1?\App\CPU\translate('and').' '.\App\CPU\translate('billing'):' '}} {{\App\CPU\translate('address')}}</span>
                 </div>
             </div>
             <section class="col-lg-8">
@@ -82,9 +83,7 @@
                                            data-target="#collapseThree" {{$shipping_addresses->count()==0?'checked':''}}>
                                     <span class="checkmark"
                                           style="margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 10px"></span>
-                                    {{-- <label class="badge"
-                                           style="background: {{$web_config['primary_color']}}; color:white !important;">
-                                        <i class="fa fa-plus-circle"></i></label> --}}
+                                   
                                     <button type="button" class="btn btn-outline" data-toggle="collapse"
                                             data-target="#collapseThree">{{ \App\CPU\translate('Another')}} {{ \App\CPU\translate('address')}}
                                     </button>
@@ -119,12 +118,7 @@
                                                             value="others">{{ \App\CPU\translate('Others')}}</option>
                                                     </select>
                                                 </div>
-                                                {{-- <div class="form-group">
-                                                    <label>{{ \App\CPU\translate('Country')}} <span
-                                                            style="color: red">*</span></label>
-                                                    <input type="text" class="form-control"
-                                                           name="country" {{$shipping_addresses->count()==0?'required':''}}>
-                                                </div> --}}
+                                                
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">{{ \App\CPU\translate('City')}}<span
                                                             style="color: red">*</span></label>
@@ -185,7 +179,7 @@
                             </ul>
                         </div>
                     </form>
-                    @php($billing_input_by_customer=\App\CPU\Helpers::get_business_settings('billing_input_by_customer'))
+                    
                         
                     <div style="display: {{$billing_input_by_customer==1?'':'none'}}">
                         <!-- billing methods table-->
@@ -231,9 +225,7 @@
                                             data-target="#billing_model" {{$billing_addresses->count()==0?'checked':''}}>
                                         <span class="checkmark"
                                             style="margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 10px"></span>
-                                        {{-- <label class="badge"
-                                            style="background: {{$web_config['primary_color']}}; color:white !important;">
-                                            <i class="fa fa-plus-circle"></i></label> --}}
+                                        
                                         <button type="button" class="btn btn-outline" data-toggle="collapse"
                                                 data-target="#billing_model">{{ \App\CPU\translate('Another')}} {{ \App\CPU\translate('address')}}
                                         </button>
@@ -268,12 +260,7 @@
                                                                 value="others">{{ \App\CPU\translate('Others')}}</option>
                                                         </select>
                                                     </div>
-                                                    {{-- <div class="form-group">
-                                                        <label>{{ \App\CPU\translate('Country')}} <span
-                                                                style="color: red">*</span></label>
-                                                        <input type="text" class="form-control"
-                                                            name="billing_country" {{$billing_addresses->count()==0?'required':''}}>
-                                                    </div> --}}
+                                                   
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">{{ \App\CPU\translate('City')}}<span
                                                                 style="color: red">*</span></label>
@@ -390,7 +377,7 @@
         }
     </script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key={{\App\CPU\Helpers::get_business_settings('map_api_key')}}&libraries=places&v=3.45.8"></script>
+        src="https://maps.googleapis.com/maps/api/js?key={{\App\CPU\Helpers::get_business_settings('map_api_key')}}&libraries=places&v=3.49"></script>
     <script>
         function initAutocomplete() {
             var myLatLng = {
@@ -676,14 +663,7 @@
                 }
             });
 
-            /*if (allAreFilled && allAreFilled_shipping) {
-
-            } else {
-                toastr.error('{{\App\CPU\translate('Please fill all required fields of shipping/billing address')}}', {
-                    CloseButton: true,
-                    ProgressBar: true
-                });
-            }*/
+            
         }
     </script>
 @endpush

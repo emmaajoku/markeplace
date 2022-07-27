@@ -18,6 +18,7 @@ use function App\CPU\translate;
 use App\Model\RefundRequest;
 use App\CPU\ImageManager;
 use App\Model\DeliveryMan;
+use App\CPU\CustomerManager;
 
 class OrderController extends Controller
 {
@@ -87,6 +88,20 @@ class OrderController extends Controller
     public function refund_request(Request $request)
     {
         $order_details = OrderDetail::find($request->order_details_id);
+
+        $user = $request->user();
+
+        
+        $loyalty_point_status = Helpers::get_business_settings('loyalty_point_status');
+        if($loyalty_point_status == 1)
+        {
+            $loyalty_point = CustomerManager::count_loyalty_point_for_amount($request->order_details_id);
+    
+            if($user->loyalty_point < $loyalty_point)
+            {
+                return response()->json(['message'=>translate('you have not sufficient loyalty point to refund this order!!')], 202);
+            }
+        }
         
         if($order_details->delivery_status == 'delivered')
         {
@@ -128,7 +143,7 @@ class OrderController extends Controller
             }
             return response()->json(['already_requested'=>$already_requested,'expired'=>$expired,'refund'=>$data], 200);
         }else{
-            return response()->json(translate('You_can_request_for_refund_after_order_delivered'), 200);
+            return response()->json(['message'=>translate('You_can_request_for_refund_after_order_delivered')], 200);
         }
         
     }
@@ -136,6 +151,20 @@ class OrderController extends Controller
     {
     
         $order_details = OrderDetail::find($request->order_details_id);
+
+        $user = $request->user();
+
+        
+        $loyalty_point_status = Helpers::get_business_settings('loyalty_point_status');
+        if($loyalty_point_status == 1)
+        {
+            $loyalty_point = CustomerManager::count_loyalty_point_for_amount($request->order_details_id);
+    
+            if($user->loyalty_point < $loyalty_point)
+            {
+                return response()->json(translate('you have not sufficient loyalty point to refund this order!!'), 200);
+            }
+        }
         
         if($order_details->refund_request == 0){
 

@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::post('create', 'CustomRoleController@store')->name('store');
             Route::get('update/{id}', 'CustomRoleController@edit')->name('update');
             Route::post('update/{id}', 'CustomRoleController@update');
+            Route::post('employee-role-status','CustomRoleController@employee_role_status_update')->name('employee-role-status');
         });
 
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
@@ -154,10 +155,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::delete('delete/{id}', 'CouponController@delete')->name('delete');
 
         });
+
+        Route::group(['prefix' => 'shiprocket', 'as' => 'shiprocket.'], function () {
+            Route::post('login', 'ShipRocketController@login')->name('login');
+            Route::get('dashboard', 'ShipRocketController@index')->name('index');
+        });
+
         Route::group(['prefix' => 'social-login', 'as' => 'social-login.','middleware'=>['module:business_settings']], function () {
             Route::get('view', 'BusinessSettingsController@viewSocialLogin')->name('view');
             Route::post('update/{service}', 'BusinessSettingsController@updateSocialLogin')->name('update');
-
         });
 
         Route::group(['prefix' => 'currency', 'as' => 'currency.','middleware'=>['module:business_settings']], function () {
@@ -195,7 +201,22 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::get('view/{user_id}', 'CustomerController@view')->name('view');
             Route::delete('delete/{id}','CustomerController@delete')->name('delete');
             Route::get('subscriber-list', 'CustomerController@subscriber_list')->name('subscriber-list');
+            Route::get('customer-settings','CustomerController@customer_settings')->name('customer-settings');
+            Route::post('customer-settings-update','CustomerController@customer_update_settings')->name('customer-settings-update');
+            Route::get('customer-list-search','CustomerController@get_customers')->name('customer-list-search');
+
+            Route::group(['prefix' => 'wallet', 'as' => 'wallet.'], function () {
+                Route::get('add-fund', 'CustomerWalletController@add_fund_view')->name('add-fund');
+                Route::post('add-fund', 'CustomerWalletController@add_fund');
+                Route::get('report', 'CustomerWalletController@report')->name('report');
+            });
+            Route::group(['prefix' => 'loyalty', 'as' => 'loyalty.'], function () {
+                Route::get('report', 'CustomerLoyaltyController@report')->name('report');
+            });
+            
         });
+
+        
         ///Report
         Route::group(['prefix' => 'report', 'as' => 'report.' ,'middleware'=>['module:report']], function () {
             Route::get('order', 'ReportController@order_index')->name('order');
@@ -260,48 +281,24 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::get('list', 'TransactionController@list')->name('list');
             Route::get('refund-list', 'RefundTransactionController@list')->name('refund-list');
         });
-        
 
-        Route::group(['prefix' => 'business-settings', 'as' => 'business-settings.','middleware'=>['module:business_settings']], function () {
-            Route::get('general-settings', 'BusinessSettingsController@index')->name('general-settings')->middleware('actch');;
-            Route::get('update-language', 'BusinessSettingsController@update_language')->name('update-language');
-            Route::get('about-us', 'BusinessSettingsController@about_us')->name('about-us');
-            Route::post('about-us', 'BusinessSettingsController@about_usUpdate')->name('about-update');
-            Route::post('update-info','BusinessSettingsController@updateInfo')->name('update-info');
-            //Social Icon
-            Route::get('social-media', 'BusinessSettingsController@social_media')->name('social-media');
-            Route::get('fetch', 'BusinessSettingsController@fetch')->name('fetch');
-            Route::post('social-media-store', 'BusinessSettingsController@social_media_store')->name('social-media-store');
-            Route::post('social-media-edit', 'BusinessSettingsController@social_media_edit')->name('social-media-edit');
-            Route::post('social-media-update', 'BusinessSettingsController@social_media_update')->name('social-media-update');
-            Route::post('social-media-delete', 'BusinessSettingsController@social_media_delete')->name('social-media-delete');
-            Route::post('social-media-status-update', 'BusinessSettingsController@social_media_status_update')->name('social-media-status-update');
 
-            Route::get('terms-condition', 'BusinessSettingsController@terms_condition')->name('terms-condition');
-            Route::post('terms-condition', 'BusinessSettingsController@updateTermsCondition')->name('update-terms');
-            Route::get('privacy-policy', 'BusinessSettingsController@privacy_policy')->name('privacy-policy');
-            Route::post('privacy-policy', 'BusinessSettingsController@privacy_policy_update')->name('privacy-policy');
+        Route::group(['prefix' => 'business-settings', 'as' => 'business-settings.'], function () {
+            Route::group(['middleware'=>['module:business_settings']],function (){
+                //refund request
+                Route::group(['prefix' => 'refund', 'as' => 'refund.'], function () {
+                    Route::get('list/{status}', 'RefundController@list')->name('list');
+                    Route::get('details/{id}', 'RefundController@details')->name('details');
+                    Route::get('inhouse-order-filter', 'RefundController@inhouse_order_filter')->name('inhouse-order-filter');
+                    Route::post('refund-status-update', 'RefundController@refund_status_update')->name('refund-status-update');
 
-            Route::get('fcm-index', 'BusinessSettingsController@fcm_index')->name('fcm-index');
-            Route::post('update-fcm', 'BusinessSettingsController@update_fcm')->name('update-fcm');
+                });
 
-            //captcha
-            Route::get('captcha', 'BusinessSettingsController@recaptcha_index')->name('captcha');
-            Route::post('recaptcha-update', 'BusinessSettingsController@recaptcha_update')->name('recaptcha_update');
-            //google map api
-            Route::get('map-api', 'BusinessSettingsController@map_api')->name('map-api');
-            Route::post('map-api-update', 'BusinessSettingsController@map_api_update')->name('map-api-update');
+                Route::get('sms-module', 'SMSModuleController@sms_index')->name('sms-module');
+                Route::post('sms-module-update/{sms_module}', 'SMSModuleController@sms_update')->name('sms-module-update');
 
-            Route::post('update-fcm-messages', 'BusinessSettingsController@update_fcm_messages')->name('update-fcm-messages');
-
-            //refund request
-            Route::group(['prefix' => 'refund', 'as' => 'refund.'], function () {
-                Route::get('list/{status}', 'RefundController@list')->name('list');
-                Route::get('details/{id}', 'RefundController@details')->name('details');
-                Route::get('inhouse-order-filter', 'RefundController@inhouse_order_filter')->name('inhouse-order-filter');
-                Route::post('refund-status-update', 'RefundController@refund_status_update')->name('refund-status-update');
-            
             });
+            
 
             Route::group(['prefix' => 'shipping-method', 'as' => 'shipping-method.','middleware'=>['module:business_settings']], function () {
                 Route::get('by/admin', 'ShippingMethodController@index_admin')->name('by.admin');
@@ -316,11 +313,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             });
 
             Route::group(['prefix' => 'shipping-type', 'as' => 'shipping-type.','middleware'=>['module:business_settings']], function () {
-                Route::post('store', 'ShippingTypeController@store')->name('store'); 
+                Route::post('store', 'ShippingTypeController@store')->name('store');
             });
 
             Route::group(['prefix' => 'category-shipping-cost', 'as' => 'category-shipping-cost.','middleware'=>['module:business_settings']], function () {
-                Route::post('store', 'CategoryShippingCostController@store')->name('store'); 
+                Route::post('store', 'CategoryShippingCostController@store')->name('store');
             });
 
             Route::group(['prefix' => 'language', 'as' => 'language.','middleware'=>['module:business_settings']], function () {
@@ -340,10 +337,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
                 Route::get('', 'MailController@index')->name('index')->middleware('actch');
                 Route::post('update', 'MailController@update')->name('update');
                 Route::post('update-sendgrid', 'MailController@update_sendgrid')->name('update-sendgrid');
+                Route::post('send', 'MailController@send')->name('send');
             });
 
             Route::group(['prefix' => 'web-config', 'as' => 'web-config.','middleware'=>['module:web_&_app_settings']], function () {
-                Route::get('/', 'BusinessSettingsController@companyInfo')->name('index')->middleware('actch');;
+                Route::get('/', 'BusinessSettingsController@companyInfo')->name('index')->middleware('actch');
                 Route::post('update-colors', 'BusinessSettingsController@update_colors')->name('update-colors');
                 Route::post('update-language', 'BusinessSettingsController@update_language')->name('update-language');
                 Route::post('update-company', 'BusinessSettingsController@updateCompany')->name('company-update');
@@ -367,6 +365,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
                 Route::get('refund-index','RefundController@index')->name('refund-index');
                 Route::post('refund-update','RefundController@update')->name('refund-update');
 
+                //sitemap generate
+                Route::get('mysitemap','SiteMapController@index')->name('mysitemap');
+
             });
             Route::group(['prefix' => 'seller-settings', 'as' => 'seller-settings.','middleware'=>['module:business_settings']], function () {
                 Route::get('/', 'BusinessSettingsController@seller_settings')->name('index')->middleware('actch');;
@@ -382,12 +383,47 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
                 Route::post('{name}', 'PaymentMethodController@update')->name('update');
             });
 
-            Route::get('sms-module', 'SMSModuleController@sms_index')->name('sms-module');
-            Route::post('sms-module-update/{sms_module}', 'SMSModuleController@sms_update')->name('sms-module-update');
+            Route::group(['middleware'=>['module:web_&_app_settings']],function(){
+                Route::get('general-settings', 'BusinessSettingsController@index')->name('general-settings')->middleware('actch');;
+                Route::get('update-language', 'BusinessSettingsController@update_language')->name('update-language');
+                Route::get('about-us', 'BusinessSettingsController@about_us')->name('about-us');
+                Route::post('about-us', 'BusinessSettingsController@about_usUpdate')->name('about-update');
+                Route::post('update-info','BusinessSettingsController@updateInfo')->name('update-info');
+                //Social Icon
+                Route::get('social-media', 'BusinessSettingsController@social_media')->name('social-media');
+                Route::get('fetch', 'BusinessSettingsController@fetch')->name('fetch');
+                Route::post('social-media-store', 'BusinessSettingsController@social_media_store')->name('social-media-store');
+                Route::post('social-media-edit', 'BusinessSettingsController@social_media_edit')->name('social-media-edit');
+                Route::post('social-media-update', 'BusinessSettingsController@social_media_update')->name('social-media-update');
+                Route::post('social-media-delete', 'BusinessSettingsController@social_media_delete')->name('social-media-delete');
+                Route::post('social-media-status-update', 'BusinessSettingsController@social_media_status_update')->name('social-media-status-update');
 
-            //analytics
-            Route::get('analytics-index', 'BusinessSettingsController@analytics_index')->name('analytics-index');
-            Route::post('analytics-update', 'BusinessSettingsController@analytics_update')->name('analytics-update');
+                Route::get('terms-condition', 'BusinessSettingsController@terms_condition')->name('terms-condition');
+                Route::post('terms-condition', 'BusinessSettingsController@updateTermsCondition')->name('update-terms');
+                Route::get('privacy-policy', 'BusinessSettingsController@privacy_policy')->name('privacy-policy');
+                Route::post('privacy-policy', 'BusinessSettingsController@privacy_policy_update')->name('privacy-policy');
+
+                Route::get('fcm-index', 'BusinessSettingsController@fcm_index')->name('fcm-index');
+                Route::post('update-fcm', 'BusinessSettingsController@update_fcm')->name('update-fcm');
+
+                //captcha
+                Route::get('captcha', 'BusinessSettingsController@recaptcha_index')->name('captcha');
+                Route::post('recaptcha-update', 'BusinessSettingsController@recaptcha_update')->name('recaptcha_update');
+                //google map api
+                Route::get('map-api', 'BusinessSettingsController@map_api')->name('map-api');
+                Route::post('map-api-update', 'BusinessSettingsController@map_api_update')->name('map-api-update');
+
+                Route::post('update-fcm-messages', 'BusinessSettingsController@update_fcm_messages')->name('update-fcm-messages');
+
+                
+                //analytics
+                Route::get('analytics-index', 'BusinessSettingsController@analytics_index')->name('analytics-index');
+                Route::post('analytics-update', 'BusinessSettingsController@analytics_update')->name('analytics-update');
+                Route::post('analytics-update-google-tag', 'BusinessSettingsController@google_tag_analytics_update')->name('analytics-update-google-tag');
+
+
+            });
+            
         });
         //order management
         Route::group(['prefix' => 'orders', 'as' => 'orders.','middleware'=>['module:order_management']], function () {
@@ -402,7 +438,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::post('update-deliver-info','OrderController@update_deliver_info')->name('update-deliver-info');
             Route::get('add-delivery-man/{order_id}/{d_man_id}', 'OrderController@add_delivery_man')->name('add-delivery-man');
         });
-        
+
         //pos management
         Route::group(['prefix' => 'pos', 'as' => 'pos.','middleware'=>['module:pos_management']], function () {
             Route::get('/', 'POSController@index')->name('index');

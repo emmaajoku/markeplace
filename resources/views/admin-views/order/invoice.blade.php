@@ -405,7 +405,7 @@
                         <span class="h2" style="margin: 0px;">{{\App\CPU\translate('customer_info')}}: </span>
                         <div class="h4 montserrat-normal-600">
                             <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer !=null? $order->customer['f_name'].' '.$order->customer['l_name']:\App\CPU\translate('name_not_found')}}</p>
-                            @if ($order->customer['id']!=0)
+                            @if (isset($order->customer) && $order->customer['id']!=0)
                             <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer !=null? $order->customer['email']:\App\CPU\translate('email_not_found')}}</p>
                             <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer !=null? $order->customer['phone']:\App\CPU\translate('phone_not_found')}}</p>
                             @endif

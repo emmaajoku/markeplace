@@ -10,12 +10,12 @@
 
                 <ul class="list-group">
                     <li class="list-group-item text-semibold">
-                        Php version 7.4 +
+                        Php version 8.0 +
 
                         @php
                             $phpVersion = number_format((float)phpversion(), 2, '.', '');
                         @endphp
-                        @if ($phpVersion >= 7.4)
+                        @if ($phpVersion >= 8.0)
                             <i class="fa fa-check text-success pull-right"></i>
                         @else
                             <i class="fa fa-close text-danger pull-right"></i>

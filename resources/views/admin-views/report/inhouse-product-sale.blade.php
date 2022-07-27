@@ -29,7 +29,7 @@
                         <form style="width: 100%;" action="{{route('admin.report.inhoue-product-sale')}}">
                             @csrf
                             <div class="flex-between row">
-                                <div class="col-2 text-center">
+                                <div class="col-2 mt-2 text-center">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">{{\App\CPU\translate('Category')}}</label>
                                     </div>
@@ -63,12 +63,10 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">
-                                    {{\App\CPU\translate('Product Name')}} <label class="badge badge-success ml-3"
-                                                        style="cursor: pointer">{{\App\CPU\translate('ASE/DESC')}}</label>
+                                    {{\App\CPU\translate('Product Name')}} 
                                 </th>
                                 <th scope="col">
-                                    {{\App\CPU\translate('Total Sale')}} <label class="badge badge-success ml-3"
-                                                      style="cursor: pointer">{{\App\CPU\translate('ASE/DESC')}}</label>
+                                    {{\App\CPU\translate('Total Sale')}} 
                                 </th>
                             </tr>
                             </thead>
@@ -82,11 +80,11 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <table>
-                            <tfoot>
+                        <div class="card-footer">
+                            <div class=" row table-responsive">
                             {!! $products->links() !!}
-                            </tfoot>
-                        </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

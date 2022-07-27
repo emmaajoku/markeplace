@@ -9,16 +9,37 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use function App\CPU\translate;
+use App\CPU\Helpers;
 
 class DeliveryManController extends Controller
 {
     public function index()
     {
+        $shippingMethod=Helpers::get_business_settings('shipping_method');
+        if($shippingMethod=='inhouse_shipping')
+        {
+            Toastr::warning(translate('access_denied!!'));
+            return redirect('/');
+        }
+
         return view('seller-views.delivery-man.index');
     }
 
     public function list(Request $request)
     {
+        $shippingMethod=Helpers::get_business_settings('shipping_method');
+        if($shippingMethod=='inhouse_shipping')
+        {
+            Toastr::warning(translate('access_denied!!'));
+            return redirect('/');
+        }
+
+        $shippingMethod=Helpers::get_business_settings('shipping_method');
+        if($shippingMethod=='inhouse_shipping')
+        {
+            Toastr::warning(translate('access_denied!!'));
+            return back();
+        }
         $query_param = [];
         $search = $request['search'];
         if ($request->has('search')) {

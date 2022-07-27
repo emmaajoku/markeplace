@@ -100,23 +100,6 @@
                                     </select>
                                 </div>
                             </div>
-
-                            {{--<div class="row">
-                                <div class="col-md-6">
-                                    <label for="name">{{ \App\CPU\translate('discount')}}</label>
-                                    <input type="number" name="discount" value="{{$deal['discount_type']=='amount'?\App\CPU\BackEndHelper::usd_to_currency($deal['discount']):$deal['discount']}}" required
-                                           class="form-control">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="name">{{ \App\CPU\translate('discount_type')}}</label>
-                                    <select
-                                        class="js-example-basic-multiple js-states js-example-responsive form-control"
-                                        name="discount_type">
-                                        <option value="amount" {{$deal['discount_type']=='amount'?'selected':''}}>Amount</option>
-                                        <option value="percentage" {{$deal['discount_type']=='percentage'?'selected':''}}>Percentage</option>
-                                    </select>
-                                </div>
-                            </div>--}}
                         </div>
 
                         <div class=" pl-0">

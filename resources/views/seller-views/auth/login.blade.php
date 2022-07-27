@@ -81,14 +81,7 @@
                                     <center><h1 class="h4 text-gray-900 mb-4">{{\App\CPU\translate('welcome_back_to_seller_login')}}</h1>
                                     </center>
                                 </div>
-                                {{--<a class="btn btn-lg btn-block btn-white mb-4" href="#">
-                                    <span class="d-flex justify-content-center align-items-center">
-                                      <img class="avatar avatar-xss mr-2"
-                                           src="{{asset('public/assets/admin')}}/svg/brands/google.svg" alt="Image Description">
-                                      Sign in with Google
-                                    </span>
-                                </a>
-                                <span class="divider text-muted mb-4">OR</span>--}}
+                                
                             </div>
 
                             <!-- Form Group -->

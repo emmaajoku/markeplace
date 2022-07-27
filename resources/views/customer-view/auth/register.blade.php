@@ -23,7 +23,7 @@
                         <h2 class="h4 mb-1">{{\App\CPU\translate('no_account')}}</h2>
                         <p class="font-size-sm text-muted mb-4">{{\App\CPU\translate('register_control_your_order')}}
                             .</p>
-                        <form class="needs-validation_" action="{{route('customer.auth.register')}}"
+                        <form class="needs-validation_" action="{{route('customer.auth.sign-up')}}"
                               method="post" id="sign-up-form">
                             @csrf
                             <div class="row">
@@ -78,11 +78,6 @@
                                         </div>
                                     </div>
 
-                                    {{-- <div class="form-group">
-                                        <label for="reg-password">{{\App\CPU\translate('password')}}</label>
-                                        <input class="form-control" type="password" name="password">
-                                        <div class="invalid-feedback">Please enter password!</div>
-                                    </div> --}}
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -101,11 +96,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <label for="reg-password-confirm">{{\App\CPU\translate('confirm_password')}}</label>
-                                        <input class="form-control" type="password" name="con_password">
-                                        <div class="invalid-feedback">Passwords do not match!</div>
-                                    </div> --}}
+                                    
                                 </div>
                             </div>
                             <div class="form-group d-flex flex-wrap justify-content-between">
@@ -172,45 +163,6 @@
             }
 
         });
-        /*$('#sign-up-form').submit(function (e) {
-            e.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.post({
-                url: '{{route('customer.auth.register')}}',
-                dataType: 'json',
-                data: $('#sign-up-form').serialize(),
-                beforeSend: function () {
-                    $('#loading').show();
-                },
-                success: function (data) {
-                    if (data.errors) {
-                        for (var i = 0; i < data.errors.length; i++) {
-                            toastr.error(data.errors[i].message, {
-                                CloseButton: true,
-                                ProgressBar: true
-                            });
-                        }
-                    } else {
-                        toastr.success(data.message, {
-                            CloseButton: true,
-                            ProgressBar: true
-                        });
-                        setInterval(function () {
-                            location.href = data.url;
-                        }, 2000);
-                    }
-                },
-                complete: function () {
-                    $('#loading').hide();
-                },
-                error: function () {
-                  console.log(response)
-                }
-            });
-        });*/
+        
     </script>
 @endpush

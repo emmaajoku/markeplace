@@ -833,4 +833,13 @@ class BusinessSettingsController extends Controller
         Toastr::success(\App\CPU\translate('config_data_updated'));
         return back();
     }
+    public function google_tag_analytics_update(Request $request)
+    {
+        DB::table('business_settings')->updateOrInsert(['type' => 'google_tag_manager_id'], [
+            'value' => $request['google_tag_manager_id']
+        ]);
+
+        Toastr::success(\App\CPU\translate('google_tag_manager_id_updated'));
+        return back();
+    }
 }

@@ -178,7 +178,6 @@
                     }
                     else if(data.success == false) {
                         toastr.error('{{\App\CPU\translate('Status updated failed. Product must be approved')}}');
-                        location.reload();
                     }
                 }
             });

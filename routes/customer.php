@@ -30,8 +30,8 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'custom
         Route::post('login', 'LoginController@submit');
         Route::get('logout', 'LoginController@logout')->name('logout');
 
-        Route::get('register', 'RegisterController@register')->name('register');
-        Route::post('register', 'RegisterController@submit');
+        Route::get('sign-up', 'RegisterController@register')->name('sign-up');
+        Route::post('sign-up', 'RegisterController@submit');
 
         Route::get('check/{id}', 'RegisterController@check')->name('check');
 

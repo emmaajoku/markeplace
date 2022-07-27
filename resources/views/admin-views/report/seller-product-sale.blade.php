@@ -37,7 +37,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-6 col-md-1">
-                                    <div class="form-group text-center">
+                                    <div class="form-group text-center mt-2">
                                         <label for="exampleInputEmail1">{{\App\CPU\translate('Seller')}}</label>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="col-6 col-md-1 text-center">
-                                    <div class="form-group ">
+                                    <div class="form-group mt-2">
                                         <label for="exampleInputEmail1">{{\App\CPU\translate('Category')}}</label>
                                     </div>
                                 </div>
@@ -90,12 +90,10 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">
-                                    {{\App\CPU\translate('Product Name')}} <label class="badge badge-success ml-3"
-                                                        style="cursor: pointer">{{\App\CPU\translate('ASE/DESC')}}</label>
+                                    {{\App\CPU\translate('Product Name')}} 
                                 </th>
                                 <th scope="col">
-                                    {{\App\CPU\translate('Total Sale')}} <label class="badge badge-success ml-3"
-                                                      style="cursor: pointer">{{\App\CPU\translate('ASE/DESC')}}</label>
+                                    {{\App\CPU\translate('Total Sale')}}
                                 </th>
                             </tr>
                             </thead>
@@ -109,11 +107,11 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <table>
-                            <tfoot>
+                        <div class="card-footer">
+                            <div class=" row table-responsive">
                             {!! $products->links() !!}
-                            </tfoot>
-                        </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

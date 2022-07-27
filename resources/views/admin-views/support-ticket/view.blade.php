@@ -83,63 +83,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        {{-- <div class="row justify-content-between pl-4 pr-4">
-                            <div>
-                                <h5>{{\App\CPU\translate('support_ticket')}}</h5>
-                            </div>
-                            <div>
-                                <!-- Modal -->
-                                <div class="modal fade" id="addCurrency" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title"
-                                                    id="exampleModalLabel">{{\App\CPU\translate('Currency')}}</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="#" method="post">
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <input type="text" name="name" class="form-control"
-                                                                       id="name" placeholder="Enter currency Name">
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <input type="text" name="symbol" class="form-control"
-                                                                       id="symbol" placeholder="Enter currency symbol">
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <input type="text" name="code" class="form-control"
-                                                                       id="code" placeholder="Enter currency code">
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <input type="number" name="exchange_rate"
-                                                                       class="form-control" id="exchange_rate"
-                                                                       placeholder="Enter currency exchange rate">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group text-center">
-                                                        <button type="submit" id="add" class="btn btn-primary"
-                                                                style="color: white">{{\App\CPU\translate('Save')}}</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
+                        
                         <div class="flex-between row justify-content-between align-items-center flex-grow-1 mx-1">
                             <div class="flex-start">
                                 <div><h5>{{\App\CPU\translate('support_ticket')}}</h5></div>
@@ -168,15 +112,15 @@
                         <div class="table-responsive">
                             <table id="datatable"
                                    style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                   class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
+                                   class="table table-hover table-borderless table-thead-bordered table-align-middle card-table"
                                    style="width: 100%">
                                 <thead class="thead-light">
                                 <tr class="text-center">
-                                    <th>{{\App\CPU\translate('SL#')}}</th>
-                                    <th>{{\App\CPU\translate('Subject')}}</th>
-                                    <th>{{\App\CPU\translate('Priority')}}</th>
-                                    <th>{{\App\CPU\translate('Status')}}</th>
-                                    <th>{{\App\CPU\translate('Action')}}</th>
+                                    <th style="width: 10%">{{\App\CPU\translate('SL#')}}</th>
+                                    <th style="width: 40%">{{\App\CPU\translate('Subject')}}</th>
+                                    <th style="width: 15%">{{\App\CPU\translate('Priority')}}</th>
+                                    <th style="width: 15%">{{\App\CPU\translate('Status')}}</th>
+                                    <th style="width: 10%">{{\App\CPU\translate('Action')}}</th>
                                 </tr>
                                 </thead>
                                 <?php
@@ -185,13 +129,13 @@
                                 <tbody>
                                 @foreach($tickets as $key =>$ticket)
                                     <tr class="text-center">
-                                        <td>{{$tickets->firstItem()+$key}}</td>
-                                        <td>{{$ticket->subject}}</td>
-                                        <td>{{$ticket->priority}}</td>
-                                        <td><label class="switch"><input type="checkbox" class="status"
+                                        <td style="width: 10%">{{$tickets->firstItem()+$key}}</td>
+                                        <td style="width: 40%"> {{$ticket->subject}}</td>
+                                        <td style="width: 15%">{{$ticket->priority}}</td>
+                                        <td style="width: 15%"><label class="switch"><input type="checkbox" class="status"
                                                                          id="{{$ticket->id}}" <?php if ($ticket->status == 'open') echo "checked" ?>><span
                                                     class="slider round"></span></label></td>
-                                        <td>
+                                        <td style="width: 10%">
                                             <a href="{{route('admin.support-ticket.singleTicket',$ticket['id'])}}"
                                                class="btn btn-info btn-sm"
                                                title="{{\App\CPU\translate('View')}}">

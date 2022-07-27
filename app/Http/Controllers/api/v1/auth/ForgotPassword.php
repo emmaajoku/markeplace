@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use function App\CPU\translate;
 
 class ForgotPassword extends Controller
 {
@@ -25,7 +26,7 @@ class ForgotPassword extends Controller
         }
 
         $verification_by = Helpers::get_business_settings('forgot_password_verification');
-        DB::table('password_resets')->where('identity', 'like', "%{$request['identity']}%")->delete();
+        DB::table('password_resets')->where('user_type','customer')->where('identity', 'like', "%{$request['identity']}%")->delete();
 
         if ($verification_by == 'email') {
             $customer = User::Where(['email' => $request['identity']])->first();
@@ -34,11 +35,22 @@ class ForgotPassword extends Controller
                 DB::table('password_resets')->insert([
                     'identity' => $customer['email'],
                     'token' => $token,
+                    'user_type'=>'customer',
                     'created_at' => now(),
                 ]);
                 $reset_url = url('/') . '/customer/auth/reset-password?token=' . $token;
-                Mail::to($customer['email'])->send(new \App\Mail\PasswordResetMail($reset_url));
-                return response()->json(['message' => 'Email sent successfully.'], 200);
+
+                $emailServices_smtp = Helpers::get_business_settings('mail_config');
+                if ($emailServices_smtp['status'] == 0) {
+                    $emailServices_smtp = Helpers::get_business_settings('mail_config_sendgrid');
+                }
+                if ($emailServices_smtp['status'] == 1) {
+                    Mail::to($customer['email'])->send(new \App\Mail\PasswordResetMail($reset_url));
+                    $response = translate('check_your_email');
+                }else{
+                    $response= translate('email_failed');
+                }
+                return response()->json(['message' => $response], 200);
             }
         } elseif ($verification_by == 'phone') {
             $customer = User::where('phone', 'like', "%{$request['identity']}%")->first();
@@ -47,6 +59,7 @@ class ForgotPassword extends Controller
                 DB::table('password_resets')->insert([
                     'identity' => $customer['phone'],
                     'token' => $token,
+                    'user_type'=>'customer',
                     'created_at' => now(),
                 ]);
                 SMS_module::send($customer->phone, $token);
@@ -69,8 +82,8 @@ class ForgotPassword extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        $id = session('forgot_password_identity');
-        $data = DB::table('password_resets')->where(['token' => $request['otp']])
+        $id = $request['identity'];
+        $data = DB::table('password_resets')->where('user_type','customer')->where(['token' => $request['otp']])
             ->where('identity', 'like', "%{$id}%")
             ->first();
 
@@ -96,6 +109,7 @@ class ForgotPassword extends Controller
         }
 
         $data = DB::table('password_resets')
+            ->where('user_type','customer')
             ->where('identity', 'like', "%{$request['identity']}%")
             ->where(['token' => $request['otp']])->first();
 
@@ -106,6 +120,7 @@ class ForgotPassword extends Controller
                 ]);
 
             DB::table('password_resets')
+                ->where('user_type','customer')
                 ->where('identity', 'like', "%{$request['identity']}%")
                 ->where(['token' => $request['otp']])->delete();
 

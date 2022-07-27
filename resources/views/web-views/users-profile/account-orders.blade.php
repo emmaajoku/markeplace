@@ -176,6 +176,10 @@
                         @if($orders->count()==0)
                             <center class="mt-3 mb-2">{{\App\CPU\translate('no_order_found')}}</center>
                         @endif
+
+                        <div class="card-footer">
+                            {{$orders->links()}}
+                        </div>
                     </div>
                 </div>
             </section>

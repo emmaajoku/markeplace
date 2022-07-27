@@ -266,27 +266,26 @@ class OrderManager
         $seller_data = Cart::where(['cart_group_id' => $cart_group_id])->first();
 
         $shipping_method = CartShipping::where(['cart_group_id' => $cart_group_id])->first();
-        if(isset($shipping_method))
-        {
+        if (isset($shipping_method)) {
             $shipping_method_id = $shipping_method->shipping_method_id;
-        }else{
+        } else {
             $shipping_method_id = 0;
         }
 
         $shipping_model = Helpers::get_business_settings('shipping_method');
         if ($shipping_model == 'inhouse_shipping') {
-            $admin_shipping = ShippingType::where('seller_id',0)->first();
-            $shipping_type = isset($admin_shipping)==true? $admin_shipping->shipping_type:'order_wise';
+            $admin_shipping = ShippingType::where('seller_id', 0)->first();
+            $shipping_type = isset($admin_shipping) == true ? $admin_shipping->shipping_type : 'order_wise';
         } else {
-            if($seller_data->seller_is == 'admin'){
-                $admin_shipping = ShippingType::where('seller_id',0)->first();
-                $shipping_type = isset($admin_shipping)==true? $admin_shipping->shipping_type:'order_wise';
-            }else{
-                $seller_shipping = ShippingType::where('seller_id',$seller_data->seller_id)->first();
-                $shipping_type = isset($seller_shipping)==true? $seller_shipping->shipping_type:'order_wise';
+            if ($seller_data->seller_is == 'admin') {
+                $admin_shipping = ShippingType::where('seller_id', 0)->first();
+                $shipping_type = isset($admin_shipping) == true ? $admin_shipping->shipping_type : 'order_wise';
+            } else {
+                $seller_shipping = ShippingType::where('seller_id', $seller_data->seller_id)->first();
+                $shipping_type = isset($seller_shipping) == true ? $seller_shipping->shipping_type : 'order_wise';
             }
         }
-        
+
         $or = [
             'id' => $order_id,
             'verification_code' => rand(100000, 999999),
@@ -315,7 +314,7 @@ class OrderManager
             'order_note' => $order_note
         ];
 
-        $order_id = DB::table('orders')->insertGetId($or);
+        DB::table('orders')->insertGetId($or);
 
         foreach (CartManager::get_cart($data['cart_group_id']) as $c) {
             $product = Product::where(['id' => $c['product_id']])->first();
@@ -425,16 +424,17 @@ class OrderManager
                 Helpers::send_push_notif_to_device($fcm_token, $data);
                 Helpers::send_push_notif_to_device($seller_fcm_token, $data);
             }
-            
-            Mail::to($user->email)->send(new \App\Mail\OrderPlaced($order_id));
-            // if ($order['seller_is'] == 'seller') {
-            //     $seller = Seller::where(['id' => $seller_data->seller_id])->first();
-            // } else {
-            //     $seller = Admin::where(['admin_role_id' => 1])->first();
-            // }
-            Mail::to($seller->email)->send(new \App\Mail\OrderReceivedNotifySeller($order_id));
 
+            $emailServices_smtp = Helpers::get_business_settings('mail_config');
+            if ($emailServices_smtp['status'] == 0) {
+                $emailServices_smtp = Helpers::get_business_settings('mail_config_sendgrid');
+            }
+            if ($emailServices_smtp['status'] == 1) {
+                Mail::to($user->email)->send(new \App\Mail\OrderPlaced($order_id));
+                Mail::to($seller->email)->send(new \App\Mail\OrderReceivedNotifySeller($order_id));
+            }
         } catch (\Exception $exception) {
+            //echo $exception;
         }
 
         return $order_id;

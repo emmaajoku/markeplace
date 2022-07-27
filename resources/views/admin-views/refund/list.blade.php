@@ -123,7 +123,7 @@
                                 @endif
                             </td>
                             <td>
-                                {{$refund->status}}
+                                {{\App\CPU\translate($refund->status)}}
                             </td>
                             <td>
                                 {{\App\CPU\Helpers::currency_converter($refund->amount)}}

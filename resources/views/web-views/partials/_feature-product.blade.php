@@ -28,7 +28,7 @@
             <div class="d-flex" style="left:5px;top:5px;position: absolute">
                     <span class="for-discoutn-value p-1 pl-2 pr-2">
                     @if ($product->discount_type == 'percent')
-                            {{round($product->discount,2)}}%
+                            {{round($product->discount,$decimal_point_settings)}}%
                         @elseif($product->discount_type =='flat')
                             {{\App\CPU\Helpers::currency_converter($product->discount)}}
                         @endif

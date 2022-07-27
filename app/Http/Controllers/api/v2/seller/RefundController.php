@@ -15,6 +15,8 @@ use App\Model\DeliveryMan;
 use App\Model\OrderDetail;
 use Illuminate\Support\Facades\Validator;
 Use App\Model\RefundStatus;
+use App\User;
+use App\CPU\CustomerManager;
 
 class RefundController extends Controller
 {
@@ -126,6 +128,20 @@ class RefundController extends Controller
         $refund = RefundRequest::whereHas('order', function ($query) use($data) {
                                     $query->where('seller_is', 'seller')->where('seller_id',$data['data']['id']);
                                 })->find($request->refund_request_id);
+
+        $user = User::find($refund->customer_id);
+        
+        $loyalty_point_status = Helpers::get_business_settings('loyalty_point_status');
+        
+        if($loyalty_point_status == 1)
+        {
+            $loyalty_point = CustomerManager::count_loyalty_point_for_amount($refund->order_details_id);
+    
+            if($user->loyalty_point < $loyalty_point && $request->refund_status == 'approved')
+            {
+                return response()->json(['message'=>'Customer has not sufficient loyalty point to take refund for this order'],302);
+            }
+        }
 
         if($refund->change_by =='admin'){
             

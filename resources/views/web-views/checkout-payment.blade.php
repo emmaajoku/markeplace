@@ -53,6 +53,23 @@
                             </div>
                         @endif
 
+                        @php($config=\App\CPU\Helpers::get_business_settings('wallet_status'))
+                        @if($config==1)
+                            <div class="col-md-6 mb-4" style="cursor: pointer">
+                                <div class="card">
+                                    <div class="card-body" style="height: 100px">
+                                        <form action="{{route('checkout-complete-wallet')}}" method="get" class="needs-validation">
+                                            <button class="btn btn-block click-if-alone" type="submit">
+                                            
+                                                <img width="150" style="margin-top: -10px"
+                                                     src="{{asset('public/assets/front-end/img/wallet.png')}}"/>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                         @php($config=\App\CPU\Helpers::get_business_settings('ssl_commerz_payment'))
                         @if($config['status'])
                             <div class="col-md-6 mb-4" style="cursor: pointer">

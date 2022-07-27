@@ -51,45 +51,7 @@
             </a>
         </div>
 
-        {{-- <div class="row mt-2">
-            @foreach(\App\Model\Banner::where('banner_type','Footer Banner')->where('published',1)->orderBy('id','desc')->take(3)->get() as $banner)
-                <div class="col-4">
-                    <a data-toggle="modal" data-target="#quick_banner{{$banner->id}}"
-                       style="cursor: pointer;">
-                        <img class="d-block footer_banner_img" style="width: 100%"
-                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                             src="{{asset('storage/app/public/banner')}}/{{$banner['photo']}}">
-                    </a>
-                </div>
-                <div class="modal fade" id="quick_banner{{$banner->id}}" tabindex="-1"
-                     role="dialog" aria-labelledby="exampleModalLongTitle"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <p class="modal-title"
-                                   id="exampleModalLongTitle">{{ \App\CPU\translate('banner_photo')}}</p>
-                                <button type="button" class="close" data-dismiss="modal"
-                                        aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <img class="d-block mx-auto"
-                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                     src="{{asset('storage/app/public/banner')}}/{{$banner['photo']}}">
-                                @if ($banner->url!="")
-                                    <div class="text-center mt-2">
-                                        <a href="{{$banner->url}}"
-                                           class="btn btn-outline-accent">{{\App\CPU\translate('Explore')}} {{\App\CPU\translate('Now')}}</a>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div> --}}
+        
     </div>
     <!-- Banner group-->
 </div>

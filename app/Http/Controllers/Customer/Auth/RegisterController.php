@@ -83,15 +83,20 @@ class RegisterController extends Controller
             $response = translate('please_check_your_SMS_for_OTP');
             Toastr::success($response);
         }
+
         if ($email_verification && !$user->is_email_verified) {
-            try {
+            $emailServices_smtp = Helpers::get_business_settings('mail_config');
+            if ($emailServices_smtp['status'] == 0) {
+                $emailServices_smtp = Helpers::get_business_settings('mail_config_sendgrid');
+            }
+            if ($emailServices_smtp['status'] == 1) {
                 Mail::to($user->email)->send(new \App\Mail\EmailVerification($token));
                 $response = translate('check_your_email');
-                Toastr::success($response);
-            } catch (\Exception $exception) {
-                $response = translate('email_failed');
-                Toastr::error($response);
+            }else{
+                $response= translate('email_failed');
             }
+
+            Toastr::success($response);
         }
 
         return view('customer-view.auth.verify', compact('user'));
@@ -103,8 +108,8 @@ class RegisterController extends Controller
             'token' => 'required',
         ]);
 
-        $email_status = BusinessSetting::where('type', 'email_verification')->first()->value;
-        $phone_status = BusinessSetting::where('type', 'phone_verification')->first()->value;
+        $email_status = Helpers::get_business_settings('email_verification');
+        $phone_status = Helpers::get_business_settings('phone_verification');
 
         $user = User::find($request->id);
         $verify = PhoneOrEmailVerification::where(['phone_or_email' => $user->email, 'token' => $request['token']])->first();

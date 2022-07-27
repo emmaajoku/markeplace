@@ -40,6 +40,8 @@ use App\Model\ShippingType;
 use Facade\FlareClient\Http\Response;
 use Gregwar\Captcha\PhraseBuilder;
 use Gregwar\Captcha\CaptchaBuilder;
+use App\CPU\CustomerManager;
+use App\CPU\Convert;
 
 class WebController extends Controller
 {
@@ -170,6 +172,12 @@ class WebController extends Controller
 
     public function all_sellers()
     {
+        $business_mode=Helpers::get_business_settings('business_mode');
+        if(isset($business_mode) && $business_mode=='single')
+        {
+            Toastr::warning(translate('access_denied!!'));
+            return back();
+        }
         $sellers = Shop::whereHas('seller', function ($query) {
             return $query->approved();
         })->paginate(24);
@@ -281,7 +289,7 @@ class WebController extends Controller
     }
 
     public function checkout_complete(Request $request)
-    {
+    { 
         $unique_id = OrderManager::gen_unique_id();
         $order_ids = [];
         foreach (CartManager::get_cart_group_ids() as $group_id) {
@@ -298,7 +306,41 @@ class WebController extends Controller
         }
 
         CartManager::cart_clean();
+    
 
+        return view('web-views.checkout-complete');
+    }
+    public function checkout_complete_wallet(Request $request = null)
+    {
+        $cartTotal = CartManager::cart_grand_total();
+        $user = Helpers::get_customer($request);
+        if( $cartTotal > $user->wallet_balance)
+        {
+            Toastr::warning(translate('inefficient balance in your wallet to pay for this order!!'));
+            return back();
+        }else{
+            $unique_id = OrderManager::gen_unique_id();
+            $order_ids = [];
+            foreach (CartManager::get_cart_group_ids() as $group_id) {
+                $data = [
+                    'payment_method' => 'pay_by_wallet',
+                    'order_status' => 'confirmed',
+                    'payment_status' => 'paid',
+                    'transaction_ref' => '',
+                    'order_group_id' => $unique_id,
+                    'cart_group_id' => $group_id
+                ];
+                $order_id = OrderManager::generate_order($data);
+                array_push($order_ids, $order_id);
+            }
+            
+            CustomerManager::create_wallet_transaction($user->id, Convert::default($cartTotal), 'order_place','order payment');
+            CartManager::cart_clean();
+        }
+
+        if (session()->has('payment_mode') && session('payment_mode') == 'app') {
+            return redirect()->route('payment-success');
+        }
         return view('web-views.checkout-complete');
     }
 
@@ -502,7 +544,7 @@ class WebController extends Controller
         }
 
         if ($request['data_from'] == 'latest') {
-            $query = $porduct_data->orderBy('id', 'DESC');
+            $query = $porduct_data;
         }
 
         if ($request['data_from'] == 'top-rated') {
@@ -576,7 +618,7 @@ class WebController extends Controller
         } elseif ($request['sort_by'] == 'z-a') {
             $fetched = $query->orderBy('name', 'DESC');
         } else {
-            $fetched = $query;
+            $fetched = $query->latest();
         }
 
         if ($request['min_price'] != null || $request['max_price'] != null) {
@@ -758,13 +800,13 @@ class WebController extends Controller
                     $wishlist->save();
 
                     $countWishlist = Wishlist::where('customer_id', auth('customer')->id())->get();
-                    $data = "Product has been added to wishlist";
+                    $data = \App\CPU\translate("Product has been added to wishlist");
 
                     $product_count = Wishlist::where(['product_id' => $request->product_id])->count();
                     session()->put('wish_list', Wishlist::where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray());
                     return response()->json(['success' => $data, 'value' => 1, 'count' => count($countWishlist), 'id' => $request->product_id, 'product_count' => $product_count]);
                 } else {
-                    $data = "Product already added to wishlist";
+                    $data = \App\CPU\translate("Product already added to wishlist");
                     return response()->json(['error' => $data, 'value' => 2]);
                 }
 

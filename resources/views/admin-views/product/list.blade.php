@@ -44,10 +44,12 @@
                             <!-- End Search -->
                         </div>
                         <div class="col-12 col-md-3">
-                            <a href="{{route('admin.product.add-new')}}" class="btn btn-primary  float-right">
-                                <i class="tio-add-circle"></i>
-                                <span class="text">{{\App\CPU\translate('Add new product')}}</span>
-                            </a>
+                            @if (!isset($request_status))
+                                <a href="{{route('admin.product.add-new')}}" class="btn btn-primary  float-right">
+                                    <i class="tio-add-circle"></i>
+                                    <span class="text">{{\App\CPU\translate('Add new product')}}</span>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -11,21 +11,7 @@
   /**
    * Google webfonts. Recommended to include the .woff version for cross-client compatibility.
    */
-  /* @media screen {
-    @font-face {
-      font-family: 'Source Sans Pro';
-      font-style: normal;
-      font-weight: 400;
-      src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
-    }
 
-    @font-face {
-      font-family: 'Source Sans Pro';
-      font-style: normal;
-      font-weight:  650;
-      src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format('woff');
-    }
-  } */
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
   /**
    * Avoid browser level font resizing.
@@ -79,12 +65,7 @@
     margin: 0 !important;
   } */
 
-  /* body {
-    width: 100% !important;
-    height: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  } */
+  
 
   /**
    * Collapse table borders to avoid space between cells.
@@ -260,7 +241,7 @@
         }
         $shipping=$order['shipping_cost'];
     ?>
-    {{-- <div class="content-position-y" style=" display:block; height:auto !important;margin-top: 40px"> --}}
+    
         <table style="background-color: rgb(255, 255, 255);width: 90%;margin:auto;margin-top:30px;">
             <tr>
                 <th style="text-align: left; vertical-align: auto;">
@@ -314,7 +295,7 @@
                 </td>
             </tr>
         </table>
-    {{-- </div> --}}
+   
     <table style="background-color: rgb(255, 255, 255);width: 90%;margin:auto;margin-top:30px;">
         <tbody style="">
             
@@ -342,7 +323,7 @@
 </div>
 
 <div style="padding:5px;width:650px;margin:auto;margin-top:5px; margin-bottom:50px;">
-    {{-- @php($company_name = \App\Model\BusinessSetting::where('type', 'company_name')->first()->value) --}}
+    
     <table style="margin:auto;width:90%; color:#777777;">
         <tbody>
             <tr>

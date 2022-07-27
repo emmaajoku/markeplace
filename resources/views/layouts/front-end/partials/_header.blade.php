@@ -298,7 +298,7 @@
                                     <i class="fa fa-sign-in {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i> {{\App\CPU\translate('sing_in')}}
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('customer.auth.register')}}">
+                                <a class="dropdown-item" href="{{route('customer.auth.sign-up')}}">
                                     <i class="fa fa-user-circle {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>{{\App\CPU\translate('sing_up')}}
                                 </a>
                             </div>

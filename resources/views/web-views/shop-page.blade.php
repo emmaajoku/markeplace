@@ -195,6 +195,8 @@
 @endpush
 
 @section('content')
+
+@php($decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings'))
     <!-- Page Content-->
     <div class="container pb-5 mb-2 mb-md-4">
         <div class="row rtl">
@@ -340,15 +342,6 @@
             
         </div>
 
-        
-        {{-- sidebar opener --}}
-        {{-- <button class="openbtn" onclick="openNav()" style="width: 100%">
-            <div style="margin-bottom: -30%; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}}">
-                {{Session::get('direction') !== "rtl" ? '☰' : ''}}
-                {{\App\CPU\translate('categories')}}
-                {{Session::get('direction') === "rtl" ? '☰' : ''}}
-            </div>
-        </button> --}}
 
         <div class="row mt-1 mr-0 rtl">
             {{-- sidebar (Category) - before toggle --}}
@@ -500,7 +493,7 @@
                 </div>
                 <!-- Products grid-->
                 <div class="row" id="ajax-products">
-                    @include('web-views.products._ajax-products',['products'=>$products])
+                    @include('web-views.products._ajax-products',['products'=>$products,'decimal_point_settings'=>$decimal_point_settings])
                 </div>
             </div>
         </div>

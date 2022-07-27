@@ -66,6 +66,36 @@
                 </div>
             </div>
         </div>
+        @php
+            $wallet_status = App\CPU\Helpers::get_business_settings('wallet_status');
+            $loyalty_point_status = App\CPU\Helpers::get_business_settings('loyalty_point_status');
+        @endphp
+        @if ($wallet_status == 1)
+            <div class="pb-0">
+                <!-- Filter by price-->
+                <div class="sidebarL">
+                    <h3 class="widget-title btnF" style="font-weight: 700;">
+                        <a class="{{Request::is('wallet')?'active-menu':''}}" href="{{route('wallet') }} ">{{\App\CPU\translate('my_wallet')}} </a>
+                    </h3>
+                    <div class="divider-role"
+                        style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;">
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if ($loyalty_point_status == 1)
+            <div class="pb-0">
+                <!-- Filter by price-->
+                <div class="sidebarL">
+                    <h3 class="widget-title btnF" style="font-weight: 700;">
+                        <a class="{{Request::is('loyalty')?'active-menu':''}}" href="{{route('loyalty') }} ">{{\App\CPU\translate('my_loyalty_point')}}</a>
+                    </h3>
+                    <div class="divider-role"
+                        style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;">
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="pb-0">
             <!-- Filter by price-->
             <div class="sidebarL">
@@ -140,19 +170,7 @@
                 </div>
             </div>
         </div>
-        {{--<div class="pb-0" style="padding-top: 12px;">
-            <!-- Filter by price-->
-            <div class="sidebarL ">
-                <h3 class="widget-title btnF" style="font-weight: 700;">
-                    <a class="{{Request::is('account-transaction*')?'active-menu':''}}"
-                       href="{{ route('account-transaction') }}">
-                       {{\App\CPU\translate('tansction_history')}}
-                    </a>
-                </h3>
-                <div class="divider-role"
-                     style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;"></div>
-            </div>
-        </div>--}}
+        
     </div>
 </div>
 

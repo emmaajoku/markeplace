@@ -120,10 +120,7 @@
                                 <div><h5>{{\App\CPU\translate('address')}} : </h5></div>
                                 <div class="mx-1"><h5>{{$seller->seller->shop->address}}</h5></div>
                             </div>
-                            {{-- <div class="flex-start">
-                                <div><h5 class="text-capitalize badge badge-success">{{\App\CPU\translate('balance')}} : </h5></div>
-                                <div class="mx-1"><h5>{{\App\CPU\Convert::default($seller->seller->wallet->balance)}} {{\App\CPU\currency_symbol()}}</h5></div>
-                            </div> --}}
+                           
                         </div>
                     </div>
                 </div>

@@ -20,6 +20,8 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function App\CPU\translate;
+use App\CPU\CustomerManager;
+use App\CPU\Convert;
 
 class OrderController extends Controller
 {
@@ -34,21 +36,27 @@ class OrderController extends Controller
         
         Order::where(['checked' => 0])->update(['checked' => 1]);
 
-        $query_param = [];
-        $search = $request['search'];
-        if ($request->has('search')) {
-            $key = explode(' ', $request['search']);
-            $orders = $orders->where(function ($q) use ($key) {
-                foreach ($key as $value) {
-                    $q->Where('id', 'like', "%{$value}%");
-                }
-            });
-            $query_param = ['search' => $request['search']];
-        }
-        //dd($orders->count())
         
-        $orders = $orders->where('order_type','default_type')->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
-        return view('seller-views.order.list', compact('orders', 'search'));
+
+        $search = $request['search'];
+        $from = $request['from'];
+        $to = $request['to'];
+
+        $key = explode(' ', $request['search']);
+        $orders = $orders->when($request->has('search') && $search!=null,function ($q) use ($key) {
+            $q->where(function($qq) use ($key){
+                foreach ($key as $value) {
+                    $qq->where('id', 'like', "%{$value}%")
+                        ->orWhere('order_status', 'like', "%{$value}%")
+                        ->orWhere('transaction_ref', 'like', "%{$value}%");
+                }});
+            })->when($from!=null , function($dateQuery) use($from, $to) {
+                $dateQuery->whereDate('created_at', '>=',$from)
+                                ->whereDate('created_at', '<=',$to);
+                });
+        
+        $orders = $orders->where('order_type','default_type')->latest()->paginate(Helpers::pagination_limit())->appends(['search'=>$request['search'],'from'=>$request['from'],'to'=>$request['to']]);
+        return view('seller-views.order.list', compact('orders', 'search','from','to'));
     }
 
     public function details($id)
@@ -136,8 +144,21 @@ class OrderController extends Controller
     public function status(Request $request)
     {
         $order = Order::find($request->id);
+        
+        $wallet_status = Helpers::get_business_settings('wallet_status');
+        $loyalty_point_status = Helpers::get_business_settings('loyalty_point_status');
+
+        if($request->order_status=='delivered' && $order->payment_status !='paid'){
+
+            return response()->json(['payment_status'=>0],200);
+        }
         $fcm_token = $order->customer->cm_firebase_token;
         $value = Helpers::order_status_update_message($request->order_status);
+
+        if ($order->order_status == 'delivered') {
+            return response()->json(['success' => 0, 'message' => 'order is already delivered.'], 200);
+        }
+        
         try {
             if ($value) {
                 $data = [
@@ -166,9 +187,7 @@ class OrderController extends Controller
             }
         } catch (\Exception $e) {}
 
-        if ($order->order_status == 'delivered') {
-            return response()->json(['success' => 0, 'message' => 'order is already delivered.'], 200);
-        }
+        
         $order->order_status = $request->order_status;
         OrderManager::stock_update_on_order_status_change($order, $request->order_status);
 
@@ -180,6 +199,14 @@ class OrderController extends Controller
         }
 
         $order->save();
+
+        if($wallet_status == 1 && $loyalty_point_status == 1)
+        {
+            if($request->order_status == 'delivered' && $order->payment_status =='paid'){
+                CustomerManager::create_loyalty_point_transaction($order->customer_id, $order->id, Convert::default($order->order_amount-$order->shipping_cost), 'order_place');
+            }
+        }
+
         $data = $request->order_status;
         return response()->json($data);
     }

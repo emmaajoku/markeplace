@@ -48,23 +48,23 @@
 
                         @if($order['order_status']=='pending')
                             <span class="badge badge-soft-info ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-info text"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-info text"></span>{{\App\CPU\translate(str_replace('_',' ',$order['order_status']))}}
                             </span>
                         @elseif($order['order_status']=='failed')
                             <span class="badge badge-danger ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-info"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-info"></span>{{\App\CPU\translate(str_replace('_',' ',$order['order_status']))}}
                             </span>
                         @elseif($order['order_status']=='processing' || $order['order_status']=='out_for_delivery')
                             <span class="badge badge-soft-warning ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-warning"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-warning"></span>{{\App\CPU\translate(str_replace('_',' ',$order['order_status']))}}
                             </span>
                         @elseif($order['order_status']=='delivered' || $order['order_status']=='confirmed')
                             <span class="badge badge-soft-success ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-success"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-success"></span>{{\App\CPU\translate(str_replace('_',' ',$order['order_status']))}}
                             </span>
                         @else
                             <span class="badge badge-soft-danger ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-danger"></span>{{str_replace('_',' ',$order['order_status'])}}
+                              <span class="legend-indicator bg-danger"></span>{{\App\CPU\translate(str_replace('_',' ',$order['order_status']))}}
                             </span>
                         @endif
                         <span class="ml-2 ml-sm-3">
@@ -300,7 +300,7 @@
                                     class="text-body text-hover-primary">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</span>
                                 </div>
                                 <div class="media-body text-right">
-                                    {{--<i class="tio-chevron-right text-body"></i>--}}
+                                    
                                 </div>
                             </div>
 
@@ -315,7 +315,7 @@
                                         class="text-body text-hover-primary"> {{\App\Model\Order::where('order_type','POS')->where('customer_id',$order['customer_id'])->count()}} {{\App\CPU\translate('orders')}}</span>
                                 </div>
                                 <div class="media-body text-right">
-                                    {{--<i class="tio-chevron-right text-body"></i>--}}
+                                    
                                 </div>
                             </div>
 

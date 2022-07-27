@@ -56,18 +56,34 @@
                         website')}}.
                     </li>
                 </ol>
-                <div class="card py-2 mt-4">
-                    <form class="card-body needs-validation" action="{{route('seller.auth.forgot-password')}}"
-                          method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label for="recover-email">{{\App\CPU\translate('Enter your email address')}}</label>
-                            <input class="form-control" type="email" name="email" id="recover-email" required>
-                            <div class="invalid-feedback">{{\App\CPU\translate('Please provide valid email address')}}.</div>
-                        </div>
-                        <button class="btn btn-primary" type="submit">{{\App\CPU\translate('Get new password')}}</button>
-                    </form>
-                </div>
+                @php($verification_by=\App\CPU\Helpers::get_business_settings('forgot_password_verification'))
+                @if ($verification_by=='email')
+                    <div class="card py-2 mt-4">
+                        <form class="card-body needs-validation" action="{{route('seller.auth.forgot-password')}}"
+                            method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="recover-email">{{\App\CPU\translate('Enter your email address')}}</label>
+                                <input class="form-control" type="email" name="identity" id="recover-email" required>
+                                <div class="invalid-feedback">{{\App\CPU\translate('Please provide valid email address')}}.</div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">{{\App\CPU\translate('Get new password')}}</button>
+                        </form>
+                    </div>
+                @else
+                    <div class="card py-2 mt-4">
+                        <form class="card-body needs-validation" action="{{route('seller.auth.forgot-password')}}"
+                            method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="recover-email">{{\App\CPU\translate('Enter your phone number')}}</label>
+                                <input class="form-control" type="text" name="identity" id="recover-email" required>
+                                <div class="invalid-feedback">{{\App\CPU\translate('Please provide valid phone number')}}.</div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">{{\App\CPU\translate('Get new password')}}</button>
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

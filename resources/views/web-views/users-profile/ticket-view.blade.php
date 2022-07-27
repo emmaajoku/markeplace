@@ -236,7 +236,7 @@
                         @csrf
                         <div class="form-group">
                             <textarea class="form-control" name="comment" rows="8"
-                                      placeholder="Write your message here..." required></textarea>
+                                      placeholder="{{\App\CPU\translate('Write your message here...')}}" required></textarea>
                             <div class="invalid-tooltip">{{\App\CPU\translate('Please write the message')}}!</div>
                         </div>
                         <div class="d-flex flex-wrap justify-content-between align-items-center">

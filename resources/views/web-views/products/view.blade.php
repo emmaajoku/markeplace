@@ -198,6 +198,8 @@
 @endpush
 
 @section('content')
+
+@php($decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings'))
     <!-- Page Title-->
     <div class="d-flex justify-content-center align-items-center mb-3" style="min-height: 70px;background:{{$web_config['primary_color']}}10;width:100%;">
         
@@ -648,7 +650,7 @@
                 {{-- </div> --}}
                 @if (count($products) > 0)
                     <div class="row mt-3" id="ajax-products">
-                        @include('web-views.products._ajax-products',['products'=>$products])
+                        @include('web-views.products._ajax-products',['products'=>$products,'decimal_point_settings'=>$decimal_point_settings])
                     </div>
                 @else
                     <div class="text-center pt-5">

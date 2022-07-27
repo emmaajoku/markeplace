@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-curl": "*",
+        "ext-json": "*",
         "ext-openssl": "*",
         "aws/aws-sdk-php": "^3.209",
         "brian2694/laravel-toastr": "^5.56",
@@ -33,6 +34,7 @@
         "paypal/rest-api-sdk-php": "^1.14",
         "rap2hpoutre/fast-excel": "^3.1",
         "razorpay/razorpay": "2.*",
+        "spatie/laravel-sitemap": "^5.9",
         "stripe/stripe-php": "^7.107",
         "symfony/translation": "^5.4",
         "twilio/sdk": "^6.31",

@@ -35,7 +35,7 @@ class ForgotPasswordController extends Controller
         session()->put('forgot_password_identity', $request['identity']);
         $verification_by = Helpers::get_business_settings('forgot_password_verification');
 
-        DB::table('password_resets')->where('identity', 'like', "%{$request['identity']}%")->delete();
+        DB::table('password_resets')->where('user_type','customer')->where('identity', 'like', "%{$request['identity']}%")->delete();
 
         if ($verification_by == 'email') {
             $customer = User::Where(['email' => $request['identity']])->first();
@@ -44,6 +44,7 @@ class ForgotPasswordController extends Controller
                 DB::table('password_resets')->insert([
                     'identity' => $customer['email'],
                     'token' => $token,
+                    'user_type'=>'customer',
                     'created_at' => now(),
                 ]);
                 $reset_url = url('/') . '/customer/auth/reset-password?token=' . $token;
@@ -58,6 +59,7 @@ class ForgotPasswordController extends Controller
                 DB::table('password_resets')->insert([
                     'identity' => $customer['phone'],
                     'token' => $token,
+                    'user_type'=>'customer',
                     'created_at' => now(),
                 ]);
                 SMS_module::send($customer->phone, $token);
@@ -78,7 +80,7 @@ class ForgotPasswordController extends Controller
     public function otp_verification_submit(Request $request)
     {
         $id = session('forgot_password_identity');
-        $data = DB::table('password_resets')->where(['token' => $request['otp']])
+        $data = DB::table('password_resets')->where('user_type','customer')->where(['token' => $request['otp']])
             ->where('identity', 'like', "%{$id}%")
             ->first();
         if (isset($data)) {
@@ -92,7 +94,7 @@ class ForgotPasswordController extends Controller
 
     public function reset_password_index(Request $request)
     {
-        $data = DB::table('password_resets')->where(['token' => $request['token']])->first();
+        $data = DB::table('password_resets')->where('user_type','customer')->where(['token' => $request['token']])->first();
         if (isset($data)) {
             $token = $request['token'];
             return view('customer-view.auth.reset-password', compact('token'));
@@ -115,6 +117,7 @@ class ForgotPasswordController extends Controller
 
         $id = session('forgot_password_identity');
         $data = DB::table('password_resets')
+            ->where('user_type','customer')
             ->where('identity', 'like', "%{$id}%")
             ->where(['token' => $request['reset_token']])->first();
 
@@ -125,7 +128,7 @@ class ForgotPasswordController extends Controller
                     'password' => bcrypt(str_replace(' ', '', $request['password']))
                 ]);
             Toastr::success('Password reset successfully.');
-            DB::table('password_resets')->where(['token' => $request['reset_token']])->delete();
+            DB::table('password_resets')->where('user_type','customer')->where(['token' => $request['reset_token']])->delete();
             return redirect('/');
         }
         Toastr::error('Invalid data.');

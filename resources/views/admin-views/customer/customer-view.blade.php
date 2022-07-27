@@ -183,28 +183,6 @@
 
                             <hr>
 
-
-                            {{-- <div class="d-flex justify-content-between align-items-center">
-                                <h5>{{\App\CPU\translate('shipping_address')}}</h5>
-
-                            </div>
-
-
-                            <span class="d-block">
-                                @if(isset($order))
-                                    {{\App\CPU\translate('Name')}} :
-                                    <strong>{{$order->shippingAddress ? $order->shippingAddress['contact_person_name'] : "empty"}}</strong>
-                                    <br>
-                                    {{\App\CPU\translate('City')}}:
-                                    <strong>{{$order->shipping ? $order->shipping['city'] : "Empty"}}</strong><br>
-                                    {{\App\CPU\translate('zip_code')}} :
-                                    <strong>{{$order->shipping ? $order->shipping['zip']  : "Empty"}}</strong><br>
-                                    {{\App\CPU\translate('Phone')}}:
-                                    <strong>{{$order->shipping ? $order->shipping['phone']  : "Empty"}}</strong>
-
-                            </span>
-                            @endif --}}
-
                         </div>
                 @endif
 

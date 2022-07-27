@@ -24,9 +24,6 @@
         <div class="row gx-2 gx-lg-3">
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
                 <div class="card">
-                    {{-- <div class="card-header">
-                        {{\App\CPU\translate('coupon_form')}}
-                    </div> --}}
                     <div class="card-body">
                         <form action="{{route('admin.coupon.store-coupon')}}" method="post">
                             @csrf
@@ -281,48 +278,7 @@
 
     
 </script>
-    {{-- <script>
-         $(document).ready(function() {
-            $('#dataTable').DataTable();
-        });
-        function checkDiscountType(val) {
-            if (val == 'amount') {
-                $('#max-discount').hide()
-            } else if (val == 'percentage') {
-                $('#max-discount').show()
-            }
-        }
-        $(document).on('change', '.status', function () {
-            var id = $(this).attr("id");
-            if ($(this).prop("checked") == true) {
-                var status = 1;
-            } else if ($(this).prop("checked") == false) {
-                var status = 0;
-            }
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: "#",
-                method: 'POST',
-                data: {
-                    id: id,
-                    status: status
-                },
-                success: function (data) {
-                    if (data == 1) {
-                        toastr.success('Coupon published successfully');
-                    } else {
-                        toastr.success('Coupon unpublished successfully');
-                    }
-                }
-            });
-        });
-
-    </script> --}}
+    
     <script src="{{asset('public/assets/back-end')}}/js/select2.min.js"></script>
     <script>
         $(".js-example-theme-single").select2({

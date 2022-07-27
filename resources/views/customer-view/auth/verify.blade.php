@@ -63,7 +63,6 @@
     </div>
 @endsection
 
-{{--     {{route('customer.auth.verify', $user->id)}}       --}}
 
 @push('script')
 @endpush

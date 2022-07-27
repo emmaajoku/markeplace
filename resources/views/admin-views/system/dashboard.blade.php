@@ -342,15 +342,15 @@
             type: 'doughnut',
             data: {
                 labels: [
-                    '{{\App\CPU\translate('customer')}} ( {{$data['customer']}} )',
-                    '{{\App\CPU\translate('store')}} ( {{$data['store']}} )',
-                    '{{\App\CPU\translate('product')}} ( {{$data['product']}} )',
-                    '{{\App\CPU\translate('order')}} ( {{$data['order']}} )',
-                    '{{\App\CPU\translate('brand')}} ( {{$data['brand']}} )',
+                    '{{\App\CPU\translate('customer')}} ',
+                    '{{\App\CPU\translate('store')}} ',
+                    '{{\App\CPU\translate('product')}} ',
+                    '{{\App\CPU\translate('order')}} ',
+                    '{{\App\CPU\translate('brand')}} ',
                 ],
                 datasets: [{
                     label: '{{\App\CPU\translate('business')}}',
-                    data: ['{{$data['customer']}}', '{{$data['store']}}', '{{$data['product']}}', '{{$data['order']}}', '{{$data['brand']}}'],
+                    data: ['', '{{$data['store']}}', '{{$data['product']}}', '{{$data['order']}}', '{{$data['brand']}}'],
                     backgroundColor: [
                         '#041562',
                         '#DA1212',

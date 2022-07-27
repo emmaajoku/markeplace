@@ -147,7 +147,7 @@
                                            class="spandHeadO">
                                         {{\App\CPU\translate('change_your_profile')}}
                                     </label>
-                                    <span style="color: red;font-size: 10px">( * {{\App\CPU\translate('Image ratio should be')}} 1:1 )</span>
+                                    <span style="color: red;font-size: 10px">( * {{\App\CPU\translate('Image ratio should be 1:1')}}  )</span>
                                     <input id="files" name="image" style="visibility:hidden;" type="file">
                                 </div>
 
@@ -174,7 +174,7 @@
                                                    value="{{$customerDetail['email']}}" disabled>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="phone">{{\App\CPU\translate('phone_name')}} </label>
+                                            <label for="phone">{{\App\CPU\translate('phone_number')}} </label>
                                             <small class="text-primary">(
                                                 * {{\App\CPU\translate('country_code_is_must')}} {{\App\CPU\translate('like_for_BD_880')}}
                                                 )</small></label>
