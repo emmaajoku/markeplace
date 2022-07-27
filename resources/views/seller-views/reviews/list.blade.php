@@ -43,7 +43,7 @@
                                     </div>
                                     <!-- End Search -->
                                 </form>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                     <!-- End Header -->
@@ -84,14 +84,14 @@
                                                     {{$review->comment?$review->comment:"No Comment Found"}}
                                                 </p>
                                                 @foreach (json_decode($review->attachment) as $img)
-                                                
+
                                                     <a class="float-left" href="{{asset('storage/app/public/review')}}/{{$img}}" data-lightbox="mygallery">
                                                         <img style="width: 60px;height:60px;padding:10px; " src="{{asset('storage/app/public/review')}}/{{$img}}" alt="">
                                                     </a>
-                                                
+
                                                 @endforeach
                                             </td>
-                                            
+
                                         </tr>
                                     @endif
                                 @endforeach
@@ -107,7 +107,7 @@
                     </div>
                     @if(count($reviews)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{\App\CPU\translate('No data to show')}}</p>
                         </div>
                     @endif

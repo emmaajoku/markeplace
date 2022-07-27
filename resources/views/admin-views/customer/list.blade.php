@@ -239,22 +239,22 @@
                             </td>
 
                             <td>
-                                
+
                                 <a  title="{{\App\CPU\translate('View')}}"
-                                    class="btn btn-info btn-sm" 
+                                    class="btn btn-info btn-sm"
                                     href="{{route('admin.customer.view',[$customer['id']])}}">
-                                    <i class="tio-visible"></i> 
+                                    <i class="tio-visible"></i>
                                 </a>
                                 <a  title="{{\App\CPU\translate('delete')}}"
                                     class="btn btn-danger btn-sm delete" href="javascript:"
                                     onclick="form_alert('customer-{{$customer['id']}}','Want to delete this customer ?')">
-                                    <i class="tio-delete"></i> 
+                                    <i class="tio-delete"></i>
                                 </a>
                                 <form action="{{route('admin.customer.delete',[$customer['id']])}}"
                                         method="post" id="customer-{{$customer['id']}}">
                                     @csrf @method('delete')
                                 </form>
-                                    
+
                             </td>
                         </tr>
                     @endforeach
@@ -269,7 +269,7 @@
             </div>
             @if(count($customers)==0)
                 <div class="text-center p-4">
-                    <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                    <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                     <p class="mb-0">{{\App\CPU\translate('No data to show')}}</p>
                 </div>
             @endif
@@ -317,7 +317,7 @@
                         counterInfo: '#datatableCounterInfo'
                     }
                 },
-                
+
             });
 
             $('#datatableSearch').on('mouseup', function (e) {

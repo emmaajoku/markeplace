@@ -1,8 +1,8 @@
 @extends('layouts.back-end.app')
 @section('title', \App\CPU\translate('Deal Product'))
 @push('css_or_js')
-    <link href="{{ asset('public/assets/select2/css/select2.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('public/assets/back-end/css/custom.css')}}" rel="stylesheet">
+    <link href="{{ asset('/assets/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('/assets/back-end/css/custom.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
@@ -76,7 +76,7 @@
                                     <th scope="row">{{$products->firstitem()+$k}}</th>
                                     <td>{{$de_p['name']}}</td>
                                     <td>{{\App\CPU\BackEndHelper::usd_to_currency($de_p['unit_price'])}}</td>
-                                    
+
                                     <td>
                                         <a  title="{{ trans ('Delete')}}"
                                             class="btn btn-danger btn-sm delete"
@@ -102,7 +102,7 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('public/assets/back-end')}}/js/select2.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/js/select2.min.js"></script>
     <script>
         $(".js-example-theme-single").select2({
             theme: "classic"

@@ -19,26 +19,26 @@
           href="{{asset('public/assets/front-end')}}/vendor/drift-zoom/dist/drift-basic.min.css"/>
     <link rel="stylesheet" media="screen"
           href="{{asset('public/assets/front-end')}}/vendor/lightgallery.js/dist/css/lightgallery.min.css"/>
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/toastr.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/theme.min.css">
     <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/slick.css">
     <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/font-awesome.min.css">
     <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/toastr.css"/>
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/master.css"/>
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Titillium+Web:wght@400;600;700&display=swap"
         rel="stylesheet">
     {{-- light box --}}
     <link rel="stylesheet" href="{{asset('public/css/lightbox.css')}}">
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/vendor/icon-set/style.css">
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/vendor/icon-set/style.css">
     @stack('css_or_js')
 
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/home.css"/>
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/responsive1.css"/>
 
-    
+
     {{--dont touch this--}}
     <meta name="_token" content="{{csrf_token()}}">
     {{--dont touch this--}}
@@ -640,7 +640,7 @@
             border-top-right-radius: 0px;
         }
     </style>
-    
+
     @php($google_tag_manager_id = \App\CPU\Helpers::get_business_settings('google_tag_manager_id'))
     @if($google_tag_manager_id )
     <!-- Google Tag Manager -->
@@ -650,7 +650,7 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','{{$google_tag_manager_id}}');</script>
     <!-- End Google Tag Manager -->
-        
+
     @endif
 
     @php($pixel_analytices_user_code =\App\CPU\Helpers::get_business_settings('pixel_analytics'))
@@ -669,7 +669,7 @@
             fbq('track', 'PageView');
             </script>
             <noscript>
-            <img height="1" width="1" style="display:none" 
+            <img height="1" width="1" style="display:none"
                 src="https://www.facebook.com/tr?id={your-pixel-id-goes-here}&ev=PageView&noscript=1"/>
             </noscript>
         <!-- End Facebook Pixel Code -->
@@ -741,14 +741,14 @@
 <script src="{{asset('public/assets/front-end')}}/vendor/lightgallery.js/dist/js/lightgallery.min.js"></script>
 <script src="{{asset('public/assets/front-end')}}/vendor/lg-video.js/dist/lg-video.min.js"></script>
 {{--Toastr--}}
-<script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
+<script src={{asset("/assets/back-end/js/toastr.js")}}></script>
 <!-- Main theme script-->
 <script src="{{asset('public/assets/front-end')}}/js/theme.min.js"></script>
 <script src="{{asset('public/assets/front-end')}}/js/slick.min.js"></script>
 
 <script src="{{asset('public/assets/front-end')}}/js/sweet_alert.js"></script>
 {{--Toastr--}}
-<script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
+<script src={{asset("/assets/back-end/js/toastr.js")}}></script>
 {!! Toastr::message() !!}
 
 <script>

@@ -45,7 +45,7 @@
                 @foreach(session()->get($cart_id) as $key => $cartItem)
                 @if(is_array($cartItem))
                     <?php
-                    
+
                     $product_subtotal = ($cartItem['price'])*$cartItem['quantity'];
                     $discount_on_product += ($cartItem['discount']*$cartItem['quantity']);
                     $subtotal += $product_subtotal;
@@ -53,17 +53,17 @@
                     //tax calculation
                     $product = \App\Model\Product::find($cartItem['id']);
                     $total_tax += \App\CPU\Helpers::tax_calculation($cartItem['price'], $product['tax'], $product['tax_type'])*$cartItem['quantity'];
-                    
+
                     ?>
-                    
+
                 <tr>
                     <td class="media align-items-center">
                         <img class="avatar avatar-sm mr-1" src="{{asset('storage/app/public/product/thumbnail')}}/{{$cartItem['image']}}"
-                                onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'" alt="{{$cartItem['name']}} image">
+                                onerror="this.src='{{asset('/assets/back-end/img/160x160/img2.jpg')}}'" alt="{{$cartItem['name']}} image">
                         <div class="media-body">
                             <h5 class="text-hover-primary mb-0">{{Str::limit($cartItem['name'], 10)}}</h5>
                             <small>{{Str::limit($cartItem['variant'], 20)}}</small>
-                            
+
                         </div>
                     </td>
                     <td class="align-items-center text-center">
@@ -182,8 +182,8 @@
                             <button class="btn btn-primary" onclick="extra_discount();" type="submit">{{\App\CPU\translate('submit')}}</button>
                         </div>
                     </div>
-                        
-                    
+
+
                 </div>
             </div>
         </div>
@@ -199,17 +199,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-    
+
                         <div class="form-group col-sm-12">
                             <label for="">{{\App\CPU\translate('coupon_code')}}</label>
                             <input type="text" id="coupon_code" class="form-control" name="coupon_code">
                             {{-- <input type="hidden" id="user_id" name="user_id" > --}}
                         </div>
-    
+
                         <div class="form-group col-sm-12">
                             <button class="btn btn-primary" type="submit" onclick="coupon_discount();">{{\App\CPU\translate('submit')}}</button>
                         </div>
-    
+
                 </div>
             </div>
         </div>
@@ -255,7 +255,7 @@
                         @csrf
                         <div class="form-group col-12">
                             <label class="input-label" for="">{{\App\CPU\translate('amount')}}({{\App\CPU\currency_symbol()}})</label>
-                            <input type="number" class="form-control" name="amount" min="0" step="0.01" 
+                            <input type="number" class="form-control" name="amount" min="0" step="0.01"
                                     value="{{\App\CPU\BackEndHelper::usd_to_currency($total+$total_tax_amount-$coupon_discount)}}"
                                     readonly>
                         </div>

@@ -2,7 +2,7 @@
 @section('title', \App\CPU\translate('Contact List'))
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -71,20 +71,20 @@
                                     <td style="width: 40%;">{{$contact['subject']}}</td>
                                     <td style="width: 10%">
 
-                                    
+
                                         <div class="d-flex justify-content-between">
                                             <a  title="{{\App\CPU\translate('View')}}"
                                             class="btn btn-info btn-sm" style="cursor: pointer;"
-                                            href="{{route('admin.contact.view',$contact->id)}}"> 
+                                            href="{{route('admin.contact.view',$contact->id)}}">
                                             <i class="tio-visible"></i>
                                         </a>
                                         <a class="btn btn-danger btn-sm delete" style="cursor: pointer;"
                                             id="{{$contact['id']}}"
-                                            title="{{ \App\CPU\translate('Delete')}}"> 
+                                            title="{{ \App\CPU\translate('Delete')}}">
                                             <i class="tio-delete"></i>
                                         </a>
                                         </div>
-                                    
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,7 +97,7 @@
                 </div>
                 @if(count($contacts)==0)
                     <div class="text-center p-4">
-                        <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                        <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                         <p class="mb-0">{{\App\CPU\translate('No_data_to_show')}}</p>
                     </div>
                 @endif
@@ -110,8 +110,8 @@
 
 @push('script')
     <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
     <script>
         $(document).ready(function() {

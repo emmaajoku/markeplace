@@ -26,7 +26,7 @@
                 <div class="card">
                     <!-- Header -->
                     <div class="card-header">
-                        
+
                         <div class="col-12 ">
                             <div class="row flex-between justify-content-between align-items-center">
                                 <div class="mb-1 col-md-4">
@@ -41,12 +41,12 @@
                                             <input id="datatableSearch_" type="search" name="search" class="form-control"
                                                     placeholder="Search" aria-label="Search" value="{{$search}}" required>
                                             <button type="submit" class="btn btn-primary">{{\App\CPU\translate('search')}}</button>
-    
+
                                         </div>
                                         <!-- End Search -->
                                     </form>
                                 </div>
-                                
+
                                 <div class="col-md-3 ">
                                     <a href="{{route('admin.delivery-man.add')}}" class="btn btn-primary float-right"><i
                                             class="tio-add-circle"></i> {{\App\CPU\translate('add')}} {{\App\CPU\translate('deliveryman')}}
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <!-- End Header -->
 
@@ -86,7 +86,7 @@
                                     <td>
                                         <div style="overflow-x: hidden;overflow-y: hidden">
                                             <img width="60" style="border-radius: 50%;height: 60px; width: 60px;"
-                                                 onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                                                 onerror="this.src='{{asset('/assets/back-end/img/160x160/img1.jpg')}}'"
                                                  src="{{asset('storage/app/public/delivery-man')}}/{{$dm['image']}}">
                                         </div>
                                     </td>
@@ -104,7 +104,7 @@
                                         </label>
                                     </td>
                                     <td>
-                                    
+
                                         <a  class="btn btn-primary btn-sm edit"
                                             title="{{\App\CPU\translate('edit')}}"
                                             href="{{route('admin.delivery-man.edit',[$dm['id']])}}">

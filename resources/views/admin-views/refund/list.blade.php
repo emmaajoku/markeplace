@@ -29,7 +29,7 @@
           </a>
         </span>
 
-            
+
             <!-- End Nav -->
         </div>
         <!-- End Nav Scroller -->
@@ -73,7 +73,7 @@
                 <!-- End Row -->
             </div>
             <!-- End Header -->
-    
+
             <!-- Table -->
             <div class="table-responsive datatable-custom">
                 <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
@@ -94,7 +94,7 @@
                         <th>{{\App\CPU\translate('Action')}}</th>
                     </tr>
                     </thead>
-    
+
                     <tbody>
                     @foreach($refund_list as $key=>$refund)
                         <tr>
@@ -136,23 +136,23 @@
                                 @else
                                     {{\App\CPU\translate('product_name_not_found')}}
                                 @endif
-                                
+
                             </td>
                             <td>
                                 <a  class="btn btn-info btn-sm"
                                     title="{{\App\CPU\translate('view')}}"
                                     href="{{route('admin.business-settings.refund.details',['id'=>$refund['id']])}}">
-                                    <i class="tio-visible"></i> 
+                                    <i class="tio-visible"></i>
                                 </a>
                             </td>
                         </tr>
-                        
+
                     @endforeach
                     </tbody>
                 </table>
             </div>
             <!-- End Table -->
-    
+
             <!-- Footer -->
             <div class="card-footer">
                 <!-- Pagination -->
@@ -168,7 +168,7 @@
             </div>
             @if(count($refund_list)==0)
                 <div class="text-center p-4">
-                    <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                    <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                     <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                 </div>
             @endif

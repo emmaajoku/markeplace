@@ -29,7 +29,7 @@
                     <div class="card-header">
                         <h5>{{\App\CPU\translate('Sales Commission')}}</h5>
                     </div>
-                
+
                     <div class="card-body" style="padding: 20px">
                         <form action="{{route('admin.business-settings.seller-settings.update-seller-settings')}}"
                               method="post">
@@ -52,7 +52,7 @@
                     <div class="card-header">
                         <h5>{{\App\CPU\translate('Seller Registration')}}</h5>
                     </div>
-                
+
                     <div class="card-body" style="padding: 20px">
                         <form action="{{route('admin.business-settings.seller-settings.update-seller-registration')}}"
                               method="post">
@@ -85,7 +85,7 @@
                     <div class="card-header">
                         <h5>{{\App\CPU\translate('Seller POS')}}</h5>
                     </div>
-                
+
                     <div class="card-body" style="padding: 20px">
                         <form action="{{route('admin.business-settings.seller-settings.seller-pos-settings')}}"
                               method="post">
@@ -116,7 +116,7 @@
                 <div class="card" style="height: 250px;">
                     <div class="card-header">
                         <h5 class="text-center text-capitalize"> {{\App\CPU\translate('Business_mode')}}</h5>
-                        
+
                     </div>
                     <div class="card-body">
                         @php($business_mode=\App\CPU\Helpers::get_business_settings('business_mode'))
@@ -131,7 +131,7 @@
                                                id="projectViewNewProjectTypeRadio1" {{(isset($business_mode) && $business_mode=='single')?'checked':''}}>
                                         <label class="custom-control-label media align-items-center"
                                                for="projectViewNewProjectTypeRadio1">
-                                            
+
                                             <span class="media-body">
                                                 {{\App\CPU\translate('single_vendor')}}
                                               </span>
@@ -151,7 +151,7 @@
                                                id="projectViewNewProjectTypeRadio2" {{(isset($business_mode) && $business_mode=='multi')?'checked':''}}>
                                         <label class="custom-control-label media align-items-center"
                                                for="projectViewNewProjectTypeRadio2">
-                                            
+
                                             <span
                                                 class="media-body">{{\App\CPU\translate('multi_vendor')}}</span>
                                         </label>
@@ -183,10 +183,10 @@
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" name="product_wise_shipping_cost_approval" type="checkbox" 
+                                <input class="form-check-input" name="product_wise_shipping_cost_approval" type="checkbox"
                                        id="product_wise_shipping_cost_approval" {{$product_wise_shipping_cost_approval==1?'checked':''}}>
                                 <label class="form-check-label {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}" for="product_wise_shipping_cost_approval">
-                                    {{\App\CPU\translate('product_wise_shipping_cost')}} 
+                                    {{\App\CPU\translate('product_wise_shipping_cost')}}
                                     <span style="color: red;">( {{\App\CPU\translate('if the shipping responsibility is inhouse and product wise shipping is activated then this function will work')}} )</span>
                                 </label>
                             </div>
@@ -208,7 +208,7 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('public/assets/back-end')}}/js/tags-input.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/js/tags-input.min.js"></script>
     <script src="{{ asset('public/assets/select2/js/select2.min.js')}}"></script>
     <script>
         function readWLURL(input) {
@@ -365,7 +365,7 @@
                     location.reload();
                 }
             })
-            
+
         }
     </script>
 @endpush

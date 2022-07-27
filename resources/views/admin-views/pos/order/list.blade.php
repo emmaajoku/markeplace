@@ -71,16 +71,16 @@
                     </div>
                     <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                         <form action="{{ url()->current() }}" method="GET">
-                            
+
                             <div class="row">
-                                
+
                                 <div class="col-12 col-sm-5">
                                     <input type="date" name="from" value="{{$from}}" id="from_date"
                                             class="form-control" required>
                                 </div>
                                 <div class="col-12 col-sm-5 mt-2 mt-sm-0">
                                     <input type="date" value="{{$to}}" name="to" id="to_date"
-                                            class="form-control" required> 
+                                            class="form-control" required>
                                 </div>
                                 <div class="col-12 col-sm-2 mt-2 mt-sm-0  ">
                                     <button type="submit" class="btn btn-primary float-right float-sm-none">{{\App\CPU\translate('filter')}}</button>
@@ -180,23 +180,23 @@
                                 @endif
                             </td>
                             <td>
-                                
+
                                 <a class="btn btn-primary btn-sm mr-1" title="{{\App\CPU\translate('view')}}"
                                     href="{{route('admin.pos.order-details',['id'=>$order['id']])}}"><i
                                         class="tio-visible"></i></a>
                                 <a class="btn btn-info btn-sm mr-1" target="_blank" title="{{\App\CPU\translate('invoice')}}"
                                     href="{{route('admin.orders.generate-invoice',[$order['id']])}}"><i
                                         class="tio-download"></i> </a>
-                                    
+
                             </td>
                         </tr>
                     @endforeach
-                    
+
                     </tbody>
                 </table>
                 @if(count($orders)==0)
                     <div class="text-center p-4">
-                        <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                        <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                         <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                     </div>
                 @endif
@@ -216,7 +216,7 @@
                 </div>
                 <!-- End Pagination -->
             </div>
-            
+
             <!-- End Footer -->
         </div>
         <!-- End Card -->

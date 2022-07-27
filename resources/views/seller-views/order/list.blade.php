@@ -3,7 +3,7 @@
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row  justify-content-between align-items-center flex-grow-1">
-                        
+
                             <div class="col-12 col-sm-6 col-md-4">
 
                                 <form action="{{ url()->current() }}" method="GET">
@@ -39,20 +39,20 @@
                                     </div>
                                     <!-- End Search -->
                                 </form>
-                                
+
                             </div>
                             <div class="col-12 col-sm-6 col-md-6 mt-2 mt-sm-0">
                                 <form action="{{ url()->current() }}" method="GET">
-                                    
+
                                     <div class="row">
-                                        
+
                                         <div class="col-12 col-sm-5">
                                             <input type="date" name="from" value="{{$from}}" id="from_date"
                                                     class="form-control" required>
                                         </div>
                                         <div class="col-12 col-sm-5 mt-2 mt-sm-0">
                                             <input type="date" value="{{$to}}" name="to" id="to_date"
-                                                    class="form-control" required> 
+                                                    class="form-control" required>
                                         </div>
                                         <div class="col-12 col-sm-2 mt-2 mt-sm-0  ">
                                             <button type="submit" class="btn btn-primary float-right float-sm-none">{{\App\CPU\translate('filter')}}</button>
@@ -121,17 +121,17 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                
+
                                                         <a  class="btn btn-primary btn-sm mr-1"
                                                             title="{{\App\CPU\translate('view')}}"
                                                             href="{{route('seller.orders.details',[$order['id']])}}">
-                                                            <i class="tio-visible"></i> 
-                                                            
+                                                            <i class="tio-visible"></i>
+
                                                         </a>
                                                         <a  class="btn btn-info btn-sm mr-1" target="_blank"
                                                             title="{{\App\CPU\translate('invoice')}}"
                                                             href="{{route('seller.orders.generate-invoice',[$order['id']])}}">
-                                                            <i class="tio-download"></i> 
+                                                            <i class="tio-download"></i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -149,7 +149,7 @@
                     </div>
                     @if(count($orders)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{\App\CPU\translate('No data to show')}}</p>
                         </div>
                     @endif
@@ -162,8 +162,8 @@
 
 @push('script')
     <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script>

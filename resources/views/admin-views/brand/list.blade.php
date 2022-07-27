@@ -63,11 +63,11 @@
                                         <td>
                                             <a class="btn btn-primary btn-sm" title="{{ \App\CPU\translate('Edit')}}"
                                                href="{{route('admin.brand.update',[$b['id']])}}">
-                                                <i class="tio-edit"></i> 
+                                                <i class="tio-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm delete" title="{{ \App\CPU\translate('Delete')}}"
                                                id="{{$b['id']}}">
-                                                <i class="tio-add-to-trash"></i> 
+                                                <i class="tio-add-to-trash"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -83,7 +83,7 @@
                     </div>
                     @if(count($br)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                         </div>
                     @endif
@@ -105,7 +105,7 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: '{{ \App\CPU\translate('Yes')}}, {{ \App\CPU\translate('delete_it')}}!',
-                cancelButtonText: "{{ \App\CPU\translate('cancel')}}",      
+                cancelButtonText: "{{ \App\CPU\translate('cancel')}}",
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {

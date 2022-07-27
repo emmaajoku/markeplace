@@ -189,7 +189,7 @@
                     <div class="col-md-12">
                         <div class="card w-100">
                             <div class="card-header">
-                                {{\App\CPU\translate('Order')}} {{\App\CPU\translate('info')}} 
+                                {{\App\CPU\translate('Order')}} {{\App\CPU\translate('info')}}
                             </div>
                             <!-- Card -->
                             @php($pending_order = App\Model\Order::where(['seller_is'=>'seller'])->where(['seller_id'=>$seller->id])->where('order_status','pending')->where('order_type','default_type')->get())
@@ -362,7 +362,7 @@
                                                 <a  title="{{\App\CPU\translate('View')}}"
                                                     class="btn btn-info btn-sm"
                                                     href="{{route('admin.sellers.order-details',['order_id'=>$order['id'],'seller_id'=>$order['customer_id']])}}"><i
-                                                        class="tio-visible"></i> 
+                                                        class="tio-visible"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -390,7 +390,7 @@
                             @if(count($orders)==0)
                                 <div class="text-center p-4">
                                     <img class="mb-3"
-                                         src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg"
+                                         src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg"
                                          alt="Image Description" style="width: 7rem;">
                                     <p class="mb-0">{{\App\CPU\translate('No_data_to_show')}}</p>
                                 </div>

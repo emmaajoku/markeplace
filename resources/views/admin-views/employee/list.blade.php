@@ -2,7 +2,7 @@
 @section('title', \App\CPU\translate('Employee List'))
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <h5>{{\App\CPU\translate('employee_table')}} 
+                        <h5>{{\App\CPU\translate('employee_table')}}
                             <span style="color: red; padding: 0 .4375rem;">
                             ({{$em->total()}})</span>
                         </h5>
@@ -111,8 +111,8 @@
 
 @push('script')
     <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
     <script>
         // Call the dataTables jQuery plugin

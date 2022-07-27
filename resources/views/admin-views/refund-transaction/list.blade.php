@@ -8,7 +8,7 @@
 
             </h3>
         </div>
-        
+
         <div class="card">
             <div class="card-header">
                 <div class="flex-between justify-content-between align-items-center flex-grow-1">
@@ -46,7 +46,7 @@
                             <th>{{\App\CPU\translate('payment_status')}}</th>
                             <th>{{\App\CPU\translate('amount')}}</th>
                             <th>{{\App\CPU\translate('transaction_type')}}</th>
-                            
+
                         </tr>
                         </thead>
                         <tbody>
@@ -69,7 +69,7 @@
                                             {{$refund_transaction->order_id}}
                                         </a>
                                     </td>
-                                    
+
                                     <td>
                                         {{str_replace('_',' ',$refund_transaction->payment_method)}}
                                     </td>
@@ -88,7 +88,7 @@
                     </table>
                     @if(count($refund_transactions)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg"
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg"
                                  alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                         </div>
@@ -100,6 +100,6 @@
             </div>
 
         </div>
-        
+
     </div>
 @endsection

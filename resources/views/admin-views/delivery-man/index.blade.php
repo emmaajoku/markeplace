@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
@@ -92,7 +92,7 @@
                                                required>
                                     </div>
                                 </div>
-                
+
                                 <div class="col-md-12 col-12">
                                     <div class="form-group">
                                         <label>{{\App\CPU\translate('deliveryman')}} {{\App\CPU\translate('image')}}</label><small style="color: red">* ( {{\App\CPU\translate('ratio')}} 1:1 )</small>
@@ -102,7 +102,7 @@
                                             <label class="custom-file-label" for="customFileEg1">{{\App\CPU\translate('choose')}} {{\App\CPU\translate('file')}}</label>
                                         </div>
                                         <hr>
-                                        
+
                                     </div>
                                     <div class="text-center">
                                         <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px;" id="viewer"
@@ -110,8 +110,8 @@
                                     </div>
                                 </div>
                             </div>
-            
-                            
+
+
                             <hr>
                             <button type="submit" class="btn btn-primary float-right">{{\App\CPU\translate('submit')}}</button>
                         </form>
@@ -142,7 +142,7 @@
         });
     </script>
 
-    <script src="{{asset('public/assets/back-end/js/spartan-multi-image-picker.js')}}"></script>
+    <script src="{{asset('/assets/back-end/js/spartan-multi-image-picker.js')}}"></script>
     <script type="text/javascript">
         $(function () {
             $("#coba").spartanMultiImagePicker({
@@ -152,7 +152,7 @@
                 groupClassName: 'col-2',
                 maxFileSize: '',
                 placeholderImage: {
-                    image: '{{asset('public/assets/back-end/img/400x400/img2.jpg')}}',
+                    image: '{{asset('/assets/back-end/img/400x400/img2.jpg')}}',
                     width: '100%'
                 },
                 dropFileLabel: "Drop Here",

@@ -52,7 +52,7 @@
                     <!-- Table -->
                     <div class="col-12  card-body" style="padding: 0">
                         <div class="table-responsive datatable-custom">
-                            <table 
+                            <table
                                 style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
                                 class="table table-borderless table-thead-bordered table-align-middle card-table"
                                 >
@@ -63,7 +63,7 @@
                                     <th class="col-2">{{ \App\CPU\translate('Customer')}}</th>
                                     <th class="col-1">{{ \App\CPU\translate('Rating')}}</th>
                                     <th class="col-5">{{ \App\CPU\translate('Review')}}</th>
-                                    
+
                                 </tr>
                                 </thead>
 
@@ -98,14 +98,14 @@
                                                     {{$review->comment?$review->comment:"No Comment Found"}}
                                                 </p>
                                                 @foreach (json_decode($review->attachment) as $img)
-                                                
+
                                                     <a class="float-left" href="{{asset('storage/app/public/review')}}/{{$img}}" data-lightbox="mygallery">
                                                         <img style="width: 60px;height:60px;padding:10px; " src="{{asset('storage/app/public/review')}}/{{$img}}" alt="">
                                                     </a>
-                                                
+
                                                 @endforeach
                                             </td>
-                                            
+
                                         </tr>
                                     @endif
                                 @endforeach
@@ -118,7 +118,7 @@
                     </div>
                     @if(count($reviews)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                         </div>
                     @endif

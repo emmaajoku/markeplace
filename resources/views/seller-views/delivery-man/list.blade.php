@@ -79,7 +79,7 @@
                                     <td>
                                         <div style="overflow-x: hidden;overflow-y: hidden">
                                             <img width="60" style="border-radius: 50%;height: 60px; width: 60px;"
-                                                 onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                                                 onerror="this.src='{{asset('/assets/back-end/img/160x160/img1.jpg')}}'"
                                                  src="{{asset('storage/app/public/delivery-man')}}/{{$dm['image']}}">
                                         </div>
                                     </td>
@@ -97,23 +97,23 @@
                                         </label>
                                     </td>
                                     <td>
-                                        
+
                                                 <a  class="btn btn-primary btn-sm"
                                                     title="{{\App\CPU\translate('Edit')}}"
                                                     href="{{route('seller.delivery-man.edit',[$dm['id']])}}">
                                                     <i class="tio-edit"></i>
                                                 </a>
-                                                <a class="btn btn-danger btn-sm" 
+                                                <a class="btn btn-danger btn-sm"
                                                     title="{{\App\CPU\translate('Delete')}}"
                                                     href="javascript:"
                                                    onclick="form_alert('delivery-man-{{$dm['id']}}','Want to remove this information ?')">
-                                                   <i class="tio-add-to-trash"></i> 
+                                                   <i class="tio-add-to-trash"></i>
                                                 </a>
                                                 <form action="{{route('seller.delivery-man.delete',[$dm['id']])}}"
                                                       method="post" id="delivery-man-{{$dm['id']}}">
                                                     @csrf @method('delete')
                                                 </form>
-                                            
+
                                     </td>
                                 </tr>
                             @endforeach

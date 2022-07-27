@@ -247,7 +247,7 @@
                             <span>{{\App\CPU\translate('Current Stock')}} : </span>
                             <span class="mx-1">{{ $product->current_stock }}</span>
                         </div>
-                        
+
                     </div>
 
                     <div class="col-8 pt-2 border-left">
@@ -345,11 +345,11 @@
                                         {{$review['comment']}}
                                     </p>
                                     @foreach (json_decode($review->attachment) as $img)
-                                                
+
                                         <a class="float-left" href="{{asset('storage/app/public/review')}}/{{$img}}" data-lightbox="mygallery">
                                             <img style="width: 60px;height:60px;padding:10px; " src="{{asset('storage/app/public/review')}}/{{$img}}" alt="">
                                         </a>
-                                    
+
                                     @endforeach
                                 </div>
                             </td>
@@ -365,7 +365,7 @@
             <!-- End Table -->
             @if(count($reviews)==0)
                 <div class="text-center p-4">
-                    <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                    <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                     <p class="mb-0">{{\App\CPU\translate('No data to show')}}</p>
                 </div>
             @endif
@@ -380,7 +380,7 @@
 @endsection
 
 @push('script_2')
-    <script src="{{asset('public/assets/back-end')}}/js/tags-input.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/js/tags-input.min.js"></script>
     <script src="{{ asset('public/assets/select2/js/select2.min.js')}}"></script>
     <script>
         $('input[name="colors_active"]').on('change', function () {

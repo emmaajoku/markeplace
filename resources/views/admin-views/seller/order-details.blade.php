@@ -3,7 +3,7 @@
 @section('title', \App\CPU\translate('Order Details'))
 
 @push('css_or_js')
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -329,7 +329,7 @@
                                     <option value="0">
                                         {{\App\CPU\translate('choose_delivery_type')}}
                                     </option>
-                                    
+
                                     <option value="self_delivery" {{$order->delivery_type=='self_delivery'?'selected':''}}>
                                         {{\App\CPU\translate('by_self_delivery_man')}}
                                     </option>
@@ -438,7 +438,7 @@
                                 <div>{{\App\CPU\translate('Name')}} :</div>
                                 <div class="mx-1"><strong>{{$order->shippingAddress ? $order->shippingAddress['contact_person_name'] : "empty"}}</strong></div>
                             </div>
-                            
+
                             <div class="flex-start">
                                 <div>{{\App\CPU\translate('City')}} :</div>
                                 <div class="mx-1"><strong>{{$order->shippingAddress ? $order->shippingAddress['city'] : "Empty"}}</strong></div>
@@ -495,8 +495,8 @@
                             </form>
                         </div>
                     </div>
-                        
-                    
+
+
                 </div>
             </div>
         </div>
@@ -616,8 +616,8 @@
     <script>
         $( document ).ready(function() {
             let delivery_type = '{{$order->delivery_type}}';
-    
-            
+
+
             if(delivery_type === 'self_delivery'){
                 $('#choose_delivery_man').show();
                 $('#by_third_party_delivery_service_info').hide();
@@ -634,7 +634,7 @@
     <script>
         function choose_delivery_type(val)
         {
-    
+
             if(val==='self_delivery')
             {
                 $('#choose_delivery_man').show();
@@ -647,7 +647,7 @@
                 $('#choose_delivery_man').hide();
                 $('#by_third_party_delivery_service_info').hide();
             }
-            
+
         }
         function addDeliveryMan(id) {
             $.ajax({

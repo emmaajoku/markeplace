@@ -43,7 +43,7 @@
         border:2px;
         border-style:solid;
     }
-    
+
 }
 </style>
 <div class="modal-header p-2">
@@ -59,7 +59,7 @@
         <div class="d-flex align-items-center justify-content-center active" style="height:9.5rem;">
             <img class="img-responsive" style="height:100%;width:auto;overflow:hidden;border-radius: 5%;"
                 src="{{asset('storage/app/public/product/thumbnail')}}/{{$product->thumbnail}}"
-                 onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'"
+                 onerror="this.src='{{asset('/assets/back-end/img/160x160/img2.jpg')}}'"
                  data-zoom="{{asset('storage/app/public/product')}}/{{$product['image']}}"
                  alt="Product image" width="">
             <div class="cz-image-zoom-pane"></div>
@@ -86,8 +86,8 @@
                         id="set-discount-amount">{{\App\CPU\BackEndHelper::usd_to_currency(\App\CPU\Helpers::get_product_discount($product, $product['unit_price']))}}</strong>
                 </div>
             @endif
-        
-            
+
+
         </div>
     </div>
     <div class="row pt-2">
@@ -116,16 +116,16 @@
                             <div class="product-description-label mt-2">{{\App\CPU\translate('color')}}:
                             </div>
                             <div class="d-flex justify-content-left flex-wrap" id="option1" style="height: 16px;">
-                                @foreach (json_decode($product->colors) as $key => $color)          
+                                @foreach (json_decode($product->colors) as $key => $color)
                                     <input class="btn-check" type="radio" onclick="color_change(this);"
                                             id="{{ $product->id }}-color-{{ $key }}"
                                             name="color" value="{{ $color }}"
                                             @if($key == 0) checked @endif autocomplete="off">
                                     <label id="label-{{ $product->id }}-color-{{ $key }}" class="btn m-2 color-border {{$key==0?'border-add':""}}" style="background: {{ $color }};"
                                             for="{{ $product->id }}-color-{{ $key }}"
-                                            data-toggle="tooltip"></label> 
+                                            data-toggle="tooltip"></label>
                                 @endforeach
-                            
+
                             </div>
                         </div>
                     @endif
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row no-gutters mt-2 text-dark" id="chosen_price_div">
                     <div class="col-2">
                         <div class="product-description-label">{{\App\CPU\translate('Total Price')}}:</div>

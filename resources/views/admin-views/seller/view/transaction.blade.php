@@ -196,7 +196,7 @@
                                 <div class="col-md-3 col-12">
                                     <h3 class="text-capitalize">{{ \App\CPU\translate('transaction_table')}}
                                         <span class="badge badge-soft-dark mx-2">{{$transactions->total()}}</span>
-    
+
                                     </h3>
                                 </div>
                                 <div class="col-md-4 col-12">
@@ -222,11 +222,11 @@
                                 <div class="col-md-4 col-12 mt-2 mt-md-0">
                                     <form action="{{ url()->current() }}" method="GET">
                                         <div class="row ">
-    
+
                                             <div class="col-md-8">
-    
+
                                                 <select class="form-control" name="status">
-    
+
                                                     <option class="text-center" value="0" selected disabled>
                                                         ---{{\App\CPU\translate('select_status')}}---
                                                     </option>
@@ -242,7 +242,7 @@
                                                 <button type="submit"
                                                         class="btn btn-success float-right">{{\App\CPU\translate('filter')}}</button>
                                             </div>
-    
+
                                         </div>
                                     </form>
                                 </div>
@@ -322,7 +322,7 @@
                                 @if(count($transactions)==0)
                                     <div class="text-center p-4">
                                         <img class="mb-3"
-                                             src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg"
+                                             src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg"
                                              alt="Image Description" style="width: 7rem;">
                                         <p class="mb-0">{{\App\CPU\translate('No_data_to_show')}}</p>
                                     </div>

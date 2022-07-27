@@ -2,8 +2,8 @@
 @section('title', \App\CPU\translate('Withdraw information View'))
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="{{asset('public/assets/back-end/css/croppie.css')}}" rel="stylesheet">
+    <link href="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{asset('/assets/back-end/css/croppie.css')}}" rel="stylesheet">
 
 @endpush
 
@@ -120,7 +120,7 @@
                                 <div><h5>{{\App\CPU\translate('address')}} : </h5></div>
                                 <div class="mx-1"><h5>{{$seller->seller->shop->address}}</h5></div>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

@@ -10,11 +10,11 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/vendor.min.css">
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/vendor/icon-set/style.css">
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/vendor.min.css">
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/vendor/icon-set/style.css">
     <!-- CSS Front Template -->
     <meta name="_token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/theme.minc619.css?v=1.0">
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/theme.minc619.css?v=1.0">
     @stack('css_or_js')
 
     <style>
@@ -93,12 +93,12 @@
             .view-web-site-info {
                 display: none;
             }
-        
+
         }
     </style>
 
-    <script src="{{asset('public/assets/back-end')}}/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js"></script>
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css">
+    <script src="{{asset('/assets/back-end')}}/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js"></script>
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/toastr.css">
 </head>
 
 <body class="footer-offset">
@@ -125,10 +125,10 @@
                 <a class="navbar-brand" href="{{route('admin.dashboard')}}" aria-label="Front" style="padding-top: 0!important;padding-bottom: 0!important;">
                     <img class=""
                          style="max-height: 42px;"
-                         onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'"
+                         onerror="this.src='{{asset('/assets/back-end/img/160x160/img2.jpg')}}'"
                          src="{{asset("storage/app/public/company/$e_commerce_logo")}}"
                          alt="Logo">
-                </a>         
+                </a>
             </div>
             <!-- Secondary Content -->
             <div class="navbar-nav-wrap-content-right">
@@ -166,7 +166,7 @@
                             <a id="short-cut" class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
                               data-toggle="modal" data-target="#short-cut-keys" title="{{\App\CPU\translate('short_cut_keys')}}">
                                 <i class="tio-keyboard"></i>
-    
+
                             </a>
                         </div>
                         <!-- End short cut key -->
@@ -200,7 +200,7 @@
                                    }'>
                                 <div class="avatar avatar-sm avatar-circle">
                                     <img class="avatar-img"
-                                        onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                                        onerror="this.src='{{asset('/assets/back-end/img/160x160/img1.jpg')}}'"
                                         src="{{asset('storage/app/public/admin')}}/{{auth('admin')->user()->image}}"
                                         alt="Image">
                                     <span class="avatar-status avatar-sm-status avatar-status-success"></span>
@@ -214,7 +214,7 @@
                                     <div class="media align-items-center text-break">
                                         <div class="avatar avatar-sm avatar-circle mr-2">
                                             <img class="avatar-img"
-                                                 onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                                                 onerror="this.src='{{asset('/assets/back-end/img/160x160/img1.jpg')}}'"
                                                  src="{{asset('storage/app/public/admin')}}/{{auth('admin')->user()->image}}"
                                                  alt="Owner image">
                                         </div>
@@ -262,7 +262,7 @@
         </div>
         <div id="website_info" style="display:none;background-color:rgb(165, 164, 164);width:100%;border-radius:0px 0px 5px 5px;">
             <div style="padding: 20px;">
-                
+
                 <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
                     <a title="Website home" class="p-2"
                         href="{{route('home')}}" target="_blank">
@@ -284,7 +284,7 @@
                         </a>
                     </div>
                 @endif
-        
+
             </div>
         </div>
     </header>
@@ -307,8 +307,8 @@
                                                 <i class="tio-search"></i>
                                             </div>
                                         </div>
-                                        <input id="search" autocomplete="off" type="text" value="{{$keyword?$keyword:''}}" 
-                                                name="search" class="form-control search-bar-input" placeholder="{{\App\CPU\translate('Search here')}}" 
+                                        <input id="search" autocomplete="off" type="text" value="{{$keyword?$keyword:''}}"
+                                                name="search" class="form-control search-bar-input" placeholder="{{\App\CPU\translate('Search here')}}"
                                                 aria-label="Search here">
                                         <diV class="card search-card w-4" style="position: absolute;z-index: 1;width: 100%;">
                                             <div id="search-box" class="card-body search-result-box" style="display: none;"></div>
@@ -349,7 +349,7 @@
 				</div>
 				<div class="col-md-4 padding-y-sm mt-2">
                     <div class="card pr-1 pl-1">
-                        
+
                             <div class="row mt-2">
                                 <div class="form-group mt-1 col-12 w-i6">
                                 <select onchange="customer_change(this.value);" id='customer' name="customer_id" data-placeholder="Walk In Customer" class="js-data-example-ajax form-control">
@@ -383,14 +383,14 @@
                                             class=" form-control js-select2-custom" onchange="cart_change(this.value);">
                                     </select>
                                 </div>
-    
+
                                 <div class="form-group mt-1 col-12 col-lg-6 mt-2 mb-0">
                                     <a class="w-100 d-inline-block btn btn-danger rounded" onclick="clear_cart()">
                                         {{ \App\CPU\translate('clear_cart')}}
                                     </a>
                                 </div>
                             </div>
-                        
+
                         <div class='w-100' id="cart">
                             @include('admin-views.pos._cart',['cart_id'=>$cart_id])
                         </div>
@@ -515,7 +515,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                         <hr>
                         <button type="submit" id="submit_new_customer" class="btn btn-primary">{{\App\CPU\translate('submit')}}</button>
                     </form>
@@ -529,10 +529,10 @@
 <!-- JS Implementing Plugins -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <!-- JS Front -->
-<script src="{{asset('public/assets/back-end')}}/js/vendor.min.js"></script>
-<script src="{{asset('public/assets/back-end')}}/js/theme.min.js"></script>
-<script src="{{asset('public/assets/back-end')}}/js/sweet_alert.js"></script>
-<script src="{{asset('public/assets/back-end')}}/js/toastr.js"></script>
+<script src="{{asset('/assets/back-end')}}/js/vendor.min.js"></script>
+<script src="{{asset('/assets/back-end')}}/js/theme.min.js"></script>
+<script src="{{asset('/assets/back-end')}}/js/sweet_alert.js"></script>
+<script src="{{asset('/assets/back-end')}}/js/toastr.js"></script>
 {!! Toastr::message() !!}
 
 @if ($errors->any())
@@ -593,7 +593,7 @@
                     $('#cart_id').html(output);
                     $('#current_customer').text(data.current_customer);
                     $('#cart').empty().html(data.view);
-                    
+
             },
             complete: function () {
                 $('#loading').addClass('d-none');
@@ -677,7 +677,7 @@
         new_order();
         event.preventDefault();
     }
-    
+
 });
 </script>
 <!-- JS Plugins Init. -->
@@ -825,7 +825,7 @@
 
                     $('.modal-backdrop').addClass('d-none');
                     $('#cart').empty().html(data.view);
-                    
+
                     $('#search').focus();
                 },
                 complete: function () {
@@ -846,7 +846,7 @@
     "use strict";
     function coupon_discount()
     {
-    
+
         let  coupon_code = $('#coupon_code').val();
 
         $.ajaxSetup({
@@ -892,7 +892,7 @@
                     }
 
                     $('#cart').empty().html(data.view);
-                    
+
                     $('#search').focus();
                 },
                 complete: function () {
@@ -1123,7 +1123,7 @@
                 url: '{{ route('admin.pos.variant_price') }}',
                 data: $('#add-to-cart-form').serializeArray(),
                 success: function (data) {
-                    
+
                     $('#add-to-cart-form #chosen_price_div').removeClass('d-none');
                     $('#add-to-cart-form #chosen_price_div #chosen_price').html(data.price);
                     $('#set-discount-amount').html(data.discount);
@@ -1146,7 +1146,7 @@
                     $('#loading').show();
                 },
                 success: function (data) {
-                    
+
                     if (data.data == 1) {
                         Swal.fire({
                             icon: 'info',
@@ -1189,7 +1189,7 @@
     function removeFromCart(key) {
         //console.log(key);
         $.post('{{ route('admin.pos.remove-from-cart') }}', {_token: '{{ csrf_token() }}', key: key}, function (data) {
-            
+
             $('#cart').empty().html(data.view);
             if (data.errors) {
                 for (var i = 0; i < data.errors.length; i++) {
@@ -1200,13 +1200,13 @@
                 }
             } else {
                 //updateCart();
-                
+
                 toastr.info('{{ \App\CPU\translate("Item has been removed from cart")}}', {
                     CloseButton: true,
                     ProgressBar: true
                 });
             }
-            
+
 
         });
     }
@@ -1247,7 +1247,7 @@
 
 
     function updateQuantity(key,qty,e){
-        
+
         if(qty!==""){
             var element = $( e.target );
             var minValue = parseInt(element.attr('min'));
@@ -1255,9 +1255,9 @@
             var valueCurrent = parseInt(element.val());
 
             //var key = element.data('key');
-        
+
             $.post('{{ route('admin.pos.updateQuantity') }}', {_token: '{{ csrf_token() }}', key: key, quantity:qty}, function (data) {
-                
+
                 if(data.qty<0)
                 {
                     toastr.warning('{{\App\CPU\translate('product_quantity_is_not_enough!')}}', {
@@ -1284,9 +1284,9 @@
             var element = $( e.target );
             var minValue = parseInt(element.attr('min'));
             var valueCurrent = parseInt(element.val());
-        
+
             $.post('{{ route('admin.pos.updateQuantity') }}', {_token: '{{ csrf_token() }}', key: key, quantity:minValue}, function (data) {
-                
+
                 if(data.qty<0)
                 {
                     toastr.warning('{{\App\CPU\translate('product_quantity_is_not_enough!')}}', {
@@ -1310,7 +1310,7 @@
                 $('#cart').empty().html(data.view);
             });
         }
-        
+
         // Allow: backspace, delete, tab, escape, enter and .
         if(e.type == 'keydown')
         {

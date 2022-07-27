@@ -3,7 +3,7 @@
 @section('title', \App\CPU\translate('Product Add'))
 
 @push('css_or_js')
-    <link href="{{asset('public/assets/back-end/css/tags-input.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/assets/back-end/css/tags-input.min.css')}}" rel="stylesheet">
     <link href="{{ asset('public/assets/select2/css/select2.min.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
@@ -259,7 +259,7 @@
                                         <div>
                                             <label
                                             class="control-label">{{\App\CPU\translate('shipping_cost_multiply_with_quantity')}} </label>
-                                        
+
                                         </div>
                                         <div>
                                             <label class="switch">
@@ -349,8 +349,8 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('public/assets/back-end')}}/js/tags-input.min.js"></script>
-    <script src="{{asset('public/assets/back-end/js/spartan-multi-image-picker.js')}}"></script>
+    <script src="{{asset('/assets/back-end')}}/js/tags-input.min.js"></script>
+    <script src="{{asset('/assets/back-end/js/spartan-multi-image-picker.js')}}"></script>
     <script>
         $(function () {
             $("#coba").spartanMultiImagePicker({
@@ -360,7 +360,7 @@
                 groupClassName: 'col-6',
                 maxFileSize: '',
                 placeholderImage: {
-                    image: '{{asset('public/assets/back-end/img/400x400/img2.jpg')}}',
+                    image: '{{asset('/assets/back-end/img/400x400/img2.jpg')}}',
                     width: '100%',
                 },
                 dropFileLabel: "Drop Here",
@@ -394,7 +394,7 @@
                 groupClassName: 'col-12',
                 maxFileSize: '',
                 placeholderImage: {
-                    image: '{{asset('public/assets/back-end/img/400x400/img2.jpg')}}',
+                    image: '{{asset('/assets/back-end/img/400x400/img2.jpg')}}',
                     width: '100%',
                 },
                 dropFileLabel: "Drop Here",
@@ -428,7 +428,7 @@
                 groupClassName: 'col-12',
                 maxFileSize: '',
                 placeholderImage: {
-                    image: '{{asset('public/assets/back-end/img/400x400/img2.jpg')}}',
+                    image: '{{asset('/assets/back-end/img/400x400/img2.jpg')}}',
                     width: '90%',
                 },
                 dropFileLabel: "Drop Here",

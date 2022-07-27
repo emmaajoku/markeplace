@@ -311,7 +311,7 @@
                                 <div class="media">
                                     <div class="avatar avatar-xl mr-3">
                                         <img class="img-fluid"
-                                             onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'"
+                                             onerror="this.src='{{asset('/assets/back-end/img/160x160/img2.jpg')}}'"
                                              src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$detail->product['thumbnail']}}"
                                              alt="Image Description">
                                     </div>
@@ -424,7 +424,7 @@
                                     <option value="0">
                                         {{\App\CPU\translate('choose_delivery_type')}}
                                     </option>
-                                    
+
                                     <option value="self_delivery" {{$order->delivery_type=='self_delivery'?'selected':''}}>
                                         {{\App\CPU\translate('by_self_delivery_man')}}
                                     </option>
@@ -539,7 +539,7 @@
 
                             <span class="d-block">{{\App\CPU\translate('Name')}} :
                                 <strong>{{$shipping_address? $shipping_address->contact_person_name : \App\CPU\translate('empty')}}</strong><br>
-                                 
+
                                 {{\App\CPU\translate('City')}}:
                                 <strong>{{$shipping_address ? $shipping_address->city : \App\CPU\translate('empty')}}</strong><br>
                                 {{\App\CPU\translate('zip_code')}} :
@@ -565,7 +565,7 @@
 
                             <span class="d-block">{{\App\CPU\translate('Name')}} :
                                 <strong>{{$billing? $billing->contact_person_name : \App\CPU\translate('empty')}}</strong><br>
-                                
+
                                 {{\App\CPU\translate('City')}}:
                                 <strong>{{$billing ? $billing->city : \App\CPU\translate('empty')}}</strong><br>
                                 {{\App\CPU\translate('zip_code')}} :
@@ -644,8 +644,8 @@
                             </form>
                         </div>
                     </div>
-                        
-                    
+
+
                 </div>
             </div>
         </div>
@@ -776,7 +776,7 @@
     $( document ).ready(function() {
         let delivery_type = '{{$order->delivery_type}}';
 
-        
+
         if(delivery_type === 'self_delivery'){
             $('#choose_delivery_man').show();
             $('#by_third_party_delivery_service_info').hide();
@@ -806,7 +806,7 @@
             $('#choose_delivery_man').hide();
             $('#by_third_party_delivery_service_info').hide();
         }
-        
+
     }
 </script>
     <script>

@@ -24,10 +24,10 @@
                         <div class="row flex-between justify-content-between align-items-center flex-grow-1">
                             <div class="col-12 mb-1 col-md-4">
                                 <h5>{{ \App\CPU\translate('Product')}} {{ \App\CPU\translate('Table')}} ({{ $products->total() }})</h5>
-                                
+
                             </div>
-    
-                            
+
+
                             <div class="col-12 mb-1 col-md-5">
                                 <form action="{{ url()->current() }}" method="GET">
                                     <!-- Search -->
@@ -51,7 +51,7 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="card-body" style="padding: 0">
                         <div class="table-responsive">
@@ -113,7 +113,7 @@
                                             <a  class="btn btn-danger btn-sm" href="javascript:"
                                                 title="{{\App\CPU\translate('Delete')}}"
                                                 onclick="form_alert('product-{{$p['id']}}','{{\App\CPU\translate("Want to delete this item")}} ?')">
-                                               <i class="tio-add-to-trash"></i> 
+                                               <i class="tio-add-to-trash"></i>
                                             </a>
                                             <form action="{{route('seller.product.delete',[$p['id']])}}"
                                                   method="post" id="product-{{$p['id']}}">
@@ -132,7 +132,7 @@
                     </div>
                     @if(count($products)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{\App\CPU\translate('No data to show')}}</p>
                         </div>
                     @endif
@@ -144,8 +144,8 @@
 
 @push('script')
     <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <script>
         // Call the dataTables jQuery plugin

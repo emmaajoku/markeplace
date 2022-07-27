@@ -19,13 +19,13 @@
           href="{{asset('public/assets/front-end')}}/vendor/drift-zoom/dist/drift-basic.min.css"/>
     <link rel="stylesheet" media="screen"
           href="{{asset('public/assets/front-end')}}/vendor/lightgallery.js/dist/css/lightgallery.min.css"/>
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/toastr.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/theme.min.css">
     <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/slick.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/toastr.css"/>
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/master.css"/>
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Titillium+Web:wght@400;600;700&display=swap"
@@ -60,14 +60,14 @@
 <script src="{{asset('public/assets/front-end')}}/vendor/lightgallery.js/dist/js/lightgallery.min.js"></script>
 <script src="{{asset('public/assets/front-end')}}/vendor/lg-video.js/dist/lg-video.min.js"></script>
 {{--Toastr--}}
-<script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
+<script src={{asset("/assets/back-end/js/toastr.js")}}></script>
 <!-- Main theme script-->
 <script src="{{asset('public/assets/front-end')}}/js/theme.min.js"></script>
 <script src="{{asset('public/assets/front-end')}}/js/slick.min.js"></script>
 
 <script src="{{asset('public/assets/front-end')}}/js/sweet_alert.js"></script>
 {{--Toastr--}}
-<script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
+<script src={{asset("/assets/back-end/js/toastr.js")}}></script>
 {!! Toastr::message() !!}
 </body>
 </html>

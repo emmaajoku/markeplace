@@ -143,7 +143,7 @@
                                             <a class="btn btn-primary btn-sm" style="cursor: pointer;"
                                                 title="{{ \App\CPU\translate('Edit')}}"
                                                href="{{route('admin.category.edit',[$category['id']])}}">
-                                                <i class="tio-edit"></i> 
+                                                <i class="tio-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm delete" style="cursor: pointer;"
                                                 title="{{ \App\CPU\translate('Delete')}}"
@@ -163,7 +163,7 @@
                     </div>
                     @if(count($categories)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{\App\CPU\translate('No_data_to_show<')}}/p>
                         </div>
                     @endif

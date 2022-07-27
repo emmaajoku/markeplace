@@ -9,16 +9,16 @@
                 <a class="navbar-brand" href="{{route('seller.dashboard.index')}}" aria-label="">
                     @if (isset($shop))
                         <img class="navbar-brand-logo" style="max-height: 42px;"
-                             onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                             onerror="this.src='{{asset('/assets/back-end/img/160x160/img1.jpg')}}'"
                              src="{{asset("storage/app/public/shop/$shop->image")}}" alt="Logo" height="40" width="40">
                         <img class="navbar-brand-logo-mini" style="max-height: 42px;"
-                             onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                             onerror="this.src='{{asset('/assets/back-end/img/160x160/img1.jpg')}}'"
                              src="{{asset("storage/app/public/shop/$shop->image")}}"
                              alt="Logo" height="40" width="40">
 
                     @else
                         <img class="navbar-brand-logo-mini" style="max-height: 42px;"
-                             src="{{asset('public/assets/back-end/img/160x160/img1.jpg')}}"
+                             src="{{asset('/assets/back-end/img/160x160/img1.jpg')}}"
                              alt="Logo" height="40" width="40">
                     @endif
 
@@ -152,7 +152,7 @@
                                 <div class="avatar avatar-sm avatar-circle">
 
                                     <img class="avatar-img"
-                                         onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                                         onerror="this.src='{{asset('/assets/back-end/img/160x160/img1.jpg')}}'"
                                          src="{{asset('storage/app/public/seller/')}}/{{auth('seller')->user()->image}}"
                                          alt="Image Description">
                                     <span class="avatar-status avatar-sm-status avatar-status-success"></span>
@@ -167,7 +167,7 @@
                                         <div class="avatar avatar-sm avatar-circle mr-2">
 
                                             <img class="avatar-img"
-                                                 onerror="this.src='{{asset('public/assets/back-end/img/160x160/img1.jpg')}}'"
+                                                 onerror="this.src='{{asset('/assets/back-end/img/160x160/img1.jpg')}}'"
                                                  src="{{asset('storage/app/public/seller/')}}/{{auth('seller')->user()->image}}"
                                                  alt="Image Description">
                                         </div>
@@ -275,7 +275,7 @@
                         @endif
                     </a>
                 </div>
-           
+
                 <div style="background:white;padding: 2px;border-radius: 5px;margin-top:10px;">
                     <a class="p-2"
                        href="{{route('seller.orders.list',['pending'])}}">

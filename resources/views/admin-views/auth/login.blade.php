@@ -15,11 +15,11 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/vendor.min.css">
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/vendor/icon-set/style.css">
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/vendor.min.css">
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/vendor/icon-set/style.css">
     <!-- CSS Front Template -->
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/theme.minc619.css?v=1.0">
-    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css">
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/theme.minc619.css?v=1.0">
+    <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/toastr.css">
     <style>
         .input-icons i {
             position: absolute;
@@ -66,7 +66,7 @@
         @php($e_commerce_logo=\App\Model\BusinessSetting::where(['type'=>'company_web_logo'])->first()->value)
         <a class="d-flex justify-content-center mb-5" href="javascript:">
             <img class="z-index-2" src="{{asset("storage/app/public/company/".$e_commerce_logo)}}" alt="Logo"
-                 onerror="this.src='{{asset('public/assets/back-end/img/400x400/img2.jpg')}}'"
+                 onerror="this.src='{{asset('/assets/back-end/img/400x400/img2.jpg')}}'"
                  style="width: 8rem;">
         </a>
 
@@ -184,11 +184,11 @@
 
 
 <!-- JS Implementing Plugins -->
-<script src="{{asset('public/assets/back-end')}}/js/vendor.min.js"></script>
+<script src="{{asset('/assets/back-end')}}/js/vendor.min.js"></script>
 
 <!-- JS Front -->
-<script src="{{asset('public/assets/back-end')}}/js/theme.min.js"></script>
-<script src="{{asset('public/assets/back-end')}}/js/toastr.js"></script>
+<script src="{{asset('/assets/back-end')}}/js/theme.min.js"></script>
+<script src="{{asset('/assets/back-end')}}/js/toastr.js"></script>
 {!! Toastr::message() !!}
 
 @if ($errors->any())

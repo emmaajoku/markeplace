@@ -87,12 +87,12 @@
                                     <td> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order['order_amount']))}}</td>
 
                                     <td>
-                                        
+
                                         <a class="btn btn-primary btn-sm edit"
                                             title="{{\App\CPU\translate('View')}}"
                                             href="{{route('admin.orders.details',['id'=>$order['id']])}}"><i
                                                 class="tio-visible"></i> </a>
-                                        <a class="btn btn-info btn-sm" 
+                                        <a class="btn btn-info btn-sm"
                                             title="{{\App\CPU\translate('Invoice')}}"
                                             target="_blank"
                                             href="{{route('admin.orders.generate-invoice',[$order['id']])}}"><i
@@ -104,7 +104,7 @@
                         </table>
                         @if(count($orders)==0)
                             <div class="text-center p-4">
-                                <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                                <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                                 <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                             </div>
                         @endif

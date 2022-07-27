@@ -8,7 +8,7 @@
 
             </h3>
         </div>
-        
+
         <div class="card">
             <div class="card-header">
                 <div class="row d-flex justify-content-between align-items-center flex-grow-1">
@@ -31,14 +31,14 @@
                         </form>
                     </div>
                     <div class="col-md-3 col-12 mt-3">
-                        
+
                                 <form action="{{ url()->current() }}" method="GET">
-                                    
-            
+
+
                                     <div class="row d-flex">
                                         <div class="ml-2">
                                             <select class="form-control" name="status">
-            
+
                                                 <option class="text-center" value="0" selected disabled>
                                                     ---{{\App\CPU\translate('select_status')}}---
                                                 </option>
@@ -50,15 +50,15 @@
                                                         value="hold" {{ $status == 'hold'? 'selected' : '' }}>{{\App\CPU\translate('hold')}}</option>
                                             </select>
                                         </div>
-                                        
+
                                         <div class="ml-2">
                                             <button type="submit" class="btn btn-success">{{\App\CPU\translate('filter')}}</button>
                                         </div>
-                                    </div> 
-            
-                                        
+                                    </div>
+
+
                                 </form>
-                            
+
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                     </table>
                     @if(count($transactions)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg"
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg"
                                  alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                         </div>
@@ -150,6 +150,6 @@
             </div>
 
         </div>
-        
+
     </div>
 @endsection

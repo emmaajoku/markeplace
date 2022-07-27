@@ -36,7 +36,7 @@
                             </form>
                             <!-- End Search -->
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="card-body" style="padding: 0">
@@ -68,7 +68,7 @@
                                     <td>
                                         {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($p['temp_shipping_cost']))}}
                                     </td>
-                                    
+
                                     <td>
                                         <button class="btn btn-primary btn-sm"
                                          onclick="update_shipping_status({{$p['id']}},1)">
@@ -90,7 +90,7 @@
                 </div>
                 @if(count($pro)==0)
                     <div class="text-center p-4">
-                        <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                        <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                         <p class="mb-0">{{\App\CPU\translate('No data to show')}}</p>
                     </div>
                 @endif
@@ -103,7 +103,7 @@
 @push('script')
 <script>
     function update_shipping_status(product_id,status) {
-        
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -117,7 +117,7 @@
                     status:status
                 },
                 success: function (data) {
-                    
+
                     toastr.success('{{\App\CPU\translate('status updated successfully')}}');
                     location.reload();
                 }

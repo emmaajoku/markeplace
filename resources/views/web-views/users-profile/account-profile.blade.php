@@ -311,7 +311,7 @@
 
 @push('script')
     <script src="{{asset('public/assets/front-end')}}/vendor/nouislider/distribute/nouislider.min.js"></script>
-    <script src="{{asset('public/assets/back-end/js/croppie.js')}}"></script>
+    <script src="{{asset('/assets/back-end/js/croppie.js')}}"></script>
     <script>
         function checkPasswordMatch() {
             var password = $("#password").val();

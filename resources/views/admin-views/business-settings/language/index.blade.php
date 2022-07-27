@@ -95,7 +95,7 @@
                                                         @else
                                                             <a class="dropdown-item delete"
                                                                 id="{{route('admin.business-settings.language.delete',[$data['code']])}}">{{\App\CPU\translate('Delete')}}</a>
-                                                            
+
                                                         @endif
                                                     @endif
                                                     <a class="dropdown-item"
@@ -247,8 +247,8 @@
 
 @push('script')
     <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script>

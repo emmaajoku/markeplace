@@ -41,7 +41,7 @@
                                 <tr>
                                     <th>{{\App\CPU\translate('SL#')}}</th>
                                     <th>{{\App\CPU\translate('amount')}}</th>
-                                    
+
                                     <th>{{ \App\CPU\translate('Name') }}</th>
                                     <th>{{\App\CPU\translate('request_time')}}</th>
                                     <th>{{\App\CPU\translate('status')}}</th>
@@ -53,7 +53,7 @@
                                     <tr>
                                         <td scope="row">{{$withdraw_req->firstItem()+$k}}</td>
                                         <td>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($wr['amount']))}}</td>
-                                        
+
                                         <td>
                                             @if (isset($wr->seller))
                                                 <a href="{{route('admin.sellers.view',$wr->seller_id)}}">{{ $wr->seller->f_name . ' ' . $wr->seller->l_name }}</a>
@@ -91,7 +91,7 @@
                             @if(count($withdraw_req)==0)
                                 <div class="text-center p-4">
                                     <img class="mb-3"
-                                         src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg"
+                                         src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg"
                                          alt="Image Description" style="width: 7rem;">
                                     <p class="mb-0">{{\App\CPU\translate('No_data_to_show')}}</p>
                                 </div>

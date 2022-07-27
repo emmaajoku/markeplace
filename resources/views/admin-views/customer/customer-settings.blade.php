@@ -51,7 +51,7 @@
                     <div class="col-sm-12 col-12">
                         <div class="form-group">
                             <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="refund_to_wallet">
-                            <span class="pr-2">{{\App\CPU\translate('refund_to_wallet')}}<span class="input-label-secondary" title="{{\App\CPU\translate('refund_to_wallet_hint')}}"><img src="{{asset('/public/assets/back-end/img/info-circle.svg')}}" alt="{{\App\CPU\translate('show_hide_food_menu')}}"></span> :</span>
+                            <span class="pr-2">{{\App\CPU\translate('refund_to_wallet')}}<span class="input-label-secondary" title="{{\App\CPU\translate('refund_to_wallet_hint')}}"><img src="{{asset('//assets/back-end/img/info-circle.svg')}}" alt="{{\App\CPU\translate('show_hide_food_menu')}}"></span> :</span>
                                 <input type="checkbox" class="toggle-switch-input" name="refund_to_wallet" id="refund_to_wallet" value="1" {{isset($data['wallet_add_refund'])&&$data['wallet_add_refund']==1?'checked':''}}>
                                 <span class="toggle-switch-label text">
                                     <span class="toggle-switch-indicator"></span>

@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header text-capitalize py-0">
                 <h4 class="pt-1">{{\App\CPU\translate('filter')}} {{\App\CPU\translate('options')}}</h4>
-            </div>                
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12 pt-3">
@@ -57,7 +57,7 @@
                                         <select id='customer' name="customer_id" data-placeholder="{{\App\CPU\translate('select_customer')}}" class="js-data-example-ajax form-control" title="{{\App\CPU\translate('select_customer')}}">
                                             @if (request()->get('customer_id') && $customer_info = \App\User::find(request()->get('customer_id')))
                                                 <option value="{{$customer_info->id}}" selected>{{$customer_info->f_name.' '.$customer_info->l_name}}({{$customer_info->phone}})</option>
-                                            @endif                                            
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                             </div>
                         </form>
                     </div>
-                </div>                
+                </div>
             </div>
 
         </div>
@@ -81,7 +81,7 @@
                         $credit = $data[0]->total_credit;
                         $debit = $data[0]->total_debit;
                         $balance = $credit - $debit;
-                    @endphp            
+                    @endphp
                     <!--Debit earned-->
                     <div class="col-sm-4">
                         <!-- Card -->
@@ -163,7 +163,7 @@
                         <!-- End Card -->
                     </div>
                     <!--balance earned end-->
-                </div>                
+                </div>
             </div>
 
         </div>
@@ -229,14 +229,14 @@
             <!-- End Body -->
             @if(count($transactions)==0)
                 <div class="text-center p-4">
-                    <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                    <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                     <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                 </div>
-            @endif 
+            @endif
             <div class="card-footer">
                 {!!$transactions->links()!!}
-            </div> 
-              
+            </div>
+
         </div>
         <!-- End Card -->
     </div>

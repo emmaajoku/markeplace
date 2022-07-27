@@ -16,13 +16,13 @@
               href="{{asset('public/assets/front-end')}}/vendor/drift-zoom/dist/drift-basic.min.css"/>
         <link rel="stylesheet" media="screen"
               href="{{asset('public/assets/front-end')}}/vendor/lightgallery.js/dist/css/lightgallery.min.css"/>
-        <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
+        <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/toastr.css"/>
         <!-- Main Theme Styles + Bootstrap-->
         <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/theme.min.css">
         <link rel="stylesheet" media="screen" href="{{asset('public/assets/front-end')}}/css/slick.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
               integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
+        <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/toastr.css"/>
         <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/master.css"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Titillium+Web:wght@400;600;700&display=swap"
               rel="stylesheet">

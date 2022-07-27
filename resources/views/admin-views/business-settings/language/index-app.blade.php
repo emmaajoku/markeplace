@@ -3,8 +3,8 @@
 @section('title', \App\CPU\translate('Language'))
 
 @push('css_or_js')
-    <link href="{{ asset('public/assets/select2/css/select2.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('public/assets/back-end/css/custom.css')}}" rel="stylesheet">
+    <link href="{{ asset('/assets/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('/assets/back-end/css/custom.css')}}" rel="stylesheet">
     <style>
         .image-preview {
             height: 17px!important;

@@ -56,12 +56,12 @@
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <div class="form-group">
-                                        <label class="input-label" for="priority">{{\App\CPU\translate('choose_priority_number')}} 
+                                        <label class="input-label" for="priority">{{\App\CPU\translate('choose_priority_number')}}
                                             <span>
                                             <i class="tio-info-outined" title="{{\App\CPU\translate('the_lowest_number_will_get_the_highest_priority')}}"></i>
                                             </span>
                                         </label>
-                                        
+
                                         <select class="form-control" name="priority" id="" required>
                                             @for ($i = 0; $i <= 10; $i++)
                                             <option
@@ -89,13 +89,13 @@
                                             <img
                                                 style="width: 200px;height:200px;border: 1px solid; border-radius: 10px;"
                                                 id="viewer"
-                                                src="{{asset('public/assets/back-end/img/900x400/img1.jpg')}}"
+                                                src="{{asset('/assets/back-end/img/900x400/img1.jpg')}}"
                                                 alt="image"/>
                                         </center>
                                     </div>
                                 </div>
                             </div>
-                    
+
                             <button type="submit" class="btn btn-primary float-right">{{\App\CPU\translate('submit')}}</button>
                         </form>
                     </div>
@@ -200,7 +200,7 @@
                     </div>
                     @if(count($categories)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{\App\CPU\translate('no_data_found')}}</p>
                         </div>
                     @endif

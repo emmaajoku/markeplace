@@ -72,9 +72,9 @@
                                                     class="js-example-responsive form-control"
                                                     name="product_id">
                                                 @foreach(\App\Model\Product::active()->get() as $product)
-                                                    
+
                                                         <option value="{{$product['id']}}">{{$product['name']}}</option>
-                                                    
+
                                                 @endforeach
                                             </select>
                                         </div>
@@ -209,7 +209,7 @@
                                         <td>
                                             <a class="btn btn-primary btn-sm edit"
                                                 title="{{ \App\CPU\translate('Edit')}}"
-                                                href="{{route('admin.banner.edit',[$banner['id']])}}" style="cursor: pointer;"> 
+                                                href="{{route('admin.banner.edit',[$banner['id']])}}" style="cursor: pointer;">
                                                 <i class="tio-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm delete"
@@ -231,7 +231,7 @@
                     </div>
                     @if(count($banners)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg"
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg"
                                  alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                         </div>

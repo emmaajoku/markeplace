@@ -2,7 +2,7 @@
 @section('title', \App\CPU\translate('FAQ'))
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <style>
 
         .switch {
@@ -130,7 +130,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            
+
                                             <div class="d-flex">
                                                 <a class="btn btn-primary btn-sm edit m-1" style="cursor: pointer;"
                                                     data-toggle="modal" data-target="#editModal"
@@ -138,15 +138,15 @@
                                                     data-id="{{ $help->id }}">
                                                     <i class="tio-edit"></i>
                                                 </a>
-                                                <a  class="btn btn-danger btn-sm delete m-1" 
+                                                <a  class="btn btn-danger btn-sm delete m-1"
                                                     style="cursor: pointer;"
                                                     title="{{ \App\CPU\translate('Delete')}}"
-                                                    id="{{$help['id']}}"> 
+                                                    id="{{$help['id']}}">
                                                     <i class="tio-add-to-trash"></i>
                                                 </a>
                                             </div>
-                                                    
-                                                
+
+
                                         </td>
 
 
@@ -270,11 +270,11 @@
 
 @push('script')
     <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{asset('public/assets/back-end')}}/js/demo/datatables-demo.js"></script>
+    <script src="{{asset('/assets/back-end')}}/js/demo/datatables-demo.js"></script>
 
     <script>
         $(document).ready(function () {

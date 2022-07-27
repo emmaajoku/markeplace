@@ -196,27 +196,27 @@
                                                 <a  title="{{\App\CPU\translate('Edit')}}"
                                                     type="button" class="btn btn-primary btn-sm btn-xs edit"
                                                     href="{{route('admin.currency.edit',[$data->id])}}">
-                                                    <i class="tio-edit"></i> 
+                                                    <i class="tio-edit"></i>
                                                 </a>
                                                 @if ($default['value']!=$data->id)
                                                 <a  title="{{\App\CPU\translate('Delete')}}"
                                                     type="button" class="btn btn-danger btn-sm btn-xs delete"
                                                     id="{{$data->id}}"
                                                     >
-                                                    <i class="tio-delete"></i> 
+                                                    <i class="tio-delete"></i>
                                                 </a>
                                                 @else
                                                     <a href="javascript:" title="{{\App\CPU\translate('Delete')}}"
                                                         type="button" class="btn btn-danger btn-sm btn-xs"
                                                         onclick="default_currency_delete_alert()"
                                                         >
-                                                        <i class="tio-delete"></i> 
+                                                        <i class="tio-delete"></i>
                                                     </a>
                                                 @endif
                                             @else
                                                 <button title="{{\App\CPU\translate('Edit')}}"
                                                         class="btn btn-primary btn-sm btn-xs edit" disabled>
-                                                    <i class="tio-edit"></i> 
+                                                    <i class="tio-edit"></i>
                                                 </button>
                                             @endif
                                         </td>
@@ -231,7 +231,7 @@
                     </div>
                     @if(count($currencies)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg"
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg"
                                  alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{\App\CPU\translate('No data to show')}}</p>
                         </div>
@@ -324,7 +324,7 @@
                     method: 'POST',
                     data: {id: id},
                     success: function (data) {
-                        
+
                         if(data.status ==1){
                             toastr.success('{{\App\CPU\translate('Currency removed successfully!')}}');
                             location.reload();

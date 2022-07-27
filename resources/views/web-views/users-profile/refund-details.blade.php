@@ -3,7 +3,7 @@
 @section('title',\App\CPU\translate('Refund Details'))
 
 @push('css_or_js')
-    <link href="{{asset('public/assets/back-end/css/tags-input.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/assets/back-end/css/tags-input.min.css')}}" rel="stylesheet">
     <link href="{{ asset('public/assets/select2/css/select2.min.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -54,7 +54,7 @@
                             <div class="row">
                                 <div class="col-6 col-sm-6 col-md-2">
                                     <div>
-                                        <img 
+                                        <img
                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$refund->product!=null?$refund->product->thumbnail:''}}"
                                         alt="VR Collection" style="width: 70%; height:70%;">
@@ -85,12 +85,12 @@
                                                 <dd class="col-sm-5 ">
                                                     <strong>{{\App\CPU\Helpers::currency_converter($refund->order_details->price*$refund->order_details->qty)}}</strong>
                                                 </dd>
-            
+
                                                 <dt class="col-sm-7">{{\App\CPU\translate('total_discount')}} :</dt>
                                                 <dd class="col-sm-5 ">
                                                     <strong>{{\App\CPU\Helpers::currency_converter($refund->order_details->discount)}}</strong>
                                                 </dd>
-            
+
                                                 <dt class="col-sm-7">{{\App\CPU\translate('total_tax')}} :</dt>
                                                 <dd class="col-sm-5">
                                                     <strong>{{\App\CPU\Helpers::currency_converter($refund->order_details->tax)}}</strong>
@@ -106,11 +106,11 @@
                     <?php
                     $total_product_price = 0;
                     foreach ($order->details as $key => $or_d) {
-                        $total_product_price += ($or_d->qty*$or_d->price) + $or_d->tax - $or_d->discount; 
+                        $total_product_price += ($or_d->qty*$or_d->price) + $or_d->tax - $or_d->discount;
                     }
                         $refund_amount = 0;
                         $subtotal = ($order_details->price * $order_details->qty) - $order_details->discount + $order_details->tax;
-                        
+
                         $coupon_discount = ($order->discount_amount*$subtotal)/$total_product_price;
 
                         $refund_amount = $subtotal - $coupon_discount;
@@ -131,7 +131,7 @@
                                 <b>{{\App\CPU\translate('refund_id')}}</b> :
                                 <span>{{$refund->id}}</span>
                             </div>
-                            <div class="col-12">     
+                            <div class="col-12">
                                 <b>{{\App\CPU\translate('refund_status')}}</b> :
                                 @if ($refund->status == 'pending')
                                 <span class="text-capitalize" style="color: coral"> {{$refund->status}}</span>
@@ -167,7 +167,7 @@
                                         <div class="col-6">
                                             <h5>{{\App\CPU\translate('refund_reason')}}</h5>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="card-body">

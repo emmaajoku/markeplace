@@ -2,8 +2,8 @@
 @section('title', \App\CPU\translate('Attribute'))
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="{{asset('public/assets/back-end/css/croppie.css')}}" rel="stylesheet">
+    <link href="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{asset('/assets/back-end/css/croppie.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -104,18 +104,18 @@
                                     <td>{{$attributes->firstItem()+$key}}</td>
                                     <td style="width: 40%;text-align:center;">{{$attribute['name']}}</td>
                                     <td style="width: 40%;text-align:center;">
-                                        
+
                                         <a class="btn btn-primary btn-sm edit" style="cursor: pointer;"
                                             title="{{ \App\CPU\translate('Edit')}}"
-                                            href="{{route('admin.attribute.edit',[$attribute['id']])}}"> 
+                                            href="{{route('admin.attribute.edit',[$attribute['id']])}}">
                                             <i class="tio-edit"></i>
                                         </a>
                                         <a class="btn btn-danger btn-sm delete"style="cursor: pointer;"
                                             title="{{ \App\CPU\translate('Delete')}}"
-                                            id="{{$attribute['id']}}">  
+                                            id="{{$attribute['id']}}">
                                             <i class="tio-add-to-trash"></i>
                                         </a>
-                                            
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -128,7 +128,7 @@
                 </div>
                 @if(count($attributes)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{ \App\CPU\translate('No_data_to_show')}}</p>
                         </div>
                     @endif

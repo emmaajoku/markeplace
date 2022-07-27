@@ -3,7 +3,7 @@
 @section('title', \App\CPU\translate('Coupon Add'))
 
 @push('css_or_js')
-    <link href="{{asset('public/assets/back-end')}}/css/select2.min.css" rel="stylesheet"/>
+    <link href="{{asset('/assets/back-end')}}/css/select2.min.css" rel="stylesheet"/>
 @endpush
 
 @section('content')
@@ -60,14 +60,14 @@
                                 <div class="col-md-3 col-6">
                                     <div class="form-group">
                                         <label for="name">{{\App\CPU\translate('start_date')}}</label>
-                                        <input id="start_date" type="date" name="start_date" class="form-control" 
+                                        <input id="start_date" type="date" name="start_date" class="form-control"
                                                placeholder="{{\App\CPU\translate('start date')}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-6">
                                     <div class="form-group">
                                         <label for="name">{{\App\CPU\translate('expire_date')}}</label>
-                                        <input id="expire_date" type="date" name="expire_date" class="form-control" 
+                                        <input id="expire_date" type="date" name="expire_date" class="form-control"
                                                placeholder="{{\App\CPU\translate('expire date')}}" required>
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@
                                 <div id="max-discount" class="col-md-3 col-6">
                                     <div class="form-group">
                                         <label for="name">{{\App\CPU\translate('maximum_discount')}}</label>
-                                        <input type="number" min="1" max="1000000" name="max_discount" 
+                                        <input type="number" min="1" max="1000000" name="max_discount"
                                                class="form-control" id="maximum discount"
                                                placeholder="{{\App\CPU\translate('maximum discount')}}" >
                                     </div>
@@ -213,7 +213,7 @@
                                             <a class="btn btn-danger btn-sm delete m-1"
                                                 href="javascript:"
                                                 onclick="form_alert('coupon-{{$c['id']}}','Want to delete this coupon ?')"
-                                                title="{{\App\CPU\translate('delete')}}"   
+                                                title="{{\App\CPU\translate('delete')}}"
                                                 >
                                                 <i class="tio-add-to-trash"></i>
                                             </a>
@@ -222,7 +222,7 @@
                                                 @csrf @method('delete')
                                             </form>
                                             </div>
-                                            
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -235,7 +235,7 @@
                     </div>
                     @if(count($cou)==0)
                         <div class="text-center p-4">
-                            <img class="mb-3" src="{{asset('public/assets/back-end')}}/svg/illustrations/sorry.svg"
+                            <img class="mb-3" src="{{asset('/assets/back-end')}}/svg/illustrations/sorry.svg"
                                  alt="Image Description" style="width: 7rem;">
                             <p class="mb-0">{{\App\CPU\translate('No data to show')}}</p>
                         </div>
@@ -267,7 +267,7 @@
         $("#expire_date").on("change", function () {
             $('#start_date').attr('max',$(this).val());
         });
-        
+
         function checkDiscountType(val) {
             if (val == 'amount') {
                 $('#max-discount').hide()
@@ -276,10 +276,10 @@
             }
         }
 
-    
+
 </script>
-    
-    <script src="{{asset('public/assets/back-end')}}/js/select2.min.js"></script>
+
+    <script src="{{asset('/assets/back-end')}}/js/select2.min.js"></script>
     <script>
         $(".js-example-theme-single").select2({
             theme: "classic"
@@ -291,9 +291,9 @@
     </script>
 
     <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{asset('public/assets/back-end')}}/js/demo/datatables-demo.js"></script>
+    <script src="{{asset('/assets/back-end')}}/js/demo/datatables-demo.js"></script>
 @endpush
