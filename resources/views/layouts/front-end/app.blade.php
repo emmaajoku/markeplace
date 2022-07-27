@@ -31,7 +31,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Titillium+Web:wght@400;600;700&display=swap"
         rel="stylesheet">
     {{-- light box --}}
-    <link rel="stylesheet" href="{{asset('public/css/lightbox.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/lightbox.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/back-end')}}/vendor/icon-set/style.css">
     @stack('css_or_js')
 
@@ -736,7 +736,7 @@
 <script src="{{asset('/assets/front-end')}}/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 
 {{-- light box --}}
-<script src="{{asset('public/js/lightbox.min.js')}}"></script>
+<script src="{{asset('/js/lightbox.min.js')}}"></script>
 <script src="{{asset('/assets/front-end')}}/vendor/drift-zoom/dist/Drift.min.js"></script>
 <script src="{{asset('/assets/front-end')}}/vendor/lightgallery.js/dist/js/lightgallery.min.js"></script>
 <script src="{{asset('/assets/front-end')}}/vendor/lg-video.js/dist/lg-video.min.js"></script>

@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="{{asset('/assets/back-end')}}/css/menurtl.css">
     @endif
     {{-- light box --}}
-    <link rel="stylesheet" href="{{asset('public/css/lightbox.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/lightbox.css')}}">
     @stack('css_or_js')
     <style>
         :root {
@@ -357,7 +357,7 @@
 
 <script src="{{asset('/assets/back-end')}}/js/bootstrap.min.js"></script>
 {{-- light box --}}
-<script src="{{asset('public/js/lightbox.min.js')}}"></script>
+<script src="{{asset('/js/lightbox.min.js')}}"></script>
 <audio id="myAudio">
     <source src="{{asset('/assets/back-end/sound/notification.mp3')}}" type="audio/mpeg">
 </audio>
